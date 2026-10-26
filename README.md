@@ -1,1 +1,0 @@
-# Minar-Tiles-Calculetor
