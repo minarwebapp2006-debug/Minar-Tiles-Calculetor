@@ -10,6 +10,9 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap"></noscript>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block"></noscript>
+<script>/* অ্যাপ খোলা থাকলে ফর্ম না দেখিয়ে সরাসরি index.html-এ */
+(function(){try{var s=JSON.parse(localStorage.getItem('tilesCloudSession')||'null');var c=JSON.parse(localStorage.getItem('tilesAccessCache')||'null');if(s&&s.user&&c&&c.uid===s.user.id&&c.status==='approved'&&(Date.now()-c.t)<72*3600e3){document.documentElement.classList.add('auth-redirect');location.replace('index.html');}}catch(e){}})();</script>
+<style>html.auth-redirect body{visibility:hidden}</style>
 <style>
 :root { --bg:#FCFEFF; --surface:#FFFFFF; --surface-2:#F2F9FC; --ink:#1E2925; --ink-soft:#5C6B65; --ink-faint:#8D9A94; --border:#E3EDF4;
   --accent-1:#5B7FDB; --accent-2:#7D97E3; --ring:rgba(91,127,219,0.20); --radius:20px; --radius-sm:12px; --row-h:44px;
@@ -140,8 +143,8 @@ body.gate-lock { overflow: hidden; }
    মূল অ্যাপ: index.html (একই ফোল্ডার/একই ডোমেইনে রাখতে হবে — সেশন localStorage-এ শেয়ার হয়)।
    ⚠ SUPABASE_URL ও SUPABASE_ANON_KEY index.html-এর মানের সাথে হুবহু এক হতে হবে।
    SQL (app_users টেবিল + register_app_user ফাংশন) index.html-এর কমেন্টে দেওয়া আছে। */
-const SUPABASE_URL = 'https://fvmenotxbkrugqzhrkim.supabase.co';       // যেমন: https://abcdxyzcompany.supabase.co
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2bWVub3R4YmtydWdxemhya2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwMzQyNzMsImV4cCI6MjEwODYxMDI3M30.6RrBh6E-3lQfDMnASz0yz6zktsFXn1mJFjWM9CZ5j5E';  // Supabase → Project Settings → API → anon public
+const SUPABASE_URL = '';       // যেমন: https://abcdxyzcompany.supabase.co
+const SUPABASE_ANON_KEY = '';  // Supabase → Project Settings → API → anon public
 const APP_PAGE = 'index.html';
 const OFFLINE_GRACE_HOURS = 72;
 (function () {
