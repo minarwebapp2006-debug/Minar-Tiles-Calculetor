@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="bn"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Login - Minar Tiles Calculator</title>
+<meta name="theme-color" content="#5B7FDB">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-glass-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block"></noscript>
+<style>
+:root { --bg:#FCFEFF; --surface:#FFFFFF; --surface-2:#F2F9FC; --ink:#1E2925; --ink-soft:#5C6B65; --ink-faint:#8D9A94; --border:#E3EDF4;
+  --accent-1:#5B7FDB; --accent-2:#7D97E3; --ring:rgba(91,127,219,0.20); --radius:20px; --radius-sm:12px; --row-h:44px;
+  --font-body:'Inter','Noto Sans Bengali','Inter Local','Noto Sans Bengali Local',system-ui,sans-serif;
+  --shadow-lg:0 1px 2px rgba(15,23,42,0.03), 0 10px 28px rgba(15,23,42,0.05); --ease:cubic-bezier(0.2,0.8,0.2,1); }
+[data-theme="dark"] { --bg:#0F172A; --surface:#1E293B; --surface-2:#334155; --ink:#F8FAFC; --ink-soft:#94A3B8; --ink-faint:#64748B; --border:#334155;
+  --accent-1:#5F8FC0; --accent-2:#6FB8CC; --ring:rgba(125,151,227,0.24); --shadow-lg:0 1px 1px rgba(0,0,0,0.3), 0 16px 44px rgba(0,0,0,0.45); }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; }
+button, input { font-family: inherit; }
+.msi { font-size: 17px; vertical-align: middle; }
+.ig { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ig label { font-size: 12.5px; color: var(--ink-soft); font-weight: 600; letter-spacing: .01em; }
+.ig input { width: 100%; height: var(--row-h); border: 1.5px solid transparent; border-radius: 14px; padding: 10px 11px; font-size: 15px; color: var(--ink); background: var(--surface-2); outline: none; transition: border-color .2s, box-shadow .2s, background .2s; }
+.ig input:focus { border-color: var(--accent-1); background: var(--surface); box-shadow: 0 0 0 4px var(--ring); }
+.ord-btn { border: 1.5px solid var(--border); background: var(--surface-2); color: var(--ink); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: background .2s, transform .15s var(--ease); }
+.ord-btn:hover { transform: translateY(-1px); }
+.ord-btn.primary { background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border: none; color: #fff; box-shadow: 0 6px 14px rgba(91,127,219,0.24); }
+.ord-btn.primary .msi { color: #fff; }
+.pw-wrap { position: relative; }
+.pw-wrap input { padding-right: 46px; }
+.pw-eye { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border: 0; background: transparent; color: var(--ink-faint); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.pw-eye:hover { background: var(--surface); color: var(--ink); }
+.pw-eye .msi { font-size: 19px; color: inherit; }
+#authGate { display: flex; }
+/* ===== Access Gate (Login / Apply for Access) + App Owner Dashboard ===== */
+body.gate-lock { overflow: hidden; }
+#authGate { position: fixed; inset: 0; z-index: 600; display: none; align-items: flex-start; justify-content: center; padding: 16px; overflow-y: auto;
+  background: radial-gradient(1100px 560px at 8% -12%, rgba(0,180,216,0.14), transparent 62%), radial-gradient(900px 520px at 108% -6%, rgba(138,92,199,0.12), transparent 60%), var(--bg); }
+#authGate.open { display: flex; }
+.ag-wrap { width: 100%; max-width: 420px; margin: auto; display: flex; flex-direction: column; gap: 12px; }
+.ag-top { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+.ag-chip { border: 1.5px solid var(--border); background: var(--surface); color: var(--ink-soft); font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all .2s var(--ease); }
+.ag-chip .msi { font-size: 16px; color: inherit; }
+.ag-chip.active { background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); color: #fff; border-color: transparent; }
+.ag-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 28px 22px 24px; box-shadow: var(--shadow-lg); text-align: center; }
+.ag-mark { width: 56px; height: 56px; margin: 0 auto 12px; filter: drop-shadow(0 2px 5px rgba(20,27,24,0.14)); }
+.ag-mark svg { width: 100%; height: 100%; display: block; }
+.ag-title { margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.01em; }
+.ag-sub { margin: 4px 0 20px; font-size: 12.5px; color: var(--ink-soft); }
+.ag-panel { padding: 8px 0 4px; }
+.ag-panel p { margin: 10px 0 14px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+.ag-panel > .msi { font-size: 38px; color: var(--accent-2); }
+.ag-rowbtns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.ag-spin { width: 34px; height: 34px; margin: 6px auto 0; border-radius: 50%; border: 3px solid var(--border); border-top-color: var(--accent-1); animation: agSpin .8s linear infinite; }
+@keyframes agSpin { to { transform: rotate(360deg); } }
+.ag-tabs { display: flex; gap: 4px; padding: 4px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 16px; }
+.ag-tabs button { flex: 1; border: 0; background: transparent; color: var(--ink-soft); font-family: inherit; font-size: 12.5px; font-weight: 700; padding: 10px 6px; border-radius: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 5px; transition: all .25s var(--ease); }
+.ag-tabs button .msi { font-size: 17px; color: inherit; }
+.ag-tabs button.active { background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); color: #fff; box-shadow: 0 6px 16px rgba(0,119,182,0.25); }
+.ag-card .ig { text-align: left; margin-bottom: 12px; }
+.ag-inp { position: relative; }
+.ag-inp > .msi { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-faint); font-size: 19px; pointer-events: none; z-index: 1; }
+.ag-inp input { padding-left: 40px; }
+.ag-btn { width: 100%; justify-content: center; padding: 13px 14px; font-size: 14px; margin-top: 4px; }
+.ag-btn:disabled { opacity: .6; cursor: wait; transform: none; }
+.ag-note { display: none; align-items: flex-start; gap: 8px; text-align: left; padding: 10px 12px; border-radius: 12px; font-size: 12.5px; line-height: 1.5; margin-bottom: 14px; border: 1px solid; }
+.ag-note .msi { font-size: 18px; flex-shrink: 0; color: inherit; }
+.ag-note.err  { background: #FEF2F2; border-color: #FCA5A5; color: #B91C1C; }
+.ag-note.warn { background: #FFFBEB; border-color: #FCD34D; color: #92400E; }
+.ag-note.ok   { background: #F0FDF4; border-color: #86EFAC; color: #166534; }
+.ag-note.info { background: color-mix(in srgb, var(--accent-1) 10%, var(--surface)); border-color: color-mix(in srgb, var(--accent-1) 35%, var(--border)); color: var(--ink); }
+[data-theme="dark"] .ag-note.err  { background: rgba(248,113,113,0.12); border-color: rgba(248,113,113,0.4); color: #FCA5A5; }
+[data-theme="dark"] .ag-note.warn { background: rgba(251,191,36,0.12); border-color: rgba(251,191,36,0.4); color: #FCD34D; }
+[data-theme="dark"] .ag-note.ok   { background: rgba(52,211,153,0.12); border-color: rgba(52,211,153,0.4); color: #6EE7B7; }
+
+</style>
+</head>
+<body>
+<div id="authGate" class="open">
+  <div class="ag-wrap">
+    <div class="ag-top">
+      <button type="button" class="ag-chip" id="agThemeBtn" onclick="agToggleTheme()" aria-label="Theme"><span class="material-symbols-outlined msi" id="agThemeIcon">dark_mode</span></button>
+      <button type="button" class="ag-chip" id="agLangBn" onclick="setLang('bn')">বাংলা</button>
+      <button type="button" class="ag-chip" id="agLangEn" onclick="setLang('en')">EN</button>
+    </div>
+    <div class="ag-card">
+      <div class="ag-mark">
+        <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="44" height="44" rx="11" fill="#EBF2FA"></rect>
+          <rect x="7" y="7" width="13" height="13" rx="3.2" fill="#CAF0F8"></rect>
+          <rect x="24" y="7" width="13" height="13" rx="3.2" fill="#90E0EF"></rect>
+          <rect x="7" y="24" width="13" height="13" rx="3.2" fill="#00B4D8"></rect>
+          <rect x="24" y="24" width="13" height="13" rx="3.2" fill="#0077B6"></rect>
+        </svg>
+      </div>
+      <h2 class="ag-title">Minar Tiles Calculator</h2>
+      <p class="ag-sub" data-en="Showroom &amp; Business Edition">শোরুম ও শপ এডিশন</p>
+
+      <div id="agChecking" class="ag-panel">
+        <div class="ag-spin"></div>
+        <p data-en="Verifying your access…">আপনার অ্যাক্সেস যাচাই করা হচ্ছে…</p>
+      </div>
+
+      <div id="agConfig" class="ag-panel" style="display:none;">
+        <span class="material-symbols-outlined msi">settings</span>
+        <p data-en="Cloud login is not set up yet. Put your SUPABASE_URL and SUPABASE_ANON_KEY at the top of this file's script.">ক্লাউড লগইন এখনো সেটআপ হয়নি। এই ফাইলের স্ক্রিপ্টের শুরুতে SUPABASE_URL ও SUPABASE_ANON_KEY বসান।</p>
+      </div>
+
+      <div id="agForm" style="display:none;">
+        <div class="ag-tabs">
+          <button type="button" id="agTabLogin" class="active" onclick="agTab('login')"><span class="material-symbols-outlined msi">login</span><span data-en="Login">লগইন</span></button>
+          <button type="button" id="agTabApply" onclick="agTab('apply')"><span class="material-symbols-outlined msi">person_add</span><span data-en="Apply for Access">অ্যাক্সেসের আবেদন</span></button>
+        </div>
+        <div id="agNote" class="ag-note"><span class="material-symbols-outlined msi" id="agNoteIcon">hourglass_top</span><span id="agNoteTxt"></span></div>
+        <div class="ig" style="margin-bottom:12px;text-align:left;"><label data-en="Email">ইমেইল</label><div class="ag-inp"><span class="material-symbols-outlined msi">mail</span><input type="email" id="agEmail" autocomplete="username" placeholder="name@example.com"></div></div>
+        <div class="ig" style="margin-bottom:12px;text-align:left;"><label data-en="Password">পাসওয়ার্ড</label><div class="pw-wrap ag-inp"><span class="material-symbols-outlined msi">lock</span><input type="password" id="agPass" autocomplete="current-password" placeholder="••••••••"><button type="button" class="pw-eye" onclick="togglePwEye('agPass', this)" aria-label="Show / Hide"><span class="material-symbols-outlined msi">visibility</span></button></div></div>
+        <div class="ig" id="agConfirmWrap" style="display:none;margin-bottom:12px;text-align:left;"><label data-en="Confirm Password">পাসওয়ার্ড আবার দিন</label><div class="pw-wrap ag-inp"><span class="material-symbols-outlined msi">lock</span><input type="password" id="agPass2" autocomplete="new-password" placeholder="••••••••"><button type="button" class="pw-eye" onclick="togglePwEye('agPass2', this)" aria-label="Show / Hide"><span class="material-symbols-outlined msi">visibility</span></button></div></div>
+        <button type="button" class="ord-btn primary ag-btn" id="agLoginBtn" onclick="agSubmit()"><span class="material-symbols-outlined msi">login</span><span data-en="Login">লগইন</span></button>
+        <button type="button" class="ord-btn primary ag-btn" id="agApplyBtn" style="display:none;" onclick="agSubmit()"><span class="material-symbols-outlined msi">person_add</span><span data-en="Apply for Access">অ্যাক্সেসের জন্য আবেদন করুন</span></button>
+      </div>
+
+      <div id="agOffline" class="ag-panel" style="display:none;">
+        <span class="material-symbols-outlined msi">cloud_off</span>
+        <p data-en="Could not verify your access. Check your internet and try again.">আপনার অ্যাক্সেস যাচাই করা যায়নি। ইন্টারনেট চেক করে আবার চেষ্টা করুন।</p>
+        <div class="ag-rowbtns">
+          <button type="button" class="ord-btn primary" onclick="agRetry()"><span class="material-symbols-outlined msi">refresh</span><span data-en="Try again">আবার চেষ্টা করুন</span></button>
+          <button type="button" class="ord-btn" onclick="agBackToLogin()"><span class="material-symbols-outlined msi">logout</span><span data-en="Logout">লগআউট</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Login / Apply for Access পেজ =====
+   মূল অ্যাপ: index.html (একই ফোল্ডার/একই ডোমেইনে রাখতে হবে — সেশন localStorage-এ শেয়ার হয়)।
+   ⚠ SUPABASE_URL ও SUPABASE_ANON_KEY index.html-এর মানের সাথে হুবহু এক হতে হবে।
+   SQL (app_users টেবিল + register_app_user ফাংশন) index.html-এর কমেন্টে দেওয়া আছে। */
+const SUPABASE_URL = 'https://fvmenotxbkrugqzhrkim.supabase.co';       // যেমন: https://abcdxyzcompany.supabase.co
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2bWVub3R4YmtydWdxemhya2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwMzQyNzMsImV4cCI6MjEwODYxMDI3M30.6RrBh6E-3lQfDMnASz0yz6zktsFXn1mJFjWM9CZ5j5E';  // Supabase → Project Settings → API → anon public
+const APP_PAGE = 'index.html';
+const OFFLINE_GRACE_HOURS = 72;
+(function () {
+  const $ = id => document.getElementById(id);
+  const SESS_KEY = 'tilesCloudSession', ACCESS_KEY = 'tilesAccessCache', NOTE_KEY = 'tilesLoginNote';
+  const jparse = (s, d) => { try { const v = JSON.parse(s); return v == null ? d : v; } catch (e) { return d; } };
+  const get = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const put = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+  const del = k => { try { localStorage.removeItem(k); } catch (e) {} };
+
+  /* ---------- ভাষা ও থিম ---------- */
+  let lang = get('tilesLang') === 'en' ? 'en' : 'bn';
+  const tr = (bn, en) => (lang === 'en' ? en : bn);
+  document.querySelectorAll('[data-en]').forEach(el => el.setAttribute('data-bn', el.textContent));
+  function applyLang() {
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-en]').forEach(el => { el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-bn'); });
+    $('agLangBn').classList.toggle('active', lang !== 'en'); $('agLangEn').classList.toggle('active', lang === 'en');
+    renderNote();
+  }
+  window.setLang = function (l) { lang = (l === 'en') ? 'en' : 'bn'; put('tilesLang', lang); applyLang(); };
+  function setThemeAttr(t) { document.documentElement.setAttribute('data-theme', t); $('agThemeIcon').textContent = t === 'dark' ? 'light_mode' : 'dark_mode'; }
+  window.agToggleTheme = function () { setThemeAttr(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); };
+  setThemeAttr(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  window.togglePwEye = function (id, btn) {
+    const el = $(id), show = el.type === 'password';
+    el.type = show ? 'text' : 'password'; btn.querySelector('.msi').textContent = show ? 'visibility_off' : 'visibility';
+  };
+
+  /* ---------- গেট UI ---------- */
+  let tab = 'login', note = null, busy = false;
+  const NOTE_ICON = { err: 'error', warn: 'warning', ok: 'check_circle', info: 'hourglass_top' };
+  function panel(id) { ['agChecking', 'agForm', 'agOffline', 'agConfig'].forEach(p => { $(p).style.display = (p === id) ? '' : 'none'; }); }
+  function renderNote() {
+    const box = $('agNote');
+    if (!note) { box.style.display = 'none'; return; }
+    box.className = 'ag-note ' + note.kind; box.style.display = 'flex';
+    $('agNoteIcon').textContent = NOTE_ICON[note.kind] || 'hourglass_top';
+    $('agNoteTxt').textContent = tr(note.bn, note.en);
+  }
+  function setNote(bn, en, kind) { note = bn ? { bn, en, kind: kind || 'info' } : null; renderNote(); }
+  function setBusy(b) { busy = b; $('agLoginBtn').disabled = b; $('agApplyBtn').disabled = b; }
+  window.agTab = function (t) {
+    tab = (t === 'apply') ? 'apply' : 'login';
+    const ap = tab === 'apply';
+    $('agTabLogin').classList.toggle('active', !ap); $('agTabApply').classList.toggle('active', ap);
+    $('agConfirmWrap').style.display = ap ? '' : 'none';
+    $('agLoginBtn').style.display = ap ? 'none' : ''; $('agApplyBtn').style.display = ap ? '' : 'none';
+    $('agPass').setAttribute('autocomplete', ap ? 'new-password' : 'current-password');
+    setNote(null);
+  };
+  function showForm(n) { panel('agForm'); window.agTab('login'); if (n) setNote(n.bn, n.en, n.kind); }
+  ['agEmail', 'agPass', 'agPass2'].forEach(id => $(id).addEventListener('keydown', ev => { if (ev.key === 'Enter') window.agSubmit(); }));
+
+  /* ---------- Supabase ---------- */
+  const enabled = /^https:\/\/[^\/\s]+/.test(SUPABASE_URL) && SUPABASE_ANON_KEY.length > 20;
+  if (!enabled) { applyLang(); panel('agConfig'); return; }
+  const BASE = SUPABASE_URL.replace(/\/+$/, '');
+  let session = jparse(get(SESS_KEY), null);
+
+  async function authReq(grant, body) {
+    const res = await fetch(BASE + '/auth/v1/token?grant_type=' + grant, {
+      method: 'POST', cache: 'no-store', headers: { apikey: SUPABASE_ANON_KEY, 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+    });
+    const j = await res.json().catch(() => ({}));
+    if (!res.ok) { const e = new Error(j.error_description || j.msg || j.message || ('http ' + res.status)); e.status = res.status; throw e; }
+    return j;
+  }
+  function setSession(j) {
+    session = { access_token: j.access_token, refresh_token: j.refresh_token,
+      expires_at: j.expires_at || (Math.floor(Date.now() / 1000) + (j.expires_in || 3600)), user: { id: j.user && j.user.id, email: j.user && j.user.email } };
+    put(SESS_KEY, JSON.stringify(session));
+  }
+  function dropSession() { session = null; del(SESS_KEY); del(ACCESS_KEY); }
+  async function freshSession(force) {
+    if (!session) return null;
+    if (force || session.expires_at - 60 < Date.now() / 1000) {
+      try { setSession(await authReq('refresh_token', { refresh_token: session.refresh_token })); }
+      catch (e) { if (e.status === 400 || e.status === 401 || e.status === 403) { dropSession(); return null; } throw e; }
+    }
+    return session;
+  }
+  async function api(path, opt, retried) {
+    const s = await freshSession(false);
+    if (!s) throw new Error('auth');
+    opt = opt || {};
+    const res = await fetch(BASE + path, { method: opt.method || 'GET', cache: 'no-store', body: opt.body,
+      headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + s.access_token, 'Content-Type': 'application/json' } });
+    if (res.status === 401 && !retried) { await freshSession(true); return api(path, opt, true); }
+    if (!res.ok) { const er = new Error('http ' + res.status); er.status = res.status; throw er; }
+    return res;
+  }
+  async function fetchProfile() {
+    let res = await api('/rest/v1/app_users?select=user_id,email,status,is_owner&user_id=eq.' + encodeURIComponent(session.user.id));
+    const rows = await res.json();
+    if (Array.isArray(rows) && rows[0]) return rows[0];
+    res = await api('/rest/v1/rpc/register_app_user', { method: 'POST', body: '{}' });   // প্রথম ইউজার = Owner, বাকিরা = pending
+    const r = await res.json();
+    return Array.isArray(r) ? r[0] : r;
+  }
+
+  const BLOCK_MSG = {
+    pending:  { bn: 'আপনার আবেদন এখনো পেন্ডিং আছে। অ্যাপ ওনার অনুমোদন দিলে তারপর লগইন করুন।', en: 'Your request is still pending. Log in again after the app owner approves it.', kind: 'info' },
+    locked:   { bn: 'আপনার অ্যাক্সেস অ্যাপ ওনার লক করেছেন। আনলক না হওয়া পর্যন্ত অ্যাপ ব্যবহার করা যাবে না।', en: 'Your access has been locked by the app owner. You cannot use the app until it is unlocked.', kind: 'warn' },
+    kicked:   { bn: 'অ্যাপ ওনার আপনাকে এই অ্যাপ থেকে সরিয়ে দিয়েছেন।', en: 'The app owner has removed you from this app.', kind: 'err' },
+    rejected: { bn: 'আপনার আবেদন অ্যাপ ওনার বাতিল করেছেন।', en: 'Your request was rejected by the app owner.', kind: 'err' },
+    unknown:  { bn: 'আপনার অ্যাক্সেস যাচাই করা যায়নি। আবার লগইন করুন।', en: 'Your access could not be verified. Please log in again.', kind: 'err' }
+  };
+  const SETUP_MSG = { bn: 'ডেটাবেস সেটআপ সম্পূর্ণ নয় (app_users টেবিল/ফাংশন নেই)। index.html-এর উপরের SQL চালান।', en: 'Database setup is incomplete (app_users table/function missing). Run the SQL from the top of index.html.', kind: 'err' };
+
+  function goApp(p, welcome) {
+    put(ACCESS_KEY, JSON.stringify({ uid: p.user_id, email: p.email, status: 'approved', is_owner: !!p.is_owner, t: Date.now() }));
+    if (welcome && p.is_owner) put('tilesWelcomeOwner', '1');
+    panel('agChecking'); location.replace(APP_PAGE);
+  }
+  /* সেশন যাচাই করে: approved → অ্যাপে; নইলে সেশন মুছে কারণসহ ফর্ম */
+  async function check(opt) {
+    opt = opt || {};
+    panel('agChecking');
+    try {
+      const p = await fetchProfile();
+      if (p && p.status === 'approved') { goApp(p, opt.fromApply); return; }
+      dropSession();
+      if (p && p.status === 'pending' && opt.fromApply)
+        showForm({ bn: 'আপনার আবেদন জমা হয়েছে। অ্যাপ ওনার অনুমোদন দিলে লগইন করে অ্যাপ ব্যবহার করতে পারবেন।', en: 'Your request has been submitted. You can log in and use the app once the app owner approves it.', kind: 'ok' });
+      else showForm(BLOCK_MSG[(p && p.status) || 'unknown'] || BLOCK_MSG.unknown);
+    } catch (e) {
+      if (!session) { showForm({ bn: 'সেশন শেষ হয়েছে — আবার লগইন করুন।', en: 'Session expired — please log in again.', kind: 'warn' }); return; }
+      if (e && (e.status === 401 || e.status === 403)) { dropSession(); showForm({ bn: 'সেশন শেষ হয়েছে — আবার লগইন করুন।', en: 'Session expired — please log in again.', kind: 'warn' }); return; }
+      if (e && e.status === 404) { dropSession(); showForm(SETUP_MSG); return; }
+      const c = jparse(get(ACCESS_KEY), null);                     // ইন্টারনেট নেই: শেষবার approved হলে অফলাইনে ঢুকতে দেওয়া
+      if (c && c.uid === session.user.id && c.status === 'approved' && (Date.now() - c.t) < OFFLINE_GRACE_HOURS * 3600e3) { location.replace(APP_PAGE); return; }
+      panel('agOffline');
+    }
+  }
+  window.agRetry = function () { check(); };
+  window.agBackToLogin = function () { dropSession(); showForm(); };
+
+  async function doLogin() {
+    const email = ($('agEmail').value || '').trim(), password = $('agPass').value || '';
+    if (!email || !password) { setNote('ইমেইল ও পাসওয়ার্ড দিন।', 'Enter email and password.', 'err'); return; }
+    setBusy(true); setNote('লগইন হচ্ছে…', 'Signing in…', 'info');
+    try {
+      setSession(await authReq('password', { email, password }));
+      $('agPass').value = '';
+      await check({ fromLogin: true });
+    } catch (e) {
+      const m = String((e && e.message) || '');
+      if (/confirm/i.test(m)) setNote('ইমেইল এখনো কনফার্ম হয়নি — মেইল চেক করে লিংকে ক্লিক করুন।', 'Email is not confirmed yet — check your inbox and click the link.', 'warn');
+      else if (e && (e.status === 400 || e.status === 401)) setNote('ইমেইল বা পাসওয়ার্ড ভুল।', 'Wrong email or password.', 'err');
+      else setNote('লগইন করা যায়নি — ইন্টারনেট চেক করুন।', 'Could not sign in — check your internet.', 'err');
+    } finally { setBusy(false); }
+  }
+  async function doApply() {
+    const email = ($('agEmail').value || '').trim(), p1 = $('agPass').value || '', p2 = $('agPass2').value || '';
+    if (!email || !p1) { setNote('ইমেইল ও পাসওয়ার্ড দিন।', 'Enter email and password.', 'err'); return; }
+    if (p1.length < 6) { setNote('পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে।', 'Password must be at least 6 characters.', 'err'); return; }
+    if (p1 !== p2) { setNote('পাসওয়ার্ড ও নিশ্চিতকরণ মিলছে না।', 'Password and confirmation do not match.', 'err'); return; }
+    setBusy(true); setNote('আবেদন পাঠানো হচ্ছে…', 'Submitting your request…', 'info');
+    try {
+      const res = await fetch(BASE + '/auth/v1/signup', { method: 'POST', cache: 'no-store',
+        headers: { apikey: SUPABASE_ANON_KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password: p1 }) });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        const m = String(j.msg || j.message || j.error_description || '');
+        if (/already|registered/i.test(m)) { window.agTab('login'); setNote('এই ইমেইল আগে থেকেই আছে — লগইন করুন।', 'This email already exists — please log in.', 'warn'); }
+        else if (res.status === 422 || res.status === 400) setNote('আবেদন নেওয়া যায়নি: ' + m, 'Request was not accepted: ' + m, 'err');
+        else setNote('আবেদন পাঠানো যায়নি — ইন্টারনেট চেক করুন।', 'Could not submit — check your internet.', 'err');
+        return;
+      }
+      if (j.access_token) { setSession(j); $('agPass').value = ''; $('agPass2').value = ''; await check({ fromApply: true }); }
+      else { window.agTab('login'); setNote('ইমেইলে কনফার্মেশন লিংক পাঠানো হয়েছে। কনফার্ম করে লগইন করুন — তারপর আপনার আবেদন অ্যাপ ওনারের কাছে যাবে।', 'A confirmation link was emailed. Confirm it, then log in — your request will then go to the app owner.', 'ok'); }
+    } catch (e) {
+      setNote('আবেদন পাঠানো যায়নি — ইন্টারনেট চেক করুন।', 'Could not submit — check your internet.', 'err');
+    } finally { setBusy(false); }
+  }
+  window.agSubmit = function () { if (busy) return; (tab === 'apply' ? doApply : doLogin)(); };
+
+  /* ---------- শুরু ---------- */
+  applyLang();
+  const stored = jparse(get(NOTE_KEY), null); del(NOTE_KEY);       // index.html থেকে ফেরত পাঠানোর কারণ
+  if (session) check();
+  else showForm(stored);
+  if (session && stored) { /* check() শেষে নিজেই সঠিক বার্তা দেখাবে */ }
+})();
+</script>
+</body></html>

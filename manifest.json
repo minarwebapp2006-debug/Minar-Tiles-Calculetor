@@ -1,0 +1,9 @@
+{
+  "name": "Minar Tiles Calculator",
+  "short_name": "Tiles Calc",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FCFEFF",
+  "theme_color": "#0077B6",
+  "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+}
