@@ -4467,8 +4467,8 @@ renderCart();
    create policy "approved only" on public.app_data as restrictive for all to authenticated
      using (public.is_app_approved()) with check (public.is_app_approved());
 */
-const SUPABASE_URL = '';       // যেমন: https://abcdxyzcompany.supabase.co
-const SUPABASE_ANON_KEY = '';  // Supabase → Project Settings → API → anon public
+const SUPABASE_URL = 'https://fvmenotxbkrugqzhrkim.supabase.co';       // যেমন: https://abcdxyzcompany.supabase.co
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2bWVub3R4YmtydWdxemhya2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwMzQyNzMsImV4cCI6MjEwODYxMDI3M30.6RrBh6E-3lQfDMnASz0yz6zktsFXn1mJFjWM9CZ5j5E';  // Supabase → Project Settings → API → anon public
 const REQUIRE_LOGIN_GATE = true;   // true = সবাইকে লগইন/আবেদন গেট পার হতে হবে। (false = Supabase না থাকলে আগের মতো অফলাইন চলবে)
 const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থাকলে শেষবার approved ইউজার এত ঘণ্টা পর্যন্ত অফলাইনে ঢুকতে পারবে
 (function cloudSync() {
