@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap"></noscript>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile&amp;display=block" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile&amp;display=block"></noscript>
 <script>/* Lite mode: কম শক্তির ডিভাইসে ব্লার/অ্যানিমেশন বন্ধ। জোর করতে: localStorage.tilesLite="1" (বন্ধ: "0") */
 (function(){try{var n=navigator,c=n.connection||{};var low=(n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||c.saveData===true||/(^|-)2g$/.test(c.effectiveType||"");var pref=null;try{pref=localStorage.getItem("tilesLite");}catch(e){}if(pref==="1"||(pref!=="0"&&low))document.documentElement.classList.add("lite");}catch(e){}})();</script>
 <script>/* প্রথম রেন্ডার আগেই সেশন যাচাই: লগইন স্ক্রিনের ঝিলিক বন্ধ করে */
@@ -1189,6 +1189,7 @@ body.gate-lock { overflow: hidden; }
         <div class="nav-set-email" id="navSetEmail"><span class="material-symbols-outlined msi">account_circle</span><span id="navSetEmailTxt">-</span></div>
         <button type="button" class="nav-set-btn" onclick="openAppOwner()"><span class="material-symbols-outlined msi">admin_panel_settings</span><span data-en="App Owner">অ্যাপ ওনার</span><span class="nav-badge" id="ownerBadge" style="display:none">0</span></button>
         <button type="button" class="nav-set-btn" onclick="openChangePass()"><span class="material-symbols-outlined msi">lock_reset</span><span data-en="Change Password">পাসওয়ার্ড পরিবর্তন</span></button>
+        <button type="button" class="nav-set-btn install-app-btn" id="installAppBtn" style="display:none" onclick="installApp()"><span class="material-symbols-outlined msi">install_mobile</span><span data-en="Install App">অ্যাপ ইনস্টল করুন</span></button>
         <button type="button" class="nav-set-btn danger" onclick="navLogout()"><span class="material-symbols-outlined msi">logout</span><span data-en="Logout">লগআউট</span></button>
       </div>
     </div>
@@ -3155,7 +3156,10 @@ function printOrderView(id, lang) {
       .pt-title { page-break-after: avoid; break-after: avoid; }
       .pt-owner { color: #1E3A5F !important; }
       .print-header-titles h2 { text-transform: none !important; }
-        </style>
+        .install-app-btn { color: #2F8F72; background: #EAFBF3; }
+html.lite *, html.lite *::before, html.lite *::after { transition: none !important; animation: none !important; backdrop-filter: none !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
+</style>
     <div class="print-invoice-box">
       <div class="pt-owner">Foijol Muhammad Minar</div>
       <div class="print-header">
@@ -5084,4 +5088,27 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 
+<script>
+(function () {
+  let deferredPrompt = null;
+  const btn = document.getElementById('installAppBtn');
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  function showBtn() { if (btn && !isStandalone) btn.style.display = ''; }
+  if (isIOS) showBtn();
+  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; showBtn(); });
+  window.addEventListener('appinstalled', () => { deferredPrompt = null; if (btn) btn.style.display = 'none'; });
+  window.installApp = async function () {
+    toggleSideNav(false);
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      return;
+    }
+    if (isIOS) showToast(tr('Safari-তে Share → Add to Home Screen চাপুন', 'In Safari tap Share → Add to Home Screen'));
+    else showToast(tr('ব্রাউজারের মেনু থেকে "Install" বেছে নিন', 'Choose "Install" from your browser menu'));
+  };
+})();
+</script>
 </body></html>
