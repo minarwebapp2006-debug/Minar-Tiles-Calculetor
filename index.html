@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="bn"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Minar Tiles Calculator - Digital App</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0077B6">
@@ -18,8 +18,9 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile&amp;display=block"></noscript>
 <script>/* Lite mode: কম শক্তির ডিভাইসে ব্লার/অ্যানিমেশন বন্ধ। জোর করতে: localStorage.tilesLite="1" (বন্ধ: "0") */
 (function(){try{var n=navigator,c=n.connection||{};var low=(n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||c.saveData===true||/(^|-)2g$/.test(c.effectiveType||"");var pref=null;try{pref=localStorage.getItem("tilesLite");}catch(e){}if(pref==="1"||(pref!=="0"&&low))document.documentElement.classList.add("lite");}catch(e){}})();</script>
+<script>window.__MTC_PREVIEW=(function(){try{var q=location.search;if(/[?&]login=on/.test(q))return false;if(/[?&]preview=1/.test(q))return true;var p=location.protocol,h=location.hostname;if(p!=='http:'&&p!=='https:')return true;if(!h||h==='localhost'||h==='127.0.0.1'||/\.local$/.test(h))return true;if(/(claude|anthropic|usercontent|sandbox|codepen|codesandbox|stackblitz|jsfiddle|webcontainer|htmlpreview|githack|csb\.app)/i.test(h))return true;return false;}catch(e){return false;}})();</script>
 <script>/* প্রথম রেন্ডার আগেই সেশন যাচাই: লগইন স্ক্রিনের ঝিলিক বন্ধ করে */
-(function(){try{var s=JSON.parse(localStorage.getItem('tilesCloudSession')||'null');var ok=!!(s&&s.user&&s.user.id);var c=JSON.parse(localStorage.getItem('tilesAccessCache')||'null');var fresh=ok&&c&&c.uid===s.user.id&&c.status==='approved'&&(Date.now()-c.t)<72*3600e3;var h=document.documentElement;if(fresh)h.classList.add('fast-unlock');else h.classList.add('auth-hide');}catch(e){}})();</script>
+(function(){if(window.__MTC_PREVIEW)return;try{var s=JSON.parse(localStorage.getItem('tilesCloudSession')||'null');var ok=!!(s&&s.user&&s.user.id);var c=JSON.parse(localStorage.getItem('tilesAccessCache')||'null');var fresh=ok&&c&&c.uid===s.user.id&&c.status==='approved'&&(Date.now()-c.t)<72*3600e3;var h=document.documentElement;if(fresh)h.classList.add('fast-unlock');else h.classList.add('auth-hide');}catch(e){}})();</script>
 <style>html.auth-hide body{visibility:hidden}html.fast-unlock #authGate{display:none!important}</style>
 <style>
 @font-face { font-family: 'Inter Local'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/inter-400.woff2') format('woff2'); }
@@ -1126,6 +1127,177 @@ body.gate-lock { overflow: hidden; }
 [data-theme="dark"] .od-btn.green { background: rgba(52,211,153,0.16); color: #6EE7B7; }
 .od-close { width: 100%; justify-content: center; padding: 14px; font-size: 15px; border-radius: 14px; margin-top: 4px; }
 </style>
+<style id="mobileOpt">
+/* ===== সব ডিভাইস/স্ক্রিন ও কিবোর্ড অপটিমাইজেশন (ডিজাইন ও রঙ অপরিবর্তিত) ===== */
+:root { --kb: 0px; --vvh: 100dvh; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-padding-top: 12px; scroll-padding-bottom: calc(var(--kb) + 28px); }
+html, body { max-width: 100%; overflow-x: hidden; }
+body { min-height: 100vh; min-height: 100dvh; padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+img, svg, video, canvas { max-width: 100%; }
+button, a, input, select, label, .calc-nav-item { touch-action: manipulation; }
+.tab-content > *, .panel, .ig { min-width: 0; }
+.ig input, .ig select { max-width: 100%; }
+.ig input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+
+@media (max-width: 899.98px) {
+  /* iOS: ১৬px-এর কম ফন্টে ফোকাস করলে পেজ নিজে জুম হয়ে যায় — তাই ১৬px */
+  input, select, textarea, .ig input, .ig select { font-size: 16px !important; }
+  .ig input, .ig select { min-height: 46px; }
+  .ord-btn, .pv-btn, .btn-action, .theme-btn, .calc-nav-item { min-height: 44px; }
+  .app-shell { padding-bottom: calc(48px + env(safe-area-inset-bottom)); }
+  .calc-nav { height: 100vh; height: 100dvh; padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+  /* কিবোর্ড খোলা থাকলে নিচের ফিল্ডও স্ক্রল করে দেখার জায়গা */
+  body.kb-open .app-shell { padding-bottom: calc(var(--kb) + 140px); }
+  #appToast { bottom: calc(24px + env(safe-area-inset-bottom) + var(--kb)); }
+  #addTilesBar, #itemEditBar { padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important; }
+  body.kb-open #addTilesBar, body.kb-open #itemEditBar { display: none !important; }
+  .action-bar { flex-wrap: wrap; }
+  .action-bar > .ord-btn, .action-bar > .btn-action { flex: 1 1 140px; justify-content: center; }
+  #tabReport table, .panel table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+@media (max-width: 640px) {
+  div[style*="grid-template-columns: minmax(150px, 1fr) minmax(0, 2.2fr)"] { grid-template-columns: minmax(0, 1fr) !important; }
+  .final-bar .fval { font-size: clamp(18px, 6vw, 24px); }
+  .app-header { gap: 10px; }
+  .calc-nav-item { font-size: 14px; }
+}
+@media (max-width: 380px) {
+  .app-shell { padding-left: 10px; padding-right: 10px; }
+  .panel { padding: 13px; }
+}
+/* পপআপ/মোডাল: কিবোর্ডের উপরে থাকবে, ভেতরে স্ক্রল হবে, কখনও কেটে যাবে না */
+.cust-modal, #cloudModal, #pwModal, #ownerModal, #ownerDash {
+  align-items: flex-start !important; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+  padding: 16px 16px calc(16px + var(--kb)) !important;
+}
+.cust-modal-box, #cloudModal .cbox, #pwModal .cbox, #ownerModal .cbox, #ownerDash .od-box {
+  margin: auto !important; max-height: calc(var(--vvh) - 32px) !important; overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+#authGate { padding-bottom: calc(16px + var(--kb)); }
+@media (max-height: 480px) and (orientation: landscape) {
+  .app-header { padding: 8px 2px; }
+  .panel { padding: 12px; }
+}
+</style>
+<style id="mobileOpt2">
+/* ===== মোবাইল/ছোট স্ক্রিন — অতিরিক্ত পোলিশ (ডিজাইন, রঙ ও লজিক অপরিবর্তিত) ===== */
+/* আইকন ফন্ট লোড না হলে (অফলাইন/ধীর নেট) আইকনের নাম লেখা হয়ে লেআউট ভাঙত — এখন আইকন ১em জায়গার মধ্যেই থাকবে */
+.material-symbols-outlined, .msi { display: inline-block; width: 1em; max-width: 1em; overflow: hidden; white-space: nowrap; flex: 0 0 auto; text-align: center; vertical-align: middle; }
+html.no-icons .material-symbols-outlined, html.no-icons .msi { visibility: hidden; width: 0 !important; max-width: 0 !important; margin: 0 !important; }
+/* থিম/ভাষা সুইচ ছোট স্ক্রিনে কেটে না গিয়ে লাইনে ভাঙবে */
+.app-header .theme-toggle, .app-header .lang-toggle { max-width: 100%; flex-wrap: wrap; row-gap: 4px; }
+.theme-toggle .theme-btn { flex: 0 1 auto; min-width: 0; }
+/* লেখা ও সংখ্যা কার্ড/বারের বাইরে ছড়াবে না */
+.final-bar .flabel, .card .clabel, .pv-name, .ord-card, .pv-field b { overflow-wrap: anywhere; }
+.final-bar .fval, .cval { overflow-wrap: anywhere; }
+.panel, .card, .final-bar { max-width: 100%; }
+/* ফোকাস করা ফিল্ড কিবোর্ড/হেডারের নিচে লুকাবে না */
+input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(var(--kb, 0px) + 130px); }
+/* টাচ ডিভাইসে hover-এ কার্ড আটকে (stuck) যাওয়া বন্ধ */
+@media (hover: none) {
+  .card:hover, .ord-card:hover, .cust-row:hover, .calc-nav-item:hover, .pv-btn:hover, .pv-add-card:hover, .final-bar:hover { transform: none !important; }
+}
+/* সাইড মেনু খোলা থাকলে পেছনের পেজ স্ক্রল হবে না */
+@media (max-width: 899.98px) {
+  body.nav-open { overflow: hidden; touch-action: none; }
+  body.nav-open .calc-nav { touch-action: pan-y; overscroll-behavior: contain; }
+  .app-header { padding-top: calc(16px + env(safe-area-inset-top)); }
+  .calc-nav { padding-top: calc(12px + env(safe-area-inset-top)); }
+  .final-bar { padding: 12px 14px; }
+}
+@media (max-width: 400px) {
+  .app-header .theme-toggle .theme-btn { padding: 6px 8px; font-size: 12px; }
+  .panel { padding: 12px; border-radius: 16px; }
+  .fval { font-size: clamp(17px, 5.6vw, 22px); }
+  .calc-nav { width: min(270px, 86vw); }
+  .cust-modal-box, #cloudModal .cbox, #pwModal .cbox, #ownerModal .cbox, #ownerDash .od-box { padding-left: 14px; padding-right: 14px; }
+}
+/* ছোট উচ্চতা (ল্যান্ডস্কেপ / কিবোর্ড খোলা) */
+@media (max-height: 520px) {
+  .calc-nav { overflow-y: auto; }
+  .app-header { padding-top: 8px; padding-bottom: 8px; }
+}
+/* কিবোর্ড খোলা (ফিল্ডে ফোকাস) থাকলে নিচে আটকানো এডিট/অ্যাড বার লুকাবে, যাতে ফর্ম ঢেকে না যায় */
+@media (max-width: 899.98px) {
+  body.field-focus #addTilesBar, body.field-focus #itemEditBar { display: none !important; }
+  body.field-focus .app-shell { padding-bottom: 180px; }
+}
+/* ===== কমপ্যাক্ট মোবাইল হেডার: লোগো+টাইটেল এক সারিতে, কন্ট্রোল ছোট এক সারিতে — ফর্মের জন্য বেশি জায়গা ===== */
+@media (max-width: 899.98px) {
+  .app-header { padding: calc(8px + env(safe-area-inset-top)) 2px 8px !important; gap: 8px !important; align-items: center; }
+  .nav-toggle { width: 40px !important; height: 40px !important; }
+  .app-mark { width: 34px !important; height: 34px !important; }
+  .app-titles { flex: 1 1 0 !important; min-width: 0; }
+  .app-titles h1 { font-size: 17px !important; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .app-titles p { display: none; }
+  .header-controls { display: flex !important; flex: 1 0 100%; flex-wrap: nowrap !important; gap: 6px !important; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 2px 0 4px; margin: 0 !important; }
+  .header-controls::-webkit-scrollbar { display: none; }
+  .header-controls > * { flex: 0 0 auto; }
+  .header-controls .theme-toggle, .header-controls .lang-toggle { padding: 2px 4px !important; box-shadow: none; }
+  .header-controls .theme-btn { min-height: 32px !important; padding: 4px 8px !important; }
+  .header-controls .lang-toggle { gap: 4px; }
+  .tab-content.active { gap: 12px; }
+  /* আইকন থাকলে থিম বাটনে শুধু আইকন (লেখা ছাড়া) */
+  html:not(.no-icons) .header-controls #themeLight > span:not(.msi),
+  html:not(.no-icons) .header-controls #themeDark > span:not(.msi),
+  html:not(.no-icons) .header-controls #themeSystem > span:not(.msi) { display: none; }
+  html:not(.no-icons) .header-controls #themeLight, html:not(.no-icons) .header-controls #themeDark, html:not(.no-icons) .header-controls #themeSystem { padding: 4px 10px !important; }
+}
+/* কিবোর্ড খুলে ভিউপোর্ট ছোট হলে ফিল্ডে ফোকাস থাকা অবস্থায় হেডার সরে যাবে — পুরো জায়গা ফর্মের */
+@media (max-width: 899.98px) and (max-height: 600px) {
+  body.field-focus .app-header { display: none !important; }
+}
+/* ===== মোবাইল: লোগো/টাইটেল ও সিঙ্ক-থিম-ভাষা সাইডবারের ওপরে (Customer Profile-এর আগে); মূল হেডারে শুধু মেনু + সেকশনের নাম + লাইভ মোট ===== */
+.mh-title, .mh-total { display: none; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
+@media (max-width: 899.98px) {
+  .app-header { position: sticky; top: 0; z-index: 40; flex-wrap: nowrap !important; background: var(--surface); border-bottom: 1px solid var(--border); margin: 0 -2px 10px; padding-left: 8px !important; padding-right: 8px !important; }
+  .mh-title { display: block; flex: 1 1 0; min-width: 0; font-size: 15px; font-weight: 700; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mh-total { flex: 0 0 auto; border: 0; background: var(--surface-2); border-radius: 12px; padding: 4px 10px; font: inherit; color: var(--ink); text-align: right; line-height: 1.2; cursor: pointer; }
+  .mh-total.show { display: inline-flex; flex-direction: column; align-items: flex-end; }
+  .mh-total b { font-size: 14px; color: var(--accent-ink, var(--ink)); }
+  .mh-total small { font-size: 11px; color: var(--ink-soft); }
+  .nav-brand { display: flex; flex-direction: column; gap: 10px; padding: 2px 2px 12px; margin-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .nav-brand .brand-row { display: flex; align-items: center; gap: 10px; }
+  .nav-brand .app-mark { width: 34px !important; height: 34px !important; }
+  .nav-brand .app-titles h1 { font-size: 15px !important; white-space: normal; overflow: visible; }
+  .nav-brand .app-titles p { display: block; font-size: 11px; margin: 2px 0 0; }
+  .calc-nav .header-controls { flex: 0 0 auto !important; width: 100%; flex-wrap: wrap !important; overflow: visible !important; padding: 0 !important; }
+  html:not(.no-icons) .calc-nav .header-controls #themeLight > span:not(.msi),
+  html:not(.no-icons) .calc-nav .header-controls #themeDark > span:not(.msi),
+  html:not(.no-icons) .calc-nav .header-controls #themeSystem > span:not(.msi) { display: inline; }
+  /* কম শক্তির ফোনে হালকা: ব্লার ও ভারী ইফেক্ট বন্ধ, বড় তালিকা দরকার হলে রেন্ডার */
+  *, *::before, *::after { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .panel, .card, .final-bar, .ord-card { box-shadow: none !important; }
+  .tab-content:not(.active) { display: none; }
+  .ord-card, .cust-row, .pv-item { content-visibility: auto; contain-intrinsic-size: auto 110px; }
+  .panel { contain: layout style; }
+}
+/* ===== মোবাইল অ্যাপ-স্টাইল: ছোট টপ বার, ক্লোজ বাটন, স্টিকি অ্যাকশন বার, ফুল-উইডথ কার্ড ===== */
+.nav-close { display: none; }
+@media (max-width: 899.98px) {
+  .app-header { padding: calc(3px + env(safe-area-inset-top)) 8px 3px !important; margin: 0 -2px 8px !important; gap: 8px !important; min-height: 0 !important; }
+  .nav-toggle { width: 36px !important; height: 36px !important; border-radius: 10px !important; box-shadow: none !important; }
+  .nav-toggle svg { width: 22px; height: 22px; }
+  .mh-title { font-size: 15px; }
+  .mh-total { padding: 2px 8px; border-radius: 10px; }
+  .mh-total b { font-size: 13px; }
+  .mh-total small { font-size: 10.5px; }
+  .nav-close { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; margin-left: auto; width: 40px; height: 40px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .nav-close svg { width: 20px; height: 20px; }
+  .nav-brand .brand-row { padding-right: 0; }
+  .app-shell { padding-left: 10px !important; padding-right: 10px !important; }
+  .panel { border-radius: 18px; padding: 14px; }
+  /* ক্যালকুলেটর ট্যাবে "কার্টে যোগ করুন / মুছুন" বার হেডারের নিচে আটকে থাকবে — স্ক্রল করলেও হাতের কাছে */
+  .tab-content.active > .panel > .action-bar:first-child { position: sticky; top: calc(var(--hh, 46px) - 1px); z-index: 30; margin: -6px -6px 12px !important; padding: 8px 6px; background: var(--surface); border-bottom: 1px solid var(--border); flex-wrap: nowrap; gap: 8px; }
+  .tab-content.active > .panel > .action-bar:first-child > .ord-btn { min-height: 40px; font-size: 13px; padding-left: 10px; padding-right: 10px; }
+  .tab-content.active > .panel > .action-bar:first-child > .ord-btn.primary { flex: 1 1 auto; }
+  body.field-focus .tab-content.active > .panel > .action-bar:first-child { position: static; }
+  /* অ্যাপের মতো অনুভূতি: টেক্সট সিলেক্ট/লং-প্রেস মেনু বাটনে নয় */
+  button, .ord-btn, .pv-btn, .calc-nav-item { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  html { overscroll-behavior-y: none; }
+}
+</style>
 </head>
 <body>
 
@@ -1133,7 +1305,7 @@ body.gate-lock { overflow: hidden; }
 
 <div class="app-shell">
   <header class="app-header">
-    <button type="button" class="nav-toggle" id="navToggle" onclick="toggleSideNav()" aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+    <button type="button" class="nav-toggle" id="navToggle" onclick="toggleSideNav()" aria-label="Menu"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <div class="app-mark">
       <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="44" height="44" rx="11" fill="#EBF2FA"></rect>
@@ -1175,7 +1347,8 @@ body.gate-lock { overflow: hidden; }
   <nav class="calc-nav">
     <button class="calc-nav-item active" onclick="switchTab('tabCustomer', this)"><span class="material-symbols-outlined msi">person</span><span data-en="Customer Profile">কাস্টমার প্রোফাইল</span></button>
     <button class="calc-nav-item" onclick="switchTab('tabFloor', this)"><span class="material-symbols-outlined msi">grid_view</span><span data-en="Floor &amp; Skirting">ফ্লোর ও স্কার্টিং টাইলস</span></button>
-    <button class="calc-nav-item" onclick="switchTab('tabWall', this)"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Wall Tiles">ওয়াল টাইলস</span></button>
+    <button class="calc-nav-item" onclick="switchTab('tabWall', this)"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Decorate Wall Tiles">ডেকোরেট ওয়াল টাইলস</span></button>
+    <button class="calc-nav-item" onclick="switchTab('tabWallX', this)"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Wall Tiles">ওয়াল টাইলস</span></button>
     <button class="calc-nav-item" onclick="switchTab('tabTak', this)"><span class="material-symbols-outlined msi">kitchen</span><span data-en="Shelf / Kitchen">তাক / কিচেন স্ল্যাব</span></button>
     <button class="calc-nav-item" onclick="switchTab('tabStairs', this)"><span class="material-symbols-outlined msi">stairs</span><span data-en="Stair Tiles">সিঁড়ির টাইলস</span></button>
     <button class="calc-nav-item" onclick="switchTab('tabCart', this)"><span class="material-symbols-outlined msi">add_shopping_cart</span><span data-en="Add Cart Item">কার্ট আইটেম যোগ করুন</span></button>
@@ -1205,7 +1378,8 @@ body.gate-lock { overflow: hidden; }
         <div id="editOrderTitle" style="margin-bottom:10px;"></div>
         <div class="action-bar" style="margin-top:0;">
           <button type="button" class="ord-btn" onclick="activateTab('tabFloor')"><span class="material-symbols-outlined msi">grid_view</span><span data-en="Floor &amp; Skirting">ফ্লোর ও স্কার্টিং</span></button>
-          <button type="button" class="ord-btn" onclick="activateTab('tabWall')"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Wall Tiles">ওয়াল টাইলস</span></button>
+          <button type="button" class="ord-btn" onclick="activateTab('tabWall')"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Decorate Wall Tiles">ডেকোরেট ওয়াল টাইলস</span></button>
+          <button type="button" class="ord-btn" onclick="activateTab('tabWallX')"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Wall Tiles">ওয়াল টাইলস</span></button>
           <button type="button" class="ord-btn" onclick="activateTab('tabTak')"><span class="material-symbols-outlined msi">kitchen</span><span data-en="Shelf / Kitchen">তাক / কিচেন স্ল্যাব</span></button>
           <button type="button" class="ord-btn" onclick="activateTab('tabStairs')"><span class="material-symbols-outlined msi">stairs</span><span data-en="Stair Tiles">সিঁড়ির টাইলস</span></button>
         </div>
@@ -1397,7 +1571,7 @@ body.gate-lock { overflow: hidden; }
     
 
     <div class="panel" style="grid-column: 1 / -1;">
-      <div class="glabel tt" data-en="Wall Tiles Result">ওয়াল টাইলস হিসাবের ফলাফল</div>
+      <div class="glabel tt" data-en="Decorate Wall Tiles Result">ডেকোরেট ওয়াল টাইলস হিসাবের ফলাফল</div>
 
       <div style="display:grid; grid-template-columns: minmax(150px, 1fr) minmax(0, 2.2fr); gap: 14px; margin-bottom:16px; align-items:stretch;">
         <div style="display:flex; flex-direction:column; gap:8px;">
@@ -1460,6 +1634,72 @@ body.gate-lock { overflow: hidden; }
   </div>
 
   <!-- ৩. তাক / স্ল্যাব ট্যাব -->
+  <div id="tabWallX" class="tab-content">
+    <div class="panel" style="grid-column: 1 / -1;"><div class="action-bar" style="margin-top: 0px; margin-bottom: 16px;"><button type="button" class="ord-btn primary" onclick="addToCart('wallx')"><span class="material-symbols-outlined msi">add_shopping_cart</span><span data-en="Add To Cart">কার্টে যোগ করুন</span></button><button type="button" class="ord-btn clear-sec-btn" onclick="clearSection('wallx')"><span class="material-symbols-outlined msi">backspace</span><span data-en="Clear Section">এই অংশ মুছুন</span></button></div>
+      <p class="sec" data-en="Wall Area &amp; Tile Size">ওয়ালের মাপ ও টাইলসের সাইজ</p>
+
+      <div class="grid2">
+        <div class="ig"><label data-en="4 Walls Total Area (Sqft)">৪ ওয়ালের মোট ক্ষেত্রফল (Sqft)</label><input type="number" id="xTotalSqft" placeholder="0"></div>
+        <div class="ig"><label data-en="Wall Height (ft)">ওয়ালের উচ্চতা (ফিট)</label><input type="number" id="xHtFt" placeholder="0"></div>
+      </div>
+      <div class="grid2">
+        <div class="ig"><label data-en="Tile Height (in)">টাইলসের উচ্চতা (ইঞ্চি)</label><input type="number" id="xTileH" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
+        <div class="ig"><label data-en="Tile Width (in)">টাইলসের চওড়া (ইঞ্চি)</label><input type="number" id="xTileW" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
+      </div>
+
+      <p class="sec" data-en="Rows Configuration">সারি (ROWS) নির্বাচন</p>
+      <div class="auto-box" id="autoRowTextX" data-bn="উচ্চতায় মোট সম্ভাব্য সারি: 0 টি" data-en="Total Possible Rows: 0">উচ্চতায় মোট সম্ভাব্য সারি: 0 টি</div>
+      <div class="grid2">
+        <div class="ig"><label data-en="Tile Rows">টাইলস সারি</label><input type="number" id="xRows" placeholder="0" step="any"></div>
+      </div>
+
+      <p class="sec" data-en="Deduction &amp; Wastage">ছাড় ও ওয়েস্টেজ</p>
+      <div class="grid2">
+        <div class="ig"><label data-en="Deduct Area (Sqft)">দরজা/জানালা বাদ (Sqft)</label><input type="number" id="xDeductSqft" placeholder="0"></div>
+        <div class="ig"><label data-en="Wastage (%)">ওয়েস্টেজ (%)</label><input type="number" id="xWastage" placeholder="0"></div>
+      </div>
+
+      <p class="sec" data-en="Packing &amp; Price">প্যাকিং ও দর</p>
+      <div class="grid3" style="margin-bottom:0;">
+        <div class="ig" style="margin-bottom:0;"><label data-en="Tiles Model Code">টাইলসের মডেল কোড</label><input type="text" id="xCode" placeholder="" autocomplete="off"></div>
+        <div class="ig" style="margin-bottom:0;"><label data-en="Pcs Per Box">প্রতি বক্সে পিস</label><input type="number" id="xPerBox" placeholder="0"></div>
+        <div class="ig" style="margin-bottom:0;"><label data-en="Price (৳/Sqft)">দর (৳/Sqft)</label><input type="number" id="xPrice" placeholder="0"></div>
+      </div>
+    </div>
+
+    <div class="panel" style="grid-column: 1 / -1;">
+      <div class="glabel tt" data-en="Wall Tiles Result">ওয়াল টাইলস হিসাবের ফলাফল</div>
+
+      <div style="display:grid; grid-template-columns: minmax(150px, 1fr) minmax(0, 2.2fr); gap: 14px; margin-bottom:16px; align-items:stretch;">
+        <div class="final-bar fl" style="padding:11px 14px; margin-top:0;">
+          <div><div class="flabel" data-en="Wall Tiles Boxes">ওয়াল টাইলস বক্স</div></div>
+          <div style="text-align:right;">
+            <div><span class="fval" style="font-size:18px;" id="xResBoxes">0 Box, 0 Pcs</span></div>
+            <div style="font-weight:700; font-size:13px; color:var(--floor-ink); margin-top:2px;"><span id="xResPrice">0</span> ৳</div>
+          </div>
+        </div>
+        <div class="card">
+          <p class="clabel" data-en="Wall Tiles">ওয়াল টাইলস</p>
+          <p class="cval" id="xResPcs">0</p>
+          <span class="cunit" id="xResDetail">0.0 Sqft</span>
+        </div>
+      </div>
+
+      <div class="final-bar tt" style="margin-bottom:8px;">
+        <div><div class="flabel" data-en="Total Required Tiles">সর্বমোট প্রয়োজনীয় টাইলস</div></div>
+        <div><span class="fval" id="xResTotalPcs">0</span><span class="funit" data-en=" pcs"> পিস</span></div>
+      </div>
+      <div class="final-bar tt" style="margin-bottom:8px;">
+        <div><div class="flabel" data-en="Total Carton / Box Breakdown">ক্যাটাগরি ভিত্তিক মোট বক্স</div></div>
+        <div><span class="fval" style="font-size:18px;" id="xResTotalBoxes">0 Box</span></div>
+      </div>
+      <div class="final-bar tt">
+        <div><div class="flabel" data-en="Total Estimated Price">সর্বমোট প্রাক্কলিত মূল্য</div></div>
+        <div><span class="fval" id="xResTotalPrice">0</span><span class="funit"> ৳</span></div>
+      </div>
+    </div>
+  </div>
+
   <div id="tabTak" class="tab-content">
     <div class="panel" style="grid-column: 1 / -1;"><div class="action-bar" style="margin-top: 0px; margin-bottom: 16px;"><button type="button" class="ord-btn primary" onclick="addToCart('tak')"><span class="material-symbols-outlined msi">add_shopping_cart</span><span data-en="Add To Cart">কার্টে যোগ করুন</span></button><button type="button" class="ord-btn clear-sec-btn" onclick="clearSection('tak')"><span class="material-symbols-outlined msi">backspace</span><span data-en="Clear Section">এই অংশ মুছুন</span></button></div>
       <p class="sec" data-en="Slab Measurement Type">স্ল্যাবের মাপের ধরন</p>
@@ -1965,7 +2205,7 @@ function resetForm(tabId) {
   applyCustomerProfileMode();
   applyStairMode();
   calculateFloorAndSkirting();
-  calcWall();
+  calcWall(); calcWallX();
   calcTak();
   calcStairs();
 }
@@ -2085,6 +2325,12 @@ function collectOrderSnapshot() {
   if (wPcs > 0) {
     total += intOf('resLightPrice') + intOf('resDecorPrice') + intOf('resDarkPrice');
     items.wall = wPcs;
+  }
+
+  const xPcs = intOf('xResPcs');
+  if (xPcs > 0) {
+    total += intOf('xResPrice');
+    items.wall += xPcs;
   }
 
   const tPcs = intOf('resTakTotal');
@@ -2214,7 +2460,7 @@ function applyOrderInputs(data) {
   });
   syncModeVisibility();
   calculateFloorAndSkirting();
-  calcWall();
+  calcWall(); calcWallX();
   calcTak();
   calcStairs();
 }
@@ -2306,12 +2552,14 @@ let itemEdit = null; // { source: "cart" | orderId, index, type }
 const CART_GROUPS = {
   floor: { ids: ['pricePerSqft','fLenFt','fLenIn','fWidFt','fWidIn','fSqft','fCustomPerimeter','fTileL','fTileW','fWastage','fPerBox','sDoorQty','sDoorWidth','sHt','sWastage','fCode'], radios: ['floorMode'] },
   wall:   { ids: ['wTotalSqft','wHtFt','wTileH','wTileW','wLightRows','wDecorRows','wDarkRows','wDeductSqft','wWastage','wPerBox','wPriceStd','wPriceDecor','wLightCode','wDecorCode','wDarkCode'], radios: [] },
+  wallx:  { ids: ['xTotalSqft','xHtFt','xTileH','xTileW','xRows','xDeductSqft','xWastage','xPerBox','xPrice','xCode'], radios: [] },
   tak:    { ids: ['tLen','tWid','tSqft','tSides','tEdge','tTileL','tTileW','tPerBox','tWastage','tPrice','tTileCode'], radios: ['takMode'] },
   stairs: { ids: ['stSteps','stTreadL','stTreadW','stRiserL','stRiserW','stSkirtL','stSkirtW','stSkirtMode','stCalcMode','stTileL','stTileW','stPrice','stPerBox','stSqft','stSqftRiser','stRiserPrice','stRiserPerBox','chL','chW','chSqft','chTileL','chTileW','chPrice','chPerBox','stStepCode','stRiserCode','chCode','stRiserTileL','stRiserTileW','stWastage'], radios: ['stairMode'] }
 };
 const CART_LABEL = {
   floor:  () => tr('ফ্লোর ও স্কার্টিং টাইলস', 'Floor & Skirting Tiles'),
-  wall:   () => tr('ওয়াল টাইলস', 'Wall Tiles'),
+  wall:   () => tr('ডেকোরেট ওয়াল টাইলস', 'Decorate Wall Tiles'),
+  wallx:  () => tr('ওয়াল টাইলস', 'Wall Tiles'),
   tak:    () => tr('তাক / কিচেন স্ল্যাব', 'Shelf / Kitchen Slab'),
   stairs: () => tr('সিঁড়ি ও চৌকি', 'Stairs & Chowki')
 };
@@ -2401,6 +2649,11 @@ function _calcResultForLang(type) {
       price: intOf('resLightPrice') + intOf('resDecorPrice') + intOf('resDarkPrice'),
       detail: `${tr('লাইট', 'Light')} ${l} · ${tr('ডেকোর', 'Decor')} ${d} · ${tr('ডিপ', 'Deep')} ${k} ${pcsTxt}` + codeTxt(tr('লাইট কোড', 'Light code'), 'wLightCode') + codeTxt(tr('ডেকোর কোড', 'Decor code'), 'wDecorCode') + codeTxt(tr('ডিপ কোড', 'Deep code'), 'wDarkCode') };
   }
+  if (type === 'wallx') {
+    const w = intOf('xResPcs');
+    return { items: { wall: w }, pcs: w, price: intOf('xResPrice'),
+      detail: `${tr('ওয়াল টাইলস', 'Wall Tiles')} ${w} ${pcsTxt}` + codeTxt(tr('মডেল কোড', 'Model code'), 'xCode') };
+  }
   if (type === 'tak') {
     const t = intOf('resTakTotal');
     return { items: { tak: t }, pcs: t, price: intOf('resTakPrice'),
@@ -2419,12 +2672,14 @@ function _calcResultForLang(type) {
 const CALC_INPUTS = {
   floor: [['fLenFt','দৈর্ঘ্য (ফুট)','Length (ft)'],['fLenIn','দৈর্ঘ্য (ইঞ্চি)','Length (in)'],['fWidFt','প্রস্থ (ফুট)','Width (ft)'],['fWidIn','প্রস্থ (ইঞ্চি)','Width (in)'],['fSqft','মোট ফ্লোর (Sqft)','Total floor (Sqft)'],['fCustomPerimeter','মোট রানিং ফিট','Running feet (ft)'],['fTileL','টাইলসের দৈর্ঘ্য (ইঞ্চি)','Tile length (in)'],['fTileW','টাইলসের প্রস্থ (ইঞ্চি)','Tile width (in)'],['fWastage','ফ্লোর ওয়েস্টেজ (%)','Floor wastage (%)'],['fPerBox','প্রতি বক্সে পিস','Pcs per box'],['pricePerSqft','প্রতি Sqft দাম (৳)','Price per Sqft (৳)'],['sDoorQty','দরজার সংখ্যা','Number of doors'],['sDoorWidth','দরজার চওড়া (ফুট)','Door width (ft)'],['sHt','স্কার্টিং উচ্চতা (ইঞ্চি)','Skirting height (in)'],['sWastage','স্কার্টিং ওয়েস্টেজ (%)','Skirting wastage (%)'],['fCode','টাইলসের মডেল কোড','Tiles model code']],
   wall: [['wTotalSqft','ওয়ালের মোট Sqft','Wall total (Sqft)'],['wHtFt','ওয়ালের উচ্চতা (ফুট)','Wall height (ft)'],['wTileH','টাইলসের উচ্চতা (ইঞ্চি)','Tile height (in)'],['wTileW','টাইলসের চওড়া (ইঞ্চি)','Tile width (in)'],['wLightRows','লাইট সারি','Light rows'],['wDecorRows','ডেকোর সারি','Decor rows'],['wDarkRows','ডিপ সারি','Deep rows'],['wDeductSqft','দরজা/জানালা বাদ (Sqft)','Deducted (Sqft)'],['wWastage','ওয়েস্টেজ (%)','Wastage (%)'],['wPerBox','প্রতি বক্সে পিস','Pcs per box'],['wPriceStd','লাইট/ডিপ দর (৳/Sqft)','Light/Deep price (৳/Sqft)'],['wPriceDecor','ডেকোর দর (৳/Sqft)','Decor price (৳/Sqft)'],['wLightCode','লাইট কোড','Light code'],['wDecorCode','ডেকোর কোড','Decor code'],['wDarkCode','ডিপ কোড','Deep code']],
+  wallx: [['xTotalSqft','ওয়ালের মোট Sqft','Wall total (Sqft)'],['xHtFt','ওয়ালের উচ্চতা (ফুট)','Wall height (ft)'],['xTileH','টাইলসের উচ্চতা (ইঞ্চি)','Tile height (in)'],['xTileW','টাইলসের চওড়া (ইঞ্চি)','Tile width (in)'],['xRows','টাইলস সারি','Tile rows'],['xDeductSqft','বাদ (Sqft)','Deduct (Sqft)'],['xWastage','ওয়েস্টেজ (%)','Wastage (%)'],['xPerBox','প্রতি বক্সে পিস','Pcs per box'],['xPrice','দর (৳/Sqft)','Price (৳/Sqft)'],['xCode','মডেল কোড','Model code']],
   tak: [['tLen','দৈর্ঘ্য (ফুট)','Length (ft)'],['tWid','প্রস্থ (ফুট)','Width (ft)'],['tSqft','মোট স্ল্যাব (Sqft)','Slab total (Sqft)'],['tSides','টাইলস বসানোর ধরন','Tile placement'],['tEdge','সামনের বিট (ইঞ্চি)','Front edge (in)'],['tTileL','টাইলসের দৈর্ঘ্য (ইঞ্চি)','Tile length (in)'],['tTileW','টাইলসের প্রস্থ (ইঞ্চি)','Tile width (in)'],['tPerBox','প্রতি বক্সে পিস','Pcs per box'],['tWastage','ওয়েস্টেজ (%)','Wastage (%)'],['tPrice','দাম (৳/Sqft)','Price (৳/Sqft)'],['tTileCode','টাইলসের মডেল কোড','Tiles model code']],
   stairs: [['stSteps','ধাপের সংখ্যা','Total steps'],['stTreadL','ধাপ লম্বা (ইঞ্চি)','Tread length (in)'],['stTreadW','ধাপ প্রস্থ (ইঞ্চি)','Tread width (in)'],['stRiserL','রাইজার লম্বা (ইঞ্চি)','Riser length (in)'],['stRiserW','রাইজার প্রস্থ (ইঞ্চি)','Riser width (in)'],['stSkirtL','স্কার্টিং লম্বা (ইঞ্চি)','Skirting length (in)'],['stSkirtW','স্কার্টিং প্রস্থ (ইঞ্চি)','Skirting width (in)'],['stSqft','সিঁড়ির ধাপ (Sqft)','Step (Sqft)'],['stSqftRiser','রাইজার + স্কার্টিং (Sqft)','Riser + Skirting (Sqft)'],['stTileL','টাইলসের দৈর্ঘ্য (ইঞ্চি)','Tile length (in)'],['stTileW','টাইলসের প্রস্থ (ইঞ্চি)','Tile width (in)'],['stPrice','ধাপের দাম (৳/Sqft)','Step price (৳/Sqft)'],['stPerBox','ধাপের প্রতি বক্সে পিস','Step pcs per box'],['stRiserPrice','রাইজার + স্কার্টিংয়ের দাম (৳/Sqft)','Riser + Skirting price (৳/Sqft)'],['stRiserPerBox','রাইজার + স্কার্টিং প্রতি বক্সে পিস','Riser + Skirting pcs per box'],['chL','চৌকির লম্বা (ইঞ্চি)','Chowki length (in)'],['chW','চৌকির প্রস্থ (ইঞ্চি)','Chowki width (in)'],['chSqft','চৌকির মোট Sqft','Chowki total (Sqft)'],['chTileL','চৌকি টাইলস লম্বা (ইঞ্চি)','Chowki tile length (in)'],['chTileW','চৌকি টাইলস প্রস্থ (ইঞ্চি)','Chowki tile width (in)'],['chPrice','চৌকি দাম (৳/Sqft)','Chowki price (৳/Sqft)'],['chPerBox','চৌকি প্রতি বক্সে পিস','Chowki pcs per box'],['stStepCode','ধাপের মডেল কোড','Steps model code'],['stRiserCode','রাইজার + স্কার্টিংয়ের মডেল কোড','Riser + Skirting model code'],['chCode','চৌকির কোড','Chowki code']]
 };
 const CALC_RESULTS = {
   floor: [['resFTotalSqft','মোট ফ্লোর (Sqft)','Total floor (Sqft)'],['resFPriceSqft','টাইলসের দাম (প্রতি Sqft)','Tiles price (per Sqft)'],['resFArea','ফ্লোরের এরিয়া (Sqft)','Floor area (Sqft)'],['resSingleArea','একটি টাইলসের এরিয়া (Sqft)','Single tile area (Sqft)'],['resFFinal','ফ্লোর টাইলস (ওয়েস্টেজসহ)','Floor tiles (incl. wastage)'],['resFBoxes','ফ্লোর বক্স','Floor boxes'],['resSPeri','নিট পরিধি (ফিট)','Net perimeter (ft)'],['resCutsPerTile','এক টাইলসে কাটিং','Cuts per tile'],['resSFinal','স্কার্টিংয়ের টাইলস (পিস)','Skirting tiles (pcs)'],['resSBoxes','স্কার্টিং বক্স','Skirting boxes'],['resTotalTiles','সর্বমোট টাইলস (পিস)','Total tiles (pcs)'],['resTotalBoxes','সর্বমোট বক্স','Total boxes'],['resTotalPrice','মূল্য (৳)','Price (৳)']],
   wall: [['resLightPcs','লাইট টাইলস (পিস)','Light tiles (pcs)'],['resLightDetail','লাইট (Sqft)','Light (Sqft)'],['resLightBoxes','লাইট বক্স','Light boxes'],['resLightPrice','লাইট মূল্য (৳)','Light price (৳)'],['resDecorPcs','ডেকোর টাইলস (পিস)','Decor tiles (pcs)'],['resDecorDetail','ডেকোর (Sqft)','Decor (Sqft)'],['resDecorBoxes','ডেকোর বক্স','Decor boxes'],['resDecorPrice','ডেকোর মূল্য (৳)','Decor price (৳)'],['resDarkPcs','ডিপ টাইলস (পিস)','Deep tiles (pcs)'],['resDarkDetail','ডিপ (Sqft)','Deep (Sqft)'],['resDarkBoxes','ডিপ বক্স','Deep boxes'],['resDarkPrice','ডিপ মূল্য (৳)','Deep price (৳)'],['resWallTotalPcs','সর্বমোট টাইলস (পিস)','Total tiles (pcs)'],['resWallTotalBoxes','বক্স বিভাজন','Box breakdown'],['resWallTotalPrice','মূল্য (৳)','Price (৳)']],
+  wallx: [['xResPcs','ওয়াল টাইলস (পিস)','Wall tiles (pcs)'],['xResDetail','ওয়াল টাইলস (Sqft)','Wall tiles (Sqft)'],['xResBoxes','বক্স','Boxes'],['xResPrice','মূল্য (৳)','Price (৳)'],['xResTotalPcs','সর্বমোট টাইলস','Total tiles'],['xResTotalBoxes','মোট বক্স','Total boxes'],['xResTotalPrice','সর্বমোট মূল্য (৳)','Total price (৳)']],
   tak: [['resTakSingleArea','একটি টাইলসের এরিয়া (Sqft)','Single tile area (Sqft)'],['resTakArea','মোট এরিয়া (Sqft)','Total area (Sqft)'],['resSlabArea','মূল স্ল্যাব এরিয়া (Sqft)','Main slab area (Sqft)'],['resSlabTiles','মূল স্ল্যাবে টাইলস','Main slab tiles'],['resEdgeArea','সামনের বিট এরিয়া (Sqft)','Front edge area (Sqft)'],['resEdgeTiles','বিটে টাইলস','Edge tiles'],['resTakTotal','সর্বমোট টাইলস (পিস)','Total tiles (pcs)'],['resTakBoxes','বক্স','Boxes'],['resTakPrice','মূল্য (৳)','Price (৳)']],
   stairs: [['resStTreadPcs','ধাপের টাইলস','Step tiles'],['resStTreadArea','ধাপের এরিয়া','Step area'],['resStRiserPcs','রাইজারের টাইলস','Riser tiles'],['resStRiserArea','রাইজারের এরিয়া','Riser area'],['resStSkirtPcs','স্কার্টিংয়ের টাইলস','Skirting tiles'],['resStSkirtArea','স্কার্টিংয়ের এরিয়া','Skirting area'],['resStStepPcs','ধাপের টাইলস (পিস)','Step tiles (pcs)'],['resStStepBoxes','ধাপের বক্স','Step boxes'],['resStStepPrice','ধাপের মূল্য (৳)','Step price (৳)'],['resStRsPcs','রাইজার + স্কার্টিং টাইলস (পিস)','Riser + Skirting tiles (pcs)'],['resStRsBoxes','রাইজার + স্কার্টিং বক্স','Riser + Skirting boxes'],['resStRsPrice','রাইজার + স্কার্টিং মূল্য (৳)','Riser + Skirting price (৳)'],['resStTotalPcs','সিঁড়ির মোট টাইলস (পিস)','Stair total tiles (pcs)'],['resStBoxes','সিঁড়ির বক্স','Stair boxes'],['resStPrice','সিঁড়ির মোট মূল্য (৳)','Stair total price (৳)'],['resChArea','চৌকির ক্ষেত্রফল (Sqft)','Chowki area (Sqft)'],['resChPcs','চৌকির টাইলস (পিস)','Chowki tiles (pcs)'],['resChBoxes','চৌকির বক্স','Chowki boxes'],['resChPrice','চৌকির মূল্য (৳)','Chowki price (৳)']]
 };
@@ -2442,7 +2697,7 @@ function calcSummary(type) {
       num(t('resFTotalSqft')), v('pricePerSqft'), num(t('resTotalTiles')), t('resTotalBoxes'), num(t('resTotalPrice')))]
   };
   if (type === 'wall') return {
-    typeLabel: tr('ওয়াল টাইলস', 'Wall Tiles'),
+    typeLabel: tr('ডেকোরেট ওয়াল টাইলস', 'Decorate Wall Tiles'),
     area: num(t('resLightDetail')) + num(t('resDecorDetail')) + num(t('resDarkDetail')),
     tiles: num(t('resWallTotalPcs')),
     boxes: `${tr('লাইট', 'Light')}: ${t('resLightBoxes')} · ${tr('ডেকোর', 'Decor')}: ${t('resDecorBoxes')} · ${tr('ডিপ', 'Deep')}: ${t('resDarkBoxes')}`,
@@ -2452,6 +2707,13 @@ function calcSummary(type) {
       row(tr('ডেকোর টাইলস', 'Decor Tiles'), v('wDecorCode'), size('wTileH', 'wTileW'), num(t('resDecorDetail')), v('wPriceDecor') || v('wPriceStd'), num(t('resDecorPcs')), t('resDecorBoxes'), num(t('resDecorPrice'))),
       row(tr('ডিপ টাইলস', 'Deep Tiles'), v('wDarkCode'), size('wTileH', 'wTileW'), num(t('resDarkDetail')), v('wPriceStd'), num(t('resDarkPcs')), t('resDarkBoxes'), num(t('resDarkPrice')))
     ].filter(r => r.pcs > 0)
+  };
+  if (type === 'wallx') return {
+    typeLabel: tr('ওয়াল টাইলস', 'Wall Tiles'),
+    area: num(t('xResDetail')), tiles: num(t('xResPcs')), boxes: t('xResBoxes'),
+    rate: v('xPrice') ? `৳ ${v('xPrice')} / Sqft` : '-',
+    rows: [row(tr('ওয়াল টাইলস', 'Wall Tiles'), v('xCode'), size('xTileH', 'xTileW'),
+      num(t('xResDetail')), v('xPrice'), num(t('xResPcs')), t('xResBoxes'), num(t('xResPrice')))]
   };
   if (type === 'tak') return {
     typeLabel: tr('তাক / কিচেন স্ল্যাব', 'Shelf / Kitchen Slab'),
@@ -2504,12 +2766,13 @@ function captureCalcLines(type) {
   return { inputs, results, summary: calcSummary(type) };
 }
 
-const CART_TAB = { floor: 'tabFloor', wall: 'tabWall', tak: 'tabTak', stairs: 'tabStairs' };
+const CART_TAB = { floor: 'tabFloor', wall: 'tabWall', wallx: 'tabWallX', tak: 'tabTak', stairs: 'tabStairs' };
 
 function codesFor(type) {
   const map = {
     floor:  [['fCode', bi('টাইলসের মডেল কোড', 'Tiles Model Code')]],
     wall:   [['wLightCode', bi('লাইট কোড', 'Light Code')], ['wDecorCode', bi('ডেকোর কোড', 'Decor Code')], ['wDarkCode', bi('ডিপ কোড', 'Deep Code')]],
+    wallx:  [['xCode', bi('টাইলসের মডেল কোড', 'Tiles Model Code')]],
     tak:    [['tTileCode', bi('টাইলসের মডেল কোড', 'Tiles Model Code')]],
     stairs: [['stStepCode', bi('ধাপের মডেল কোড', 'Steps — Model code')],
              ['stRiserCode', bi('রাইজার + স্কার্টিংয়ের মডেল কোড', 'Riser + Skirting — Model code')],
@@ -2664,7 +2927,7 @@ function applyGroupInputs(type, data) {
   });
   syncModeVisibility();
   calculateFloorAndSkirting();
-  calcWall();
+  calcWall(); calcWallX();
   calcTak();
   calcStairs();
 }
@@ -2763,7 +3026,7 @@ function editCartCustomer() {
 /* --- কাস্টমার প্রোফাইল পেজ: তালিকায় ক্লিক করলে বিস্তারিত ও অপশনগুলো --- */
 function closeCustomerView() {}
 
-const PV_ICON = { floor: 'grid_view', wall: 'wall_art', tak: 'kitchen', stairs: 'stairs' };
+const PV_ICON = { floor: 'grid_view', wall: 'wall_art', wallx: 'wall_art', tak: 'kitchen', stairs: 'stairs' };
 
 let pvEditing = null;    // order whose profile edit form is open
 let addTilesMode = null; // order that new calculations are being added to
@@ -2836,7 +3099,8 @@ function openCustomerView(id) {
 
   const addCards = [
     ['floor', 'grid_view', tr('ফ্লোর ও স্কার্টিং', 'Floor & Skirting')],
-    ['wall', 'wall_art', tr('ওয়াল টাইলস', 'Wall Tiles')],
+    ['wall', 'wall_art', tr('ডেকোরেট ওয়াল টাইলস', 'Decorate Wall Tiles')],
+    ['wallx', 'wall_art', tr('ওয়াল টাইলস', 'Wall Tiles')],
     ['tak', 'kitchen', tr('তাক / স্ল্যাব', 'Shelf / Slab')],
     ['stairs', 'stairs', tr('সিঁড়ি ও চৌকি', 'Stairs & Chowki')]
   ].map(([t, ic, lb]) => `<button type="button" class="pv-add-card" onclick="startAddTiles('${o.id}','${t}')"><span class="material-symbols-outlined">${ic}</span><b>${lb}</b><small>${tr('যোগ করুন', 'Add')}</small></button>`).join('');
@@ -3076,13 +3340,13 @@ const INV_T = {
 };
 const INV_NAMES = [
   ['ফ্লোর ও স্কার্টিং টাইলস', 'Floor & Skirting Tiles'], ['ফ্লোর ও স্কার্টিং', 'Floor & Skirting'],
-  ['ওয়াল টাইলস', 'Wall Tiles'], ['লাইট টাইলস', 'Light Tiles'], ['ডেকোর টাইলস', 'Decor Tiles'], ['ডিপ টাইলস', 'Deep Tiles'],
+  ['ডেকোরেট ওয়াল টাইলস', 'Decorate Wall Tiles'], ['ওয়াল টাইলস', 'Wall Tiles'], ['লাইট টাইলস', 'Light Tiles'], ['ডেকোর টাইলস', 'Decor Tiles'], ['ডিপ টাইলস', 'Deep Tiles'],
   ['তাক / স্ল্যাব', 'Shelf / Slab'], ['তাক / কিচেন স্ল্যাব', 'Shelf / Kitchen Slab'], ['তাক / কিচেন স্ল্যাব', 'Shelf / Kitchen Slab'],
   ['সিঁড়ি (ধাপ + রাইজার + স্কার্টিং)', 'Stairs (step + riser + skirting)'], ['সিঁড়ি ও চৌকি', 'Stairs & Chowki'],
   ['সিঁড়ি', 'Stairs'], ['চৌকি', 'Chowki'],
   ['সিঁড়ির ধাপ', 'Stair Steps'], ['রাইজার + স্কার্টিং', 'Riser + Skirting']
 ];
-const INV_TYPE = { floor: ['ফ্লোর ও স্কার্টিং টাইলস', 'Floor & Skirting Tiles'], wall: ['ওয়াল টাইলস', 'Wall Tiles'],
+const INV_TYPE = { floor: ['ফ্লোর ও স্কার্টিং টাইলস', 'Floor & Skirting Tiles'], wall: ['ডেকোরেট ওয়াল টাইলস', 'Decorate Wall Tiles'], wallx: ['ওয়াল টাইলস', 'Wall Tiles'],
                    tak: ['তাক / কিচেন স্ল্যাব', 'Shelf / Kitchen Slab'], stairs: ['সিঁড়ি ও চৌকি', 'Stairs & Chowki'] };
 function invName(name, lang) {
   const hit = INV_NAMES.find(([bn, en]) => bn === name || en === name);
@@ -3107,7 +3371,7 @@ function printOrderView(id, lang) {
   const fmt = n => (Math.round((n || 0) * 100) / 100).toLocaleString('en-BD');
   const money = n => `৳${Math.round(n || 0).toLocaleString('en-BD')}`;
 
-  const TYPE_ORDER = { floor: 0, wall: 1, tak: 2, stairs: 3 };
+  const TYPE_ORDER = { floor: 0, wall: 1, wallx: 2, tak: 3, stairs: 4 };
   const ordered = (o.cartItems || []).map((c, idx) => ({ c, idx }))
     .sort((a, b) => ((TYPE_ORDER[a.c.type] ?? 9) - (TYPE_ORDER[b.c.type] ?? 9)) || (a.idx - b.idx));
   const sections = ordered.map(({ c }, i) => {
@@ -3126,7 +3390,7 @@ function printOrderView(id, lang) {
           <td>${escapeHtml(invBoxes(r.boxes || '-', lang))}</td>
           <td class="num">${money(r.price)}</td>
         </tr>`).join('');
-    const title = invName(sm.typeLabel || fallbackType, lang);
+    const title = c.type === 'wall' ? INV_TYPE.wall[lang === 'en' ? 1 : 0] : invName(sm.typeLabel || fallbackType, lang);
     return `
       <div class="pt-title">${i + 1}. ${escapeHtml(invName(title, lang))}</div>
       <table class="pt">
@@ -3196,6 +3460,7 @@ function deleteFromView(id) {
 const CLEAR_SECTIONS = {
   floor:  { ids: ['fLenFt','fLenIn','fWidFt','fWidIn','fSqft','fCustomPerimeter'], radios: { floorMode: 'dim' }, selects: [] },
   wall:   { ids: ['wTotalSqft','wHtFt','wTileH','wTileW'], radios: {}, selects: [] },
+  wallx:  { ids: ['xTotalSqft','xHtFt','xTileH','xTileW'], radios: {}, selects: [] },
   tak:    { ids: ['tLen','tWid','tSqft','tEdge'], radios: { takMode: 'dim' }, selects: ['tSides'] },
   stairs: { ids: ['stSteps','stTreadL','stTreadW','stRiserL','stRiserW','stSkirtL','stSkirtW','stSqft','stSqftRiser'], radios: { stairMode: 'inch' }, selects: [] }
 };
@@ -3418,7 +3683,7 @@ function printReceipt() {
     grandTotalCalculatedPrice += (lPrice + dPrice + dkPrice);
 
     content += `
-      <div class="print-section-title">${tr('২. ওয়াল টাইলস', '2. Wall Tiles')}</div>
+      <div class="print-section-title">${tr('২. ডেকোরেট ওয়াল টাইলস', '2. Decorate Wall Tiles')}</div>
       <table class="print-table">
         <thead>
           <tr>
@@ -3459,13 +3724,44 @@ function printReceipt() {
     `;
   }
 
-  // ৩. তাক / কিচেন স্ল্যাব টেবিল
+  // ৩. ওয়াল টাইলস (একক ধরন)
+  const wxPcs = parseInt(document.getElementById('xResPcs').innerText) || 0;
+  if (wxPcs > 0) {
+    const wxPrice = parseInt(document.getElementById('xResPrice').innerText.replace(/,/g, '')) || 0;
+    grandTotalCalculatedPrice += wxPrice;
+
+    content += `
+      <div class="print-section-title">${tr('৩. ওয়াল টাইলস', '3. Wall Tiles')}</div>
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th>${tr('ক্যাটাগরি', 'Category')}</th>
+            <th>${tr('সারি (Rows)', 'Rows')}</th>
+            <th>${tr('পরিমাণ (Pcs & Sqft)', 'Quantity (Pcs & Sqft)')}</th>
+            <th>${tr('বক্স ব্রেকডাউন', 'Box Breakdown')}</th>
+            <th>${tr('মোট মূল্য (৳)', 'Total Price (৳)')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>${tr('ওয়াল টাইলস', 'Wall Tiles')}</strong></td>
+            <td>${getVal('xRows')}${tr(' টি', '')}</td>
+            <td>${wxPcs} ${tr('পিস', 'pcs')} (${document.getElementById('xResDetail').innerText})</td>
+            <td>${document.getElementById('xResBoxes').innerText}</td>
+            <td>৳${wxPrice.toLocaleString('en-BD')}</td>
+          </tr>
+        </tbody>
+      </table>
+    `;
+  }
+
+  // ৪. তাক / কিচেন স্ল্যাব টেবিল
   if (tTotalPcs > 0) {
     const tPrice = parseInt(document.getElementById('resTakPrice').innerText.replace(/,/g, '')) || 0;
     grandTotalCalculatedPrice += tPrice;
 
     content += `
-      <div class="print-section-title">${tr('৩. তাক / কিচেন স্ল্যাব', '3. Shelf / Kitchen Slab')}</div>
+      <div class="print-section-title">${tr('৪. তাক / কিচেন স্ল্যাব', '4. Shelf / Kitchen Slab')}</div>
       <table class="print-table">
         <thead>
           <tr>
@@ -3495,7 +3791,7 @@ function printReceipt() {
     grandTotalCalculatedPrice += (stairsResult.stairPrice + stairsResult.chPrice);
 
     content += `
-      <div class="print-section-title">${tr('৪. সিঁড়ির টাইলস ও চৌকি', '4. Stair Tiles & Chowki')}</div>
+      <div class="print-section-title">${tr('৫. সিঁড়ির টাইলস ও চৌকি', '5. Stair Tiles & Chowki')}</div>
       <table class="print-table">
         <thead>
           <tr>
@@ -3623,7 +3919,7 @@ function setLanguage(lang) {
   document.getElementById('lblEn').classList.toggle('active', lang === 'en');
 
   calculateFloorAndSkirting();
-  calcWall();
+  calcWall(); calcWallX();
   calcTak();
   calcStairs();
   renderOrders();
@@ -3904,6 +4200,75 @@ function calcWall() {
   document.getElementById('resWallTotalPrice').textContent = Math.round(totalPrice).toLocaleString('en-BD');
 }
 
+function calcWallX() {
+  const totalSqft = getVal('xTotalSqft');
+  const htFt = getVal('xHtFt');
+  const tileH = getVal('xTileH');
+  const tileW = getVal('xTileW');
+  const rows = getVal('xRows');
+  const deductSqft = getVal('xDeductSqft');
+  const wastage = getVal('xWastage');
+  const perBox = getVal('xPerBox');
+  const price = getVal('xPrice');
+
+  const tileHFt = tileH / 12;
+  const tileWFt = tileW / 12;
+  const singleTileSqft = (tileHFt > 0 && tileWFt > 0) ? (tileHFt * tileWFt) : 0;
+
+  const expectedRows = (tileHFt > 0 && htFt > 0) ? parseFloat((htFt / tileHFt).toFixed(4)) : 0;
+  const autoBox = document.getElementById('autoRowTextX');
+  const expectedRowsDisplay = (expectedRows % 1 === 0) ? expectedRows : parseFloat(expectedRows.toFixed(2));
+  if (expectedRows > 0 && Math.abs(rows - expectedRows) > 0.001) {
+    autoBox.classList.add('warning');
+    if (currentLang === 'en') {
+      autoBox.innerHTML = `<span class="material-symbols-outlined msi">warning</span> Total Possible Rows: ${expectedRowsDisplay}. Selected: ${rows} (Fix row distribution!)`;
+    } else {
+      autoBox.innerHTML = `<span class="material-symbols-outlined msi">warning</span> উচ্চতায় মোট সম্ভাব্য সারি: ${expectedRowsDisplay} টি। দেয়া হয়েছে: ${rows} টি (সারি সঠিক করুন!)`;
+    }
+  } else {
+    autoBox.classList.remove('warning');
+    autoBox.innerText = currentLang === 'en' ? `Total Possible Rows: ${expectedRowsDisplay}` : `উচ্চতায় মোট সম্ভাব্য সারি: ${expectedRowsDisplay} টি`;
+  }
+
+  const runFt = (totalSqft > 0 && htFt > 0) ? (totalSqft / htFt) : 0;
+  const rawTilesPerRow = tileWFt > 0 ? (runFt / tileWFt) : 0;
+
+  function rowsToPcs(r, tilesPerFullRow, tHFt, tWFt, rFt) {
+    if (r <= 0 || tilesPerFullRow <= 0) return 0;
+    const fullRows = Math.floor(r);
+    const fracRow = parseFloat((r - fullRows).toFixed(6));
+    let pcs = tilesPerFullRow * fullRows;
+    if (fracRow > 0.0001) {
+      const fracAreaSqft = rFt * (fracRow * tHFt);
+      const singleSqft = tHFt * tWFt;
+      pcs += singleSqft > 0 ? (fracAreaSqft / singleSqft) : 0;
+    }
+    return pcs;
+  }
+  let pcs = rowsToPcs(rows, rawTilesPerRow, tileHFt, tileWFt, runFt);
+
+  if (deductSqft > 0 && singleTileSqft > 0) {
+    pcs = Math.max(0, pcs - deductSqft / singleTileSqft);
+  }
+
+  const finalPcs = pcs > 0 ? ceilSafe(pcs * (1 + wastage / 100)) : 0;
+  const sqft = finalPcs * singleTileSqft;
+  const totalPrice = sqft * price;
+
+  const fullBoxes = perBox > 0 ? Math.floor(finalPcs / perBox) : 0;
+  const loosePcs = perBox > 0 ? (finalPcs % perBox) : 0;
+
+  document.getElementById('xResBoxes').textContent = formatBoxAndPcs(finalPcs, perBox);
+  document.getElementById('xResPrice').textContent = Math.round(totalPrice).toLocaleString('en-BD');
+  document.getElementById('xResPcs').textContent = finalPcs;
+  document.getElementById('xResDetail').textContent = `${sqft.toFixed(1)} Sqft`;
+  document.getElementById('xResTotalPcs').textContent = finalPcs;
+  document.getElementById('xResTotalBoxes').textContent = currentLang === 'en'
+    ? `${fullBoxes} Box (${loosePcs} Loose Pcs)`
+    : `${fullBoxes} বক্স (${loosePcs} লুজ পিস)`;
+  document.getElementById('xResTotalPrice').textContent = Math.round(totalPrice).toLocaleString('en-BD');
+}
+
 function calcTak() {
   const takSqftMode = (document.querySelector('input[name="takMode"]:checked') || {}).value === 'sqft';
   const takInputActive = takSqftMode ? hasVal('tSqft') : (hasVal('tLen') || hasVal('tWid'));
@@ -4164,7 +4529,7 @@ function calcStairs() {
 
 /* শুধু যে ট্যাবে ইনপুট বদলেছে সেই ট্যাবের হিসাব চলবে (কম শক্তির ডিভাইসে দ্রুত) */
 let _calcQueued = false, _calcAll = false, _calcSet = null;
-const TAB_CALC = { tabFloor: calculateFloorAndSkirting, tabWall: calcWall, tabTak: calcTak, tabStairs: calcStairs };
+const TAB_CALC = { tabFloor: calculateFloorAndSkirting, tabWall: calcWall, tabWallX: calcWallX, tabTak: calcTak, tabStairs: calcStairs };
 const NON_CALC_TABS = new Set(['tabPending', 'tabDelivery', 'tabConfirmed', 'tabReport', 'tabCustView', 'tabCart']);
 function recalcAll() {
   _calcQueued = false;
@@ -4173,7 +4538,7 @@ function recalcAll() {
   _calcAll = false; _calcSet = null;
   if (all) {
     calculateFloorAndSkirting();
-    calcWall();
+    calcWall(); calcWallX();
     calcTak();
     calcStairs();
   } else {
@@ -4214,7 +4579,7 @@ loadSavedSizes();
 loadOrders();
 loadCart();
 calculateFloorAndSkirting();
-calcWall();
+calcWall(); calcWallX();
 calcTak();
 calcStairs();
 renderOrders();
@@ -4224,7 +4589,7 @@ renderCart();
 /* ===== Model Code Memory: মডেল কোড মনে রাখা + টাইপ করলে সাজেশন ===== */
 (function modelCodeMemory() {
   const KEY = 'savedModelCodes';
-  const IDS = ['fCode','wLightCode','wDecorCode','wDarkCode','tTileCode','stStepCode','stRiserCode','chCode'];
+  const IDS = ['fCode','wLightCode','wDecorCode','wDarkCode','xCode','tTileCode','stStepCode','stRiserCode','chCode'];
   const MAX_SHOW = 8, MAX_KEEP = 500;
 
   function read() {
@@ -4277,7 +4642,8 @@ renderCart();
   function position() {
     if (!curInput) return;
     const r = curInput.getBoundingClientRect();
-    const vw = window.innerWidth, vh = window.innerHeight;
+    const vv = window.visualViewport;
+    const vw = window.innerWidth, vh = vv ? (vv.offsetTop + vv.height) : window.innerHeight;
     const w = Math.min(Math.max(r.width, 220), vw - 16);
     let left = Math.min(Math.max(8, r.left), vw - w - 8);
     pop.style.width = w + 'px';
@@ -4292,6 +4658,10 @@ renderCart();
       pop.style.top = Math.max(8, r.top - 4 - Math.min(pop.offsetHeight || h, above)) + 'px';
     }
   }
+
+  if (window.visualViewport) { visualViewport.addEventListener('resize', position); visualViewport.addEventListener('scroll', position); }
+  window.addEventListener('scroll', () => { if (pop.classList.contains('open')) position(); }, { passive: true });
+  window.addEventListener('resize', () => { if (pop.classList.contains('open')) position(); });
 
   function hl(text, q) {
     const i = q ? text.toLowerCase().indexOf(q.toLowerCase()) : -1;
@@ -4496,13 +4866,14 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
   function showLoginGate() { closeOverlays(); location.replace(LOGIN_PAGE); }
   function renderGateChips() {}
   function renderGateNote() {}
-  const enabled = /^https:\/\/[^\/\s]+/.test(SUPABASE_URL) && SUPABASE_ANON_KEY.length > 20;
+  const PREVIEW = !!window.__MTC_PREVIEW;   // প্রিভিউ/ফাইল/লোকালহোস্টে লগইন বন্ধ; GitHub/Vercel-এ প্রকাশ হলে নিজে থেকেই চালু
+  const enabled = !PREVIEW && /^https:\/\/[^\/\s]+/.test(SUPABASE_URL) && SUPABASE_ANON_KEY.length > 20;
   if (!enabled) {
     const w = $('cloudWrap'); if (w) w.style.display = 'none';
     window.cloudRefreshUI = function () {};
     window.cloudOpen = function () {};
     window.ownerDashOpen = function () { return false; };
-    if (REQUIRE_LOGIN_GATE) { gateOpen(); gatePanel('agChecking'); location.replace(LOGIN_PAGE); } else { gateClose(); }
+    if (REQUIRE_LOGIN_GATE && !PREVIEW) { gateOpen(); gatePanel('agChecking'); location.replace(LOGIN_PAGE); } else { gateClose(); }
     return;
   }
 
@@ -4964,6 +5335,198 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
     runAccessCheck();                                              // প্রতিবার অ্যাপ লোডে যাচাই (ব্যাকগ্রাউন্ডে)
   }
   else showLoginGate();                                                      // সেশন নেই → login.html
+})();
+
+
+/* ===== প্রিন্ট ও PDF সেভ: ফাইলের নাম = MTC - 27/10/2026 - 2:44 PM (প্রিন্টের সময়ের তারিখ ও সময়) ===== */
+(function printFileName() {
+  let saved = null;
+  function stamp() {
+    const d = new Date(), p = n => String(n).padStart(2, '0');
+    let h = d.getHours(); const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
+    return 'MTC - ' + p(d.getDate()) + '/' + p(d.getMonth() + 1) + '/' + d.getFullYear() + ' - ' + h + ':' + p(d.getMinutes()) + ' ' + ap;
+  }
+  window.addEventListener('beforeprint', () => { if (saved === null) saved = document.title; document.title = stamp(); });
+  window.addEventListener('afterprint', () => { if (saved !== null) { document.title = saved; saved = null; } });
+})();
+
+/* ===== মোবাইল কিবোর্ড ও স্ক্রিন অপটিমাইজেশন ===== */
+(function viewportOpt() {
+  const root = document.documentElement, vv = window.visualViewport;
+  const isField = el => !!el && /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName) && !/^(checkbox|radio|button|submit|range|file|hidden)$/.test(el.type || '');
+  function sync() {
+    const h = vv ? vv.height : window.innerHeight;
+    const zoomed = vv && vv.scale > 1.02;                       // পিঞ্চ-জুম করলে কিবোর্ড ধরা হবে না
+    const kb = (vv && !zoomed) ? Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop)) : 0;
+    root.style.setProperty('--vvh', Math.round(h) + 'px');
+    root.style.setProperty('--kb', kb + 'px');
+    document.body.classList.toggle('kb-open', kb > 120 && isField(document.activeElement));
+  }
+  function reveal() {
+    const el = document.activeElement;
+    if (!isField(el)) return;
+    const h = vv ? vv.height : window.innerHeight, top = vv ? vv.offsetTop : 0;
+    const r = el.getBoundingClientRect();
+    if (r.bottom > top + h - 16 || r.top < top + 8) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+  let rt = null;
+  function later() { clearTimeout(rt); rt = setTimeout(() => { sync(); reveal(); }, 120); }
+  if (vv) { vv.addEventListener('resize', later); vv.addEventListener('scroll', sync); }
+  window.addEventListener('resize', later);
+  window.addEventListener('orientationchange', () => setTimeout(() => { sync(); reveal(); }, 350));
+  function prep(el) {
+    if (el.tagName !== 'INPUT') return;
+    if (el.type === 'number' && !el.hasAttribute('inputmode')) el.setAttribute('inputmode', 'decimal');
+    if (!el.hasAttribute('enterkeyhint') && el.closest('.tab-content')) el.setAttribute('enterkeyhint', 'next');
+  }
+  document.querySelectorAll('input').forEach(prep);
+  document.addEventListener('focusin', e => {
+    if (!isField(e.target)) return;
+    prep(e.target);
+    setTimeout(() => { sync(); reveal(); }, 320);               // কিবোর্ড অ্যানিমেশন শেষ হলে
+    setTimeout(() => { sync(); reveal(); }, 700);
+  });
+  document.addEventListener('focusout', () => setTimeout(sync, 200));
+  /* কিবোর্ডের Next/Enter চাপলে পরের ফিল্ডে যাবে; শেষ ফিল্ডে কিবোর্ড বন্ধ হবে */
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' || e.isComposing) return;
+    const el = e.target;
+    if (!el || el.tagName !== 'INPUT' || /^(checkbox|radio|button|submit)$/.test(el.type)) return;
+    if (el.hasAttribute('data-ordfilter') || el.closest('#authGate, .cust-modal, #cloudModal, #pwModal, #ownerModal, #ownerDash')) return;
+    if (document.querySelector('.mc-pop.open')) return;         // মডেল-কোড সাজেশন খোলা থাকলে সেটাই কাজ করবে
+    const scope = el.closest('.tab-content, .panel'); if (!scope) return;
+    const list = [...scope.querySelectorAll('input:not([type=hidden]):not([type=radio]):not([type=checkbox]):not([disabled]), select:not([disabled])')]
+      .filter(x => x.offsetParent !== null);
+    const i = list.indexOf(el);
+    e.preventDefault();
+    if (i > -1 && i < list.length - 1) list[i + 1].focus(); else el.blur();
+  });
+  sync();
+})();
+
+/* ===== মোবাইল পোলিশ: আইকন ফন্ট চেক, মেনু স্ক্রল-লক, Esc, জুম-রিসেট ===== */
+(function mobilePolish() {
+  const root = document.documentElement;
+  /* আইকন ফন্ট লোড হয়েছে কিনা মেপে দেখা (লিগেচার হলে প্রস্থ ≈ ১em, না হলে লম্বা লেখা) */
+  function checkIcons() {
+    const t = document.createElement('span');
+    t.className = 'material-symbols-outlined';
+    t.style.cssText = 'position:absolute;left:-9999px;top:0;font-size:40px;width:auto;max-width:none;overflow:visible;visibility:hidden;white-space:nowrap';
+    t.textContent = 'check_circle';
+    document.body.appendChild(t);
+    const w = t.getBoundingClientRect().width;
+    t.remove();
+    root.classList.toggle('no-icons', w > 80);
+  }
+  function runCheck() { try { checkIcons(); } catch (e) {} }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(runCheck, 150));
+  window.addEventListener('load', () => { setTimeout(runCheck, 600); setTimeout(runCheck, 4000); });
+  window.addEventListener('online', () => setTimeout(runCheck, 1500));
+
+  /* সাইড মেনু খোলা থাকলে body স্ক্রল লক */
+  const nav = document.querySelector('.calc-nav');
+  const mq = window.matchMedia ? window.matchMedia('(max-width: 899.98px)') : { matches: false };
+  function navState() { document.body.classList.toggle('nav-open', !!(nav && nav.classList.contains('open') && mq.matches)); }
+  if (nav && window.MutationObserver) new MutationObserver(navState).observe(nav, { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('resize', navState);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav && nav.classList.contains('open') && typeof toggleSideNav === 'function') toggleSideNav(false);
+  });
+  /* বাঁ দিকে সোয়াইপ করলে মেনু বন্ধ */
+  let sx = null, sy = null;
+  if (nav) {
+    nav.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    nav.addEventListener('touchend', e => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx, dy = Math.abs(e.changedTouches[0].clientY - sy);
+      sx = null;
+      if (dx < -60 && dy < 50 && typeof toggleSideNav === 'function') toggleSideNav(false);
+    }, { passive: true });
+  }
+  /* ফিল্ডে ফোকাস থাকলে body.field-focus (কিবোর্ড মাপার ওপর নির্ভর না করে — Chrome Android-এ resizes-content মোডে কিবোর্ড মাপা যায় না) */
+  (function fieldFocus() {
+    const isTxt = el => !!el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) && !/^(checkbox|radio|button|submit|range|file|hidden)$/.test(el.type || '');
+    let t = null;
+    document.addEventListener('focusin', e => { clearTimeout(t); if (isTxt(e.target)) document.body.classList.add('field-focus'); });
+    document.addEventListener('focusout', () => { clearTimeout(t); t = setTimeout(() => { if (!isTxt(document.activeElement)) document.body.classList.remove('field-focus'); }, 250); });
+  })();
+})();
+
+/* ===== মোবাইল হেডার: লোগো/টাইটেল/সিঙ্ক-থিম-ভাষা সাইডবারে সরানো; হেডারে সেকশনের নাম ও লাইভ মোট ===== */
+(function mobileHeader() {
+  const nav = document.querySelector('.calc-nav'), header = document.querySelector('.app-header');
+  if (!nav || !header) return;
+  const mark = header.querySelector('.app-mark'), titles = header.querySelector('.app-titles'), ctrls = header.querySelector('.header-controls');
+  if (!mark || !titles || !ctrls) return;
+  const title = document.createElement('div'); title.className = 'mh-title';
+  const tot = document.createElement('button'); tot.type = 'button'; tot.className = 'mh-total';
+  header.appendChild(title); header.appendChild(tot);
+  const brand = document.createElement('div'); brand.className = 'nav-brand';
+  const row = document.createElement('div'); row.className = 'brand-row'; brand.appendChild(row);
+  const closeBtn = document.createElement('button'); closeBtn.type = 'button'; closeBtn.className = 'nav-close'; closeBtn.setAttribute('aria-label', 'Close menu');
+  closeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  closeBtn.addEventListener('click', () => { if (typeof toggleSideNav === 'function') toggleSideNav(false); });
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) { meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+  function chrome() {
+    document.documentElement.style.setProperty('--hh', header.offsetHeight + 'px');
+    try { const c = getComputedStyle(header).backgroundColor; if (c && c !== 'rgba(0, 0, 0, 0)') meta.setAttribute('content', c); } catch (e) {}
+  }
+  const mq = window.matchMedia ? window.matchMedia('(max-width: 899.98px)') : { matches: false };
+
+  const TOTALS = {
+    tabFloor:  ['resTotalTiles', 'resTotalPrice'],
+    tabWall:   ['resWallTotalPcs', 'resWallTotalPrice'],
+    tabWallX:  ['xResTotalPcs', 'xResTotalPrice'],
+    tabTak:    ['resTakTotal', 'resTakPrice'],
+    tabStairs: [null, 'resStGrandPrice']
+  };
+  const txt = id => { const el = id && document.getElementById(id); return el ? el.textContent.trim() : ''; };
+  const num = v => parseFloat(String(v).replace(/[^0-9.]/g, '')) || 0;
+  const isEn = () => typeof currentLang !== 'undefined' && currentLang === 'en';
+
+  function sync() {
+    const act = nav.querySelector('.calc-nav-item.active');
+    if (act) {
+      const m = /'(tab[A-Za-z]+)'/.exec(act.getAttribute('onclick') || '');
+      const spans = act.querySelectorAll('span');
+      title.textContent = spans.length ? spans[spans.length - 1].textContent.trim() : act.textContent.trim();
+      const def = m && TOTALS[m[1]];
+      const pcs = def && def[0] ? num(txt(def[0])) : 0, price = def ? num(txt(def[1])) : 0;
+      if (def && (pcs || price)) {
+        tot.innerHTML = '<b></b><small></small>';
+        tot.children[0].textContent = '৳ ' + price.toLocaleString('en-BD');
+        tot.children[1].textContent = pcs ? (pcs.toLocaleString('en-BD') + (isEn() ? ' pcs' : ' পিস')) : (isEn() ? 'Total' : 'মোট');
+        tot.classList.add('show');
+      } else tot.classList.remove('show');
+    }
+  }
+  function place() {
+    if (mq.matches) {
+      row.appendChild(mark); row.appendChild(titles); row.appendChild(closeBtn); brand.appendChild(ctrls);
+      nav.insertBefore(brand, nav.firstChild);
+    } else {
+      header.insertBefore(mark, title); header.insertBefore(titles, title); header.insertBefore(ctrls, title);
+      brand.remove();
+    }
+    sync(); chrome();
+  }
+  window.addEventListener('resize', chrome);
+  if (window.MutationObserver) new MutationObserver(chrome).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+  tot.addEventListener('click', () => {
+    const act = document.querySelector('.tab-content.active'); if (!act) return;
+    const panels = act.querySelectorAll('.panel'); const last = panels[panels.length - 1];
+    if (last) last.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  if (mq.addEventListener) mq.addEventListener('change', place); else if (mq.addListener) mq.addListener(place);
+  if (window.MutationObserver) new MutationObserver(sync).observe(nav, { attributes: true, attributeFilter: ['class'], subtree: true });
+  let t = null;
+  const later = () => { clearTimeout(t); t = setTimeout(sync, 160); };
+  document.addEventListener('input', later, { passive: true });
+  document.addEventListener('change', later, { passive: true });
+  document.addEventListener('click', later, { passive: true });
+  window.addEventListener('load', () => { sync(); chrome(); });
+  place();
 })();
 
 if ('serviceWorker' in navigator) {
