@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap"></noscript>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile,tune&amp;display=block" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile,tune&amp;display=block"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,paid,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,tune,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,paid,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,tune,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block"></noscript>
 <script>/* Lite mode: কম শক্তির ডিভাইসে ব্লার/অ্যানিমেশন বন্ধ। জোর করতে: localStorage.tilesLite="1" (বন্ধ: "0") */
 (function(){try{var n=navigator,c=n.connection||{};var low=(n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||c.saveData===true||/(^|-)2g$/.test(c.effectiveType||"");var pref=null;try{pref=localStorage.getItem("tilesLite");}catch(e){}if(pref==="1"||(pref!=="0"&&low))document.documentElement.classList.add("lite");}catch(e){}})();</script>
 <script>window.__MTC_PREVIEW=(function(){try{var q=location.search;if(/[?&]login=on/.test(q))return false;if(/[?&]preview=1/.test(q))return true;var p=location.protocol,h=location.hostname;if(p!=='http:'&&p!=='https:')return true;if(!h||h==='localhost'||h==='127.0.0.1'||/\.local$/.test(h))return true;if(/(claude|anthropic|usercontent|sandbox|codepen|codesandbox|stackblitz|jsfiddle|webcontainer|htmlpreview|githack|csb\.app)/i.test(h))return true;return false;}catch(e){return false;}})();</script>
@@ -1365,6 +1365,107 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
 @media (max-width: 380px) {
   .ord-filter > .ig:not(.ord-search) { grid-column: 1 / -1; }
 }
+</style>
+<style id="navFix2026c">
+/* ===== মোবাইল সেটিংস ফিক্স: ড্রয়ারের উচ্চতা এখন সত্যিকারের দৃশ্যমান ভিউপোর্ট অনুযায়ী (100vh/100dvh সমস্যা এড়ানো) ===== */
+@media (max-width: 899.98px) {
+  .calc-nav { top: 0 !important; bottom: 0 !important; height: auto !important; max-height: var(--nav-h, 100%) !important; box-sizing: border-box; }
+  .nav-settings { position: sticky; bottom: 0; z-index: 5; flex-shrink: 0; background: var(--surface); margin-top: auto; padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+  .nav-set-menu { max-height: min(38vh, 300px); }
+}
+</style>
+<style id="compactMobile2026d">
+/* ===== আল্ট্রা-কমপ্যাক্ট মোবাইল/ছোট স্ক্রিন লেআউট (৯০০px-এর নিচে) — ডেস্কটপ অপরিবর্তিত ===== */
+@media (max-width: 899.98px) {
+  .app-shell { padding-left: 10px !important; padding-right: 10px !important; }
+  .app-header { padding: 8px 0 8px !important; gap: 8px !important; }
+  .app-mark { width: 34px !important; height: 34px !important; }
+  .app-titles h1 { font-size: 17px !important; }
+  .app-titles p { font-size: 11px !important; margin-top: 1px !important; }
+  .tab-content.active { gap: 8px !important; }
+  .panel { padding: 9px 10px !important; border-radius: 14px !important; }
+  .sec { margin: 0 0 6px !important; font-size: 10.5px !important; }
+  .glabel { margin: 0 0 8px !important; padding-bottom: 5px !important; font-size: 11.5px !important; }
+  .panel .grid2.g-in { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 5px 8px !important; margin-bottom: 7px !important; }
+  .panel .grid3.g-in { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 5px 6px !important; margin-bottom: 7px !important; }
+  .panel .g-in > .ig:only-child { grid-column: 1 / -1; }
+  .panel .grid2.g-in > .ig:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .panel .ig { gap: 2px !important; }
+  .panel .ig[style*="margin-bottom"] { margin-bottom: 7px !important; }
+  .panel .ig label { font-size: 10.5px !important; line-height: 1.2 !important; min-height: 0 !important; font-weight: 600; letter-spacing: 0 !important; }
+  .panel .ig input, .panel .ig select { height: 34px !important; min-height: 34px !important; padding: 0 8px !important; font-size: 16px !important; border-radius: 9px !important; border-width: 1px !important; }
+  .panel .ig input:focus, .panel .ig select:focus { box-shadow: 0 0 0 2px rgba(91,127,219,0.18) !important; }
+  .panel .action-bar { gap: 6px !important; margin-bottom: 8px !important; }
+  .btn-action, .action-bar > .btn-action { min-height: 36px !important; height: auto !important; padding: 0 12px !important; font-size: 13px !important; border-radius: 11px !important; }
+  .ord-btn { min-height: 34px !important; padding: 5px 9px !important; font-size: 12px !important; border-radius: 9px !important; }
+  .pv-btn { height: 36px !important; min-height: 36px !important; padding: 0 12px !important; font-size: 12.5px !important; }
+  .mode-toggle { margin-bottom: 8px !important; padding: 3px !important; gap: 4px !important; border-radius: 12px !important; }
+  .mode-btn { min-height: 30px !important; padding: 0 8px !important; font-size: 12px !important; }
+  .card { padding: 8px 10px !important; }
+  .grid3 > .card, .grid2 > .card, .panel .grid3 > .card, .panel .grid2 > .card { min-height: 0 !important; }
+  .panel .grid2:not(.g-in) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 6px !important; margin-bottom: 8px !important; }
+  .panel .grid3:not(.g-in) { gap: 6px !important; margin-bottom: 8px !important; }
+  .fval { font-size: clamp(16px, 4.6vw, 20px) !important; }
+  .flabel { font-size: 12px !important; }
+  .final-bar { padding: 8px 12px !important; min-height: 0 !important; gap: 2px !important; border-radius: 12px !important; }
+  .auto-box { padding: 6px 10px !important; margin-bottom: 8px !important; font-size: 12px !important; }
+  .calc-nav-item { min-height: 38px !important; padding: 7px 12px !important; font-size: 13.5px !important; }
+  .ord-card, .cust-row { padding: 8px 10px !important; min-height: 0 !important; }
+  .ord-list { gap: 7px !important; }
+  .ord-filter { padding: 8px !important; gap: 6px !important; margin-bottom: 8px !important; }
+  .ord-filter .ig input, .ord-filter .ig select { height: 34px !important; min-height: 34px !important; }
+}
+@media (max-width: 380px) {
+  .panel { padding: 8px !important; }
+  .panel .grid3.g-in { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .panel .grid3.g-in > .ig:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+</style>
+<style id="compactMobile2026e">
+/* ===== অতিরিক্ত কমপ্যাক্ট স্তর (শুধু ৯০০px-এর নিচে; ডেস্কটপ/ল্যাপটপ/টিভি অপরিবর্তিত) ===== */
+@media (max-width: 899.98px) {
+  .app-shell { padding-left: 8px !important; padding-right: 8px !important; }
+  .app-header { padding: 5px 0 !important; }
+  .app-mark { width: 30px !important; height: 30px !important; }
+  .tab-content.active { gap: 6px !important; }
+  .panel { padding: 7px 8px !important; border-radius: 12px !important; }
+  .panel > .action-bar { margin: 0 0 6px !important; gap: 6px !important; }
+  .panel > .action-bar .ord-btn { min-height: 32px !important; padding: 4px 8px !important; font-size: 12px !important; gap: 4px !important; }
+  .panel .msi { font-size: 17px !important; }
+  .sec { margin: 8px 0 4px !important; font-size: 10px !important; line-height: 1.2 !important; }
+  .sec:first-of-type { margin-top: 2px !important; }
+  .mode-toggle { margin: 0 0 6px !important; padding: 2px !important; gap: 3px !important; }
+  .mode-btn { min-height: 26px !important; font-size: 11.5px !important; padding: 0 6px !important; }
+  .glabel { margin: 0 0 6px !important; padding-bottom: 4px !important; font-size: 11px !important; }
+  .panel .grid2.g-in { gap: 4px 6px !important; margin-bottom: 5px !important; }
+  .panel .grid3.g-in { gap: 4px 5px !important; margin-bottom: 5px !important; }
+  .panel .ig { gap: 1px !important; }
+  .panel .ig[style*="margin-bottom"] { margin-bottom: 5px !important; }
+  .panel .ig label { font-size: 10px !important; line-height: 1.15 !important; }
+  .panel .ig input, .panel .ig select { height: 30px !important; min-height: 30px !important; padding: 0 7px !important; border-radius: 8px !important; }
+  .card { padding: 5px 8px !important; border-radius: 10px !important; }
+  .clabel { font-size: 10.5px !important; margin: 0 0 1px !important; line-height: 1.2 !important; }
+  .cval { font-size: 17px !important; line-height: 1.15 !important; margin: 0 !important; }
+  .cunit { font-size: 10px !important; }
+  .panel .grid2:not(.g-in), .panel .grid3:not(.g-in) { gap: 5px !important; margin-bottom: 5px !important; }
+  .final-bar { padding: 5px 10px !important; border-radius: 10px !important; }
+  .final-bar[style*="margin-bottom"] { margin-bottom: 5px !important; }
+  .flabel { font-size: 11.5px !important; }
+  .fsub { font-size: 10px !important; }
+  .fval { font-size: clamp(15px, 4.4vw, 18px) !important; }
+  .auto-box { padding: 5px 8px !important; margin-bottom: 5px !important; }
+  /* আইকনওয়ালা ইনপুট: কমপ্যাক্ট প্যাডিং যেন আইকনের নিচে লেখা চাপা না পড়ে */
+  .panel .ig.ord-search input, .ord-filter .ord-search input { padding-left: 38px !important; padding-right: 8px !important; }
+  .ord-filter .ord-search::before { top: auto !important; bottom: 15px !important; left: 11px !important; font-size: 19px !important; transform: translateY(50%) !important; pointer-events: none; }
+  .ag-inp input, .panel .ig .ag-inp input { padding-left: 38px !important; }
+  .ag-inp > .msi { font-size: 18px !important; left: 11px !important; }
+  .pw-wrap input, .panel .ig .pw-wrap input { padding-right: 44px !important; }
+  /* একই সারিতে একাধিক ছোট ফিল্ড (JS এই র‍্যাপার বানায়) */
+  .g-pack { display: grid; grid-template-columns: repeat(var(--pc, 2), minmax(0, 1fr)); gap: 4px 5px; margin-bottom: 5px; align-items: end; }
+  .g-pack > .grid2, .g-pack > .grid3 { display: contents !important; }
+  .g-pack .ig label { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+}
+@media (max-width: 899.98px) and (max-height: 520px) { .panel .ig input, .panel .ig select { height: 28px !important; min-height: 28px !important; } }
 </style>
 </head>
 <body>
@@ -3110,7 +3211,7 @@ function openCustomerView(id) {
   const name = o.name || tr('(নাম নেই)', '(no name)');
   const initial = escapeHtml(name.trim().charAt(0).toUpperCase() || '?');
 
-  const field = (icon, lbl, val) => `<div class="pv-field"><span class="material-symbols-outlined">${icon}</span><div><small>${lbl}</small><b>${val}</b></div></div>`;
+  const field = (icon, lbl, val) => `<div class="pv-field"><small><span class="material-symbols-outlined">${icon}</span>${lbl}</small><b>${val}</b></div>`;
   const info = [
     field('call', tr('মোবাইল', 'Mobile'), escapeHtml(o.phone || '—')),
     field('receipt_long', tr('ইনভয়েস', 'Invoice'), escapeHtml(o.invoice || '—')),
@@ -5774,6 +5875,211 @@ if ('serviceWorker' in navigator) {
   });
   const onChange = () => document.querySelectorAll('.ord-filter').forEach(f => { if (!mq.matches) f.classList.remove('of-closed'); else if (!f.dataset.touched) f.classList.add('of-closed'); });
   if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+})();
+</script>
+<script>
+/* ===== মোবাইল ড্রয়ারের উচ্চতা সিঙ্ক: সেটিংস বাটন যেন সবসময় স্ক্রিনের ভেতরে থাকে ===== */
+(function () {
+  var root = document.documentElement;
+  function setNavH() {
+    var h = window.innerHeight || (window.visualViewport && window.visualViewport.height) || 0;
+    if (h > 0) root.style.setProperty('--nav-h', Math.round(h) + 'px');
+  }
+  setNavH();
+  window.addEventListener('resize', setNavH);
+  window.addEventListener('orientationchange', function () { setTimeout(setNavH, 200); });
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', setNavH);
+  var _t = window.toggleSideNav;
+  if (typeof _t === 'function') {
+    window.toggleSideNav = function () {
+      setNavH();
+      var r = _t.apply(this, arguments);
+      setTimeout(setNavH, 60);
+      return r;
+    };
+  }
+})();
+</script>
+<script>
+/* ===== ইনপুট-গ্রিডগুলোকে চিহ্নিত করা (পুরনো ব্রাউজারেও কাজ করে; ডাইনামিক কন্টেন্টেও) ===== */
+(function () {
+  function mark(root) {
+    (root || document).querySelectorAll('.grid2, .grid3').forEach(function (g) {
+      var hasIg = false;
+      for (var i = 0; i < g.children.length; i++) { if (g.children[i].classList && g.children[i].classList.contains('ig')) { hasIg = true; break; } }
+      g.classList.toggle('g-in', hasIg);
+    });
+  }
+  var t = null;
+  function later() { clearTimeout(t); t = setTimeout(function () { mark(); }, 80); }
+  mark();
+  if (window.MutationObserver) new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+<script>
+/* ===== ছোট স্ক্রিনে পাশাপাশি ফিল্ড সাজানো (ফুট/ইঞ্চি ইত্যাদি এক সারিতে) — শুধু লেআউট, লজিক/আইডি অপরিবর্তিত ===== */
+(function () {
+  var mq = window.matchMedia('(max-width: 899.98px)');
+  function igCount(g) { var n = 0; for (var i = 0; i < g.children.length; i++) if (g.children[i].classList.contains('ig')) n++; return n; }
+  function isRow(el) { return el && el.nodeType === 1 && (el.classList.contains('grid2') || el.classList.contains('grid3')) && igCount(el) > 0 && igCount(el) === el.children.length; }
+  function setCols(w) {
+    var igs = w.querySelectorAll('.ig'), n = igs.length, max = 0;
+    igs.forEach(function (ig) { var l = ig.querySelector('label'); if (l) max = Math.max(max, (l.textContent || '').trim().length); });
+    var c = 2;
+    if (max <= 16 && n === 4) c = 4; else if (max <= 18 && (n === 3 || n === 6)) c = 3; else if (max <= 16 && n === 8) c = 4;
+    var v = String(c); if (w.style.getPropertyValue('--pc') !== v) w.style.setProperty('--pc', v);
+  }
+  function pack() {
+    if (!mq.matches) { unpack(); return; }
+    document.querySelectorAll('.panel, #fDimInputs, #fSqftInputs, [id$="Inputs"]').forEach(function (p) {
+      var kids = Array.prototype.slice.call(p.children), run = [];
+      function flush() {
+        if (run.length >= 2) { var w = document.createElement('div'); w.className = 'g-pack'; run[0].parentNode.insertBefore(w, run[0]); run.forEach(function (r) { w.appendChild(r); }); }
+        run = [];
+      }
+      kids.forEach(function (k) { if (isRow(k) && !k.hasAttribute('hidden') && k.style.display !== 'none') run.push(k); else flush(); });
+      flush();
+    });
+    document.querySelectorAll('.g-pack').forEach(setCols);
+  }
+  function unpack() {
+    document.querySelectorAll('.g-pack').forEach(function (w) {
+      while (w.firstChild) w.parentNode.insertBefore(w.firstChild, w);
+      w.parentNode.removeChild(w);
+    });
+  }
+  var t = null;
+  function later() { clearTimeout(t); t = setTimeout(pack, 120); }
+  pack();
+  if (mq.addEventListener) mq.addEventListener('change', later); else if (mq.addListener) mq.addListener(later);
+  if (window.MutationObserver) new MutationObserver(function () { later(); }).observe(document.body, { childList: true, subtree: true, characterData: true });
+})();
+</script>
+
+<style id="pvCompact">
+/* ===== সার্চ আইকন: ফন্টের উপর নির্ভর নয় (ফন্ট না এলে "search" লেখা প্লেসহোল্ডারের উপর বসত) ===== */
+.ord-filter .ord-search::before {
+  content: '' !important; font-family: inherit !important; font-size: 0 !important;
+  width: 20px; height: 20px; left: 13px; top: 33px;
+  background-color: var(--ink-faint);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+/* ফন্টে নেই এমন আইকনের নাম (যেমন "E", "P") আর কখনো দেখা যাবে না */
+.material-symbols-outlined.icon-missing, .msi.icon-missing { display: none !important; }
+
+/* ===== কাস্টমার প্রোফাইল: কম জায়গায় সব কন্টেন্ট ===== */
+#custViewBody { padding: 12px !important; gap: 12px !important; }
+.pv-topbar { gap: 8px; }
+.pv-topbar .pv-btn.ghost { height: 34px !important; min-height: 34px !important; padding: 0 8px 0 4px !important; }
+
+/* হিরো: ছবি | নাম | সর্বমোট — এক সারিতে */
+.pv-hero { display: grid !important; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 14px !important; border-radius: 16px; }
+.pv-avatar { width: 48px !important; height: 48px !important; border-radius: 14px !important; font-size: 20px !important; }
+.pv-hero-text { flex: none; gap: 3px; min-width: 0; }
+.pv-status { font-size: 11px; padding: 2px 9px; }
+.pv-name { font-size: clamp(16px, 4.6vw, 22px) !important; line-height: 1.2; }
+.pv-sub { font-size: 12px; }
+.pv-total { align-items: flex-end; text-align: right; }
+.pv-total span { font-size: 11px; }
+.pv-total strong { font-size: clamp(16px, 4.8vw, 22px) !important; white-space: nowrap; }
+
+/* অ্যাকশন বাটন: মোবাইলে ২×২ গ্রিড */
+.pv-actions { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; }
+.pv-actions .pv-btn { justify-content: center; height: auto !important; min-height: 38px !important; padding: 6px 8px !important; font-size: 12.5px !important; line-height: 1.2; text-align: center; gap: 6px; }
+
+/* কাস্টমার তথ্য: ২ কলাম, আইকন+লেবেল এক লাইনে, নিচে মান */
+.pv-block { gap: 8px; }
+.pv-info { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+.pv-field { flex-direction: column; align-items: stretch !important; gap: 3px !important; padding: 9px 11px !important; border-radius: 12px !important; min-width: 0; }
+.pv-field small { display: flex; align-items: center; gap: 5px; margin: 0 !important; font-size: 11px; line-height: 1.25; color: var(--ink-soft); }
+.pv-field small .material-symbols-outlined { font-size: 16px; color: var(--accent-ink); }
+.pv-field b { font-size: 13.5px !important; line-height: 1.3; overflow-wrap: anywhere; }
+@media (max-width: 719.98px) { .pv-info > .pv-field:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+
+/* হিসাবের আইটেম */
+.pv-items { gap: 8px; }
+.pv-item { padding: 11px 12px !important; gap: 10px !important; border-radius: 14px !important; }
+.pv-item-ico { width: 34px !important; height: 34px !important; border-radius: 10px !important; }
+.pv-item-ico .material-symbols-outlined { font-size: 20px !important; }
+.pv-item-title { font-size: 14px; }
+.pv-item-detail { font-size: 12.5px; }
+.pv-item-price { font-size: 15px; }
+.pv-item-right { gap: 4px; }
+.pv-item-actions .pv-btn.small { height: 30px !important; min-height: 30px !important; padding: 0 9px !important; font-size: 12px !important; }
+@media (max-width: 599.98px) { .pv-item-right { gap: 6px 10px; flex-wrap: wrap; } }
+
+/* নতুন টাইলস যোগ: মোবাইলে ৩ কলামের ছোট কার্ড */
+.pv-add-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
+.pv-add-card { align-items: center !important; text-align: center !important; padding: 10px 6px !important; gap: 4px !important; border-radius: 14px !important; }
+.pv-add-card .material-symbols-outlined { font-size: 22px !important; }
+.pv-add-card b { font-size: 12px !important; line-height: 1.25; overflow-wrap: anywhere; }
+.pv-add-card small { display: none; }
+
+/* প্রোফাইল এডিট ফর্ম */
+.pv-editform { padding: 12px !important; border-radius: 14px !important; }
+.pv-editgrid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+.pv-full { grid-column: 1 / -1; }
+.pv-fi input { height: 40px !important; }
+.pv-editactions { margin-top: 12px !important; }
+
+@media (min-width: 720px) {
+  #custViewBody { padding: 20px !important; gap: 16px !important; }
+  .pv-info { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .pv-add-grid { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+  .pv-add-card small { display: block; }
+  .pv-actions { display: flex !important; flex-wrap: wrap; }
+  .pv-actions .pv-btn { padding: 6px 16px !important; }
+  .pv-editgrid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .pv-full { grid-column: span 2; }
+}
+</style>
+<script id="iconGuard">
+/* আইকন সুরক্ষা: ফন্টের তালিকায় না-থাকা নাম লুকানো + ফন্ট ব্যর্থ হলে দ্রুত ফলব্যাক */
+(function () {
+  var link = document.querySelector('link[href*="Material+Symbols+Outlined"]');
+  var known = null;
+  if (link) {
+    var m = /icon_names=([^&]*)/.exec(link.getAttribute('href') || '');
+    if (m) known = new Set(m[1].split(','));
+  }
+  function scan(root) {
+    if (!known) return;
+    (root || document).querySelectorAll('.material-symbols-outlined:not([data-ig]), .msi:not([data-ig])').forEach(function (el) {
+      if (el.children.length) return;
+      var t = (el.textContent || '').trim();
+      if (!t) return;
+      el.setAttribute('data-ig', '1');
+      if (!known.has(t)) el.classList.add('icon-missing');
+    });
+  }
+  var pending = false;
+  function schedule() { if (pending) return; pending = true; requestAnimationFrame(function () { pending = false; scan(); }); }
+  function start() {
+    scan();
+    new MutationObserver(function (list) {
+      for (var i = 0; i < list.length; i++) { if (list[i].addedNodes.length || list[i].type === 'characterData') { schedule(); break; } }
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+  }
+  if (document.body) start(); else document.addEventListener('DOMContentLoaded', start);
+
+  function fontCheck() {
+    try {
+      var t = document.createElement('span');
+      t.className = 'material-symbols-outlined';
+      t.style.cssText = 'position:absolute;left:-9999px;top:0;font-size:40px;width:auto;max-width:none;overflow:visible;visibility:hidden;white-space:nowrap';
+      t.textContent = 'check_circle';
+      document.body.appendChild(t);
+      var w = t.getBoundingClientRect().width;
+      t.remove();
+      document.documentElement.classList.toggle('no-icons', w > 80);
+    } catch (e) {}
+  }
+  [300, 1200, 2500].forEach(function (ms) { setTimeout(fontCheck, ms); });
+  if (document.fonts && document.fonts.addEventListener) {
+    document.fonts.addEventListener('loadingdone', function () { setTimeout(fontCheck, 100); });
+    document.fonts.addEventListener('loadingerror', function () { setTimeout(fontCheck, 100); });
+  }
 })();
 </script>
 </body></html>
