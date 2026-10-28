@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap"></noscript>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile&amp;display=block" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile&amp;display=block"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile,tune&amp;display=block" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,expand_more,filter_alt_off,grid_view,hourglass_top,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,undo,verified,verified_user,visibility,visibility_off,wall_art,warning,install_mobile,tune&amp;display=block"></noscript>
 <script>/* Lite mode: কম শক্তির ডিভাইসে ব্লার/অ্যানিমেশন বন্ধ। জোর করতে: localStorage.tilesLite="1" (বন্ধ: "0") */
 (function(){try{var n=navigator,c=n.connection||{};var low=(n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||c.saveData===true||/(^|-)2g$/.test(c.effectiveType||"");var pref=null;try{pref=localStorage.getItem("tilesLite");}catch(e){}if(pref==="1"||(pref!=="0"&&low))document.documentElement.classList.add("lite");}catch(e){}})();</script>
 <script>window.__MTC_PREVIEW=(function(){try{var q=location.search;if(/[?&]login=on/.test(q))return false;if(/[?&]preview=1/.test(q))return true;var p=location.protocol,h=location.hostname;if(p!=='http:'&&p!=='https:')return true;if(!h||h==='localhost'||h==='127.0.0.1'||/\.local$/.test(h))return true;if(/(claude|anthropic|usercontent|sandbox|codepen|codesandbox|stackblitz|jsfiddle|webcontainer|htmlpreview|githack|csb\.app)/i.test(h))return true;return false;}catch(e){return false;}})();</script>
@@ -1298,6 +1298,74 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   html { overscroll-behavior-y: none; }
 }
 </style>
+<style id="update2026b">
+/* ===== আপডেট ২০২৬: সাইডবার সেটিংস সবসময় দৃশ্যমান, ভাষা বোতাম সিঙ্কের পাশে, নতুন ক্লোজ বাটন, কমপ্যাক্ট ফিল্টার ===== */
+
+/* ভাষা বোতাম: সিঙ্ক বোতামের পাশে, থিম বোতাম পরের সারিতে */
+.header-controls .lang-toggle { white-space: nowrap; flex-wrap: nowrap; }
+.header-controls #cloudWrap { order: 1; }
+.header-controls .lang-toggle { order: 2; }
+.header-controls .theme-toggle:not(#cloudWrap) { order: 3; }
+
+@media (max-width: 899.98px) {
+  /* ড্রয়ার আসল ভিউপোর্ট উচ্চতা মানবে (ব্রাউজার টুলবার/নেভ বারের নিচে ঢাকা পড়বে না) */
+  .calc-nav { height: 100vh; height: 100dvh; bottom: auto; display: flex; flex-direction: column; padding-bottom: 0 !important; overscroll-behavior: contain; scrollbar-width: thin; }
+  .calc-nav > * { flex-shrink: 0; }
+  .calc-nav .header-controls { gap: 8px !important; }
+  .calc-nav .header-controls #cloudWrap, .calc-nav .header-controls .lang-toggle { flex: 1 1 auto; justify-content: center; }
+  .calc-nav .header-controls .theme-toggle:not(#cloudWrap) { flex: 1 1 100%; }
+  .calc-nav .header-controls .theme-toggle:not(#cloudWrap) .theme-btn-group { width: 100%; display: flex; justify-content: space-between; }
+  .calc-nav .header-controls .theme-toggle:not(#cloudWrap) .theme-btn { flex: 1 1 0; justify-content: center; }
+
+  /* সেটিংস (গিয়ার) নিচে স্টিকি — স্ক্রল না করেও সবসময় দেখা যাবে; খুললে নিজস্ব স্ক্রলে অপশন দেখাবে */
+  .nav-settings { position: sticky; bottom: 0; z-index: 3; margin-top: auto; padding: 8px 0 calc(10px + env(safe-area-inset-bottom)); background: var(--surface); box-shadow: 0 -10px 14px -10px rgba(15,23,42,.18); }
+  .nav-set-menu { max-height: min(46vh, 320px); max-height: min(46dvh, 320px); overflow-y: auto; overscroll-behavior: contain; padding-bottom: 2px; }
+  .nav-set-toggle { min-height: 46px; }
+}
+
+/* ===== নতুন ক্লোজ বাটন (গ্রেডিয়েন্ট রিং + গ্লো) ===== */
+@media (max-width: 899.98px) {
+  .nav-close { position: relative; isolation: isolate; width: 42px !important; height: 42px !important; border-radius: 15px !important; border: 0 !important; background: var(--surface) !important; color: var(--accent-1); box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--accent-1) 55%, transparent); transition: transform .25s var(--ease), box-shadow .25s var(--ease), color .2s; -webkit-tap-highlight-color: transparent; }
+  .nav-close .nx-ring { position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: conic-gradient(from 200deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-1)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); pointer-events: none; z-index: -1; }
+  .nav-close::after { content: ""; position: absolute; inset: 5px; border-radius: 11px; background: color-mix(in srgb, var(--accent-2) 10%, transparent); z-index: -1; transition: background .2s, transform .3s var(--ease); }
+  .nav-close .nx-ico { font-size: 22px; font-weight: 600; width: 1em; max-width: 1em; transition: transform .35s var(--ease); font-variation-settings: 'wght' 500; }
+  .nav-close:active { transform: scale(.92); }
+  .nav-close:active .nx-ico { transform: rotate(90deg); }
+  .nav-close:active::after { background: color-mix(in srgb, var(--accent-3) 22%, transparent); transform: scale(1.08); }
+  .nav-close:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
+  .nav-close svg.nx-fallback { display: none; width: 20px; height: 20px; }
+  html.no-icons .nav-close svg.nx-fallback { display: block; }
+  html.no-icons .nav-close .nx-ico { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .nav-close, .nav-close .nx-ico, .nav-close::after { transition: none; } }
+
+/* ===== কমপ্যাক্ট ফিল্টার: ছোট স্ক্রিনে বড় জায়গা নেবে না ===== */
+.of-toggle { display: none; }
+@media (max-width: 899.98px) {
+  .ord-filter { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 10px; margin-bottom: 10px; border-radius: 14px; }
+  .ord-filter .ord-search, .ord-filter .of-toggle { grid-column: 1 / -1; }
+  .ord-filter .ig { min-width: 0; gap: 4px; }
+  .ord-filter .ig label { font-size: 10.5px; letter-spacing: .03em; text-transform: none; line-height: 1.25; }
+  .ord-filter .ig input, .ord-filter .ig select { height: 40px; width: 100%; min-width: 0; font-size: 16px; padding: 0 10px; border-radius: 11px; }
+  .ord-filter .ig select { padding-right: 30px; background-position: right 11px center; }
+  .ord-filter .ord-search input { padding-left: 38px; }
+  .ord-filter .ord-search::before { font-size: 19px; top: 27px; left: 11px; }
+  .ord-filter .ig:last-child .ord-btn { height: 40px; padding: 0 10px; font-size: 13px; width: 100%; justify-content: center; }
+  .ord-filter > .ig:not(.ord-search) { grid-column: span 2; }
+  .of-toggle { display: inline-flex; align-items: center; gap: 8px; width: 100%; min-height: 38px; padding: 6px 12px; border-radius: 11px; border: 1px solid var(--border); background: var(--surface); color: var(--ink); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .of-toggle .msi { font-size: 18px; color: var(--accent-1); }
+  .of-toggle .of-lbl { flex: 1 1 auto; text-align: left; }
+  .of-toggle .of-dot { display: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-3); }
+  .of-toggle.has-active .of-dot { display: inline-block; }
+  .of-toggle .of-chev { transition: transform .25s var(--ease); }
+  .ord-filter:not(.of-closed) .of-toggle .of-chev { transform: rotate(180deg); }
+  .ord-filter.of-closed > .ig:not(.ord-search) { display: none; }
+  .ord-count { margin-bottom: 8px; }
+}
+@media (max-width: 380px) {
+  .ord-filter > .ig:not(.ord-search) { grid-column: 1 / -1; }
+}
+</style>
 </head>
 <body>
 
@@ -1326,13 +1394,6 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
           <button type="button" class="theme-btn" id="cloudBtn" onclick="cloudOpen()"><span class="material-symbols-outlined msi" id="cloudIcon">cloud_off</span><span id="cloudLbl">Cloud</span></button>
         </div>
       </div>
-      <div class="theme-toggle">
-        <div class="theme-btn-group">
-          <button class="theme-btn" id="themeLight" onclick="setTheme('light')"><span class="material-symbols-outlined msi">light_mode</span><span data-en="Light">লাইট</span></button>
-          <button class="theme-btn" id="themeDark" onclick="setTheme('dark')"><span class="material-symbols-outlined msi">dark_mode</span><span data-en="Dark">ডার্ক</span></button>
-          <button class="theme-btn" id="themeSystem" onclick="setTheme('system')"><span class="material-symbols-outlined msi">brightness_auto</span><span data-en="System">সিস্টেম</span></button>
-        </div>
-      </div>
       <div class="lang-toggle">
         <span class="lang-lbl active" id="lblBn" onclick="setLanguage('bn')">বাংলা</span>
         <label class="lang-switch">
@@ -1340,6 +1401,13 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
           <span class="lang-slider"></span>
         </label>
         <span class="lang-lbl" id="lblEn" onclick="setLanguage('en')">EN</span>
+      </div>
+      <div class="theme-toggle">
+        <div class="theme-btn-group">
+          <button class="theme-btn" id="themeLight" onclick="setTheme('light')"><span class="material-symbols-outlined msi">light_mode</span><span data-en="Light">লাইট</span></button>
+          <button class="theme-btn" id="themeDark" onclick="setTheme('dark')"><span class="material-symbols-outlined msi">dark_mode</span><span data-en="Dark">ডার্ক</span></button>
+          <button class="theme-btn" id="themeSystem" onclick="setTheme('system')"><span class="material-symbols-outlined msi">brightness_auto</span><span data-en="System">সিস্টেম</span></button>
+        </div>
       </div>
     </div>
   </header>
@@ -5464,7 +5532,7 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
   const brand = document.createElement('div'); brand.className = 'nav-brand';
   const row = document.createElement('div'); row.className = 'brand-row'; brand.appendChild(row);
   const closeBtn = document.createElement('button'); closeBtn.type = 'button'; closeBtn.className = 'nav-close'; closeBtn.setAttribute('aria-label', 'Close menu');
-  closeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  closeBtn.innerHTML = '<span class="nx-ring" aria-hidden="true"></span><span class="material-symbols-outlined msi nx-ico">close</span><svg class="nx-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
   closeBtn.addEventListener('click', () => { if (typeof toggleSideNav === 'function') toggleSideNav(false); });
   let meta = document.querySelector('meta[name="theme-color"]');
   if (!meta) { meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
@@ -5672,6 +5740,40 @@ if ('serviceWorker' in navigator) {
     if (isIOS) showToast(tr('Safari-তে Share → Add to Home Screen চাপুন', 'In Safari tap Share → Add to Home Screen'));
     else showToast(tr('ব্রাউজারের মেনু থেকে "Install" বেছে নিন', 'Choose "Install" from your browser menu'));
   };
+})();
+</script>
+<script>
+/* ===== কমপ্যাক্ট ফিল্টার টগল (ছোট স্ক্রিনে ফিল্টার ভাঁজ করা যায়; লজিক ও আইডি অপরিবর্তিত) ===== */
+(function filterCollapse() {
+  const mq = window.matchMedia ? window.matchMedia('(max-width: 899.98px)') : { matches: false };
+  const lblBn = 'ফিল্টার ও সাজান', lblEn = 'Filter & Sort';
+  document.querySelectorAll('.ord-filter').forEach(f => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'of-toggle';
+    b.setAttribute('aria-expanded', 'false');
+    b.innerHTML = '<span class="material-symbols-outlined msi">tune</span><span class="of-lbl" data-en="' + lblEn + '" data-bn="' + lblBn + '"></span><span class="of-dot"></span><span class="material-symbols-outlined msi of-chev">expand_more</span>';
+    b.querySelector('.of-lbl').textContent = (typeof currentLang !== 'undefined' && currentLang === 'en') ? lblEn : lblBn;
+    const search = f.querySelector('.ord-search');
+    if (search && search.nextSibling) f.insertBefore(b, search.nextSibling); else f.insertBefore(b, f.firstChild);
+    if (mq.matches) f.classList.add('of-closed');
+    b.addEventListener('click', () => {
+      const closed = f.classList.toggle('of-closed');
+      b.setAttribute('aria-expanded', closed ? 'false' : 'true');
+    });
+    const refresh = () => {
+      let active = false;
+      f.querySelectorAll('input:not([type=search]), select').forEach(el => {
+        if (el.tagName === 'SELECT') { const o = el.options[el.selectedIndex]; if (o && !o.defaultSelected) active = true; }
+        else if (el.value) active = true;
+      });
+      b.classList.toggle('has-active', active);
+    };
+    f.addEventListener('input', refresh); f.addEventListener('change', refresh);
+    f.addEventListener('click', () => setTimeout(refresh, 0));
+    refresh();
+  });
+  const onChange = () => document.querySelectorAll('.ord-filter').forEach(f => { if (!mq.matches) f.classList.remove('of-closed'); else if (!f.dataset.touched) f.classList.add('of-closed'); });
+  if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
 })();
 </script>
 </body></html>
