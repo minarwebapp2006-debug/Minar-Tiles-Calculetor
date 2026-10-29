@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap"></noscript>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,paid,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,tune,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,paid,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,summarize,touch_app,tune,undo,verified,verified_user,visibility,visibility_off,wall_art,warning&amp;display=block"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,content_paste,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,note_add,paid,palette,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,sticky_note_2,summarize,touch_app,tune,undo,verified,verified_user,view_quilt,visibility,visibility_off,wall_art,warning&amp;display=block" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,content_paste,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,note_add,paid,palette,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,sticky_note_2,summarize,touch_app,tune,undo,verified,verified_user,view_quilt,visibility,visibility_off,wall_art,warning&amp;display=block"></noscript>
 <script>/* Lite mode: কম শক্তির ডিভাইসে ব্লার/অ্যানিমেশন বন্ধ। জোর করতে: localStorage.tilesLite="1" (বন্ধ: "0") */
 (function(){try{var n=navigator,c=n.connection||{};var low=(n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||c.saveData===true||/(^|-)2g$/.test(c.effectiveType||"");var pref=null;try{pref=localStorage.getItem("tilesLite");}catch(e){}if(pref==="1"||(pref!=="0"&&low))document.documentElement.classList.add("lite");}catch(e){}})();</script>
 <script>window.__MTC_PREVIEW=(function(){try{var q=location.search;if(/[?&]login=on/.test(q))return false;if(/[?&]preview=1/.test(q))return true;var p=location.protocol,h=location.hostname;if(p!=='http:'&&p!=='https:')return true;if(!h||h==='localhost'||h==='127.0.0.1'||/\.local$/.test(h))return true;if(/(claude|anthropic|usercontent|sandbox|codepen|codesandbox|stackblitz|jsfiddle|webcontainer|htmlpreview|githack|csb\.app)/i.test(h))return true;return false;}catch(e){return false;}})();</script>
@@ -1550,48 +1550,92 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
 }
 </style>
 <style id="printReadable">
-/* ===== প্রিন্ট / PDF: বড় ও স্পষ্ট ফন্ট (মোবাইল ও যেকোনো ডিভাইসে সহজে পড়া যায়) — হিসাব ও ডেটা অপরিবর্তিত ===== */
+/* ===== Save PDF বোতামের নতুন প্রিন্ট ডিজাইন (html.print-pdf ক্লাস থাকলেই কাজ করে); Print বোতামে পূর্বের মূল ডিজাইন ব্যবহার হয় =====
+   (পুরনো বিবরণ) প্রিন্ট / PDF: বড় ও স্পষ্ট ফন্ট (মোবাইল ও যেকোনো ডিভাইসে সহজে পড়া যায়) — হিসাব ও ডেটা অপরিবর্তিত ===== */
 @media print {
-  @page { size: A4 portrait; margin: 0.35in; }
-  html, body { font-size: 10.5pt !important; line-height: 1.4; }
-  #printSection { line-height: 1.4; -webkit-font-smoothing: antialiased; }
-  #printSection .print-invoice-box { padding: 14px 16px; border-width: 1.5px; }
-  #printSection .print-header { padding-bottom: 3px; margin-bottom: 5px; }
-  #printSection .print-header-titles h2 { font-size: 13pt; line-height: 1.1; }
-  #printSection .print-header-titles p { font-size: 8.5pt; margin-top: 0; color: #334155; }
-  #printSection .print-meta { font-size: 9.5pt; line-height: 1.25; color: #000; font-weight: 600; }
-  #printSection .print-meta strong { font-weight: 800; color: #0B2A43; }
-  #printSection .pt-owner, #printSection .rp-owner { font-size: 9.5pt; padding-bottom: 2px; margin-bottom: 4px; }
-  #printSection .print-customer { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; align-items: start; padding: 11px 14px; margin-top: 0; margin-bottom: 12px; border: 1.5px solid #64748B; background: #F8FBFD; font-size: 12.5pt; }
-  #printSection .print-customer .pc-row { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; min-width: 0; font-weight: 700; color: #000; }
-  #printSection .print-customer .pc-row > span { overflow-wrap: anywhere; }
-  #printSection .print-customer .pc-lbl { font-size: 9.5pt; font-weight: 700; color: #475569; letter-spacing: .02em; white-space: normal; }
-  #printSection .print-customer .pc-row:nth-child(1) { grid-column: 1 / -1; padding-bottom: 8px; border-bottom: 1px dashed #94A3B8; }
-  #printSection .print-customer .pc-row:nth-child(1) > span:last-child { font-size: 15pt; font-weight: 800; }
-  #printSection .print-customer .pc-row:nth-child(2) { grid-column: 1; grid-row: 2; }
-  #printSection .print-customer .pc-row:nth-child(4) { grid-column: 2; grid-row: 2; }
-  #printSection .print-customer .pc-row:nth-child(3) { grid-column: 1; grid-row: 3; }
-  #printSection .print-customer .pc-row:nth-child(5) { grid-column: 2; grid-row: 3; }
-  #printSection .pt-title { font-size: 12pt; margin: 14px 0 6px; }
-  #printSection .pt, #printSection .pt-detail { font-size: 11.5pt; }
-  #printSection .rp-table { font-size: 11.5pt; }
-  #printSection .pt th, #printSection .pt td, #printSection .pt-detail th, #printSection .pt-detail td,
-  #printSection .rp-table th, #printSection .rp-table td { padding: 3px 5px; border-color: #94A3B8; line-height: 1.3; }
-  #printSection .pt th, #printSection .pt-detail th, #printSection .rp-table th { background: #E6EFF7; font-weight: 700; color: #0B2A43; }
-  #printSection .pt tfoot td { font-size: 12pt; }
-  #printSection .pt { break-inside: avoid; page-break-inside: avoid; margin-bottom: 4px; }
-  #printSection .pt thead, #printSection .rp-table thead { display: table-header-group; }
-  #printSection .pt tr, #printSection .rp-table tr { break-inside: avoid; page-break-inside: avoid; }
+  html.print-pdf, html.print-pdf body { font-size: 10.5pt !important; line-height: 1.4; }
+  html.print-pdf #printSection { line-height: 1.4; -webkit-font-smoothing: antialiased; }
+  html.print-pdf #printSection .print-invoice-box { padding: 14px 16px; border-width: 1.5px; }
+  html.print-pdf #printSection .print-header { padding-bottom: 3px; margin-bottom: 5px; }
+  html.print-pdf #printSection .print-header-titles h2 { font-size: 12pt; line-height: 1.1; }
+  html.print-pdf #printSection .print-header-titles p { font-size: 8pt; margin-top: 0; color: #334155; }
+  html.print-pdf #printSection .print-meta { font-size: 8.5pt; line-height: 1.25; color: #000; font-weight: 400; }
+  html.print-pdf #printSection .print-meta strong { font-weight: 400; color: #0B2A43; }
+  html.print-pdf #printSection .pt-owner, html.print-pdf #printSection .rp-owner { font-size: 9.5pt; padding-bottom: 2px; margin-bottom: 4px; }
+  html.print-pdf #printSection .print-customer { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; align-items: start; padding: 11px 14px; margin-top: 0; margin-bottom: 12px; border: 1.5px solid #64748B; background: #F8FBFD; font-size: 14.5pt; }
+  html.print-pdf #printSection .print-customer .pc-row { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; min-width: 0; font-weight: 700; color: #000; }
+  html.print-pdf #printSection .print-customer .pc-row > span { overflow-wrap: anywhere; }
+  html.print-pdf #printSection .print-customer .pc-lbl { font-size: 10pt; font-weight: 700; color: #475569; letter-spacing: .02em; white-space: normal; }
+  html.print-pdf #printSection .print-customer .pc-row:nth-child(1) { grid-column: 1 / -1; padding-bottom: 8px; border-bottom: 1px dashed #94A3B8; }
+  html.print-pdf #printSection .print-customer .pc-row:nth-child(1) > span:last-child { font-size: 18pt; font-weight: 800; }
+  html.print-pdf #printSection .print-customer .pc-row:nth-child(2) { grid-column: 1; grid-row: 2; font-size: 15pt; }
+  html.print-pdf #printSection .print-customer .pc-row:nth-child(4) { grid-column: 2; grid-row: 2; }
+  html.print-pdf #printSection .print-customer .pc-row:nth-child(3) { grid-column: 1; grid-row: 3; font-size: 15pt; }
+  html.print-pdf #printSection .print-customer .pc-row:nth-child(5) { grid-column: 2; grid-row: 3; }
+  html.print-pdf #printSection .pt-title { font-size: 12pt; margin: 14px 0 6px; }
+  #printSection .pt td.pt-size { white-space: nowrap; }
+  html.print-pdf #printSection .pt td.pt-size { font-size: 11.5pt; }
+  html.print-pdf #printSection .pt, html.print-pdf #printSection .pt-detail { font-size: 12pt; }
+  /* কাস্টমারের কেনা প্রোডাক্ট টেবিলের ডেটা (মডেল কোড, মাপ, Sqft, দাম, পিস, বক্স/লুজ, মূল্য): 13pt */
+  html.print-pdf #printSection .pt tbody td { font-size: 14pt; }
+  html.print-pdf #printSection .rp-table { font-size: 11.5pt; }
+  html.print-pdf #printSection .pt th, html.print-pdf #printSection .pt td, html.print-pdf #printSection .pt-detail th, html.print-pdf #printSection .pt-detail td,
+  html.print-pdf #printSection .rp-table th, html.print-pdf #printSection .rp-table td { padding: 3px 5px; border-color: #94A3B8; line-height: 1.3; }
+  html.print-pdf #printSection .pt th, html.print-pdf #printSection .pt-detail th, html.print-pdf #printSection .rp-table th { background: #E6EFF7; font-weight: 700; color: #0B2A43; }
+  html.print-pdf #printSection .pt tfoot td { font-size: 12.5pt; }
+  /* Total সারি: ভেতরে কলামের দাগ নেই, শুধু টেবিলের লাইনের মতো একই স্ট্রোকের একটি বক্স */
+  html.print-pdf #printSection .pt tfoot td { border-top: 1px solid #94A3B8; border-bottom: 1px solid #94A3B8; border-left: none; border-right: none; }
+  html.print-pdf #printSection .pt tfoot td:first-child { border-left: 1px solid #94A3B8; }
+  html.print-pdf #printSection .pt tfoot td:last-child { border-right: 1px solid #94A3B8; }
+  
+  
+  html.print-pdf #printSection .pt tbody td { font-weight: 400; color: #000; }
+  html.print-pdf #printSection .pt { break-inside: avoid; page-break-inside: avoid; margin-bottom: 4px; }
+  html.print-pdf #printSection .pt thead, html.print-pdf #printSection .rp-table thead { display: table-header-group; }
+  html.print-pdf #printSection .pt tr, html.print-pdf #printSection .rp-table tr { break-inside: avoid; page-break-inside: avoid; }
   /* কাস্টমার রিপোর্ট প্রিন্ট: একই বড়, স্পষ্ট ও গাঢ় ডেটা */
-    #printSection .rp-table td { font-weight: 600; color: #000; }
-  #printSection .pt th, #printSection .rp-table th { font-size: 10.5pt; }
-  #printSection .rp-table td:nth-child(1), #printSection .rp-table td:nth-child(4), #printSection .rp-table td:nth-child(5), #printSection .rp-table td:nth-child(6) { white-space: nowrap; }
-  #printSection .rp-table tfoot td { font-size: 13pt; font-weight: 800; color: #0B2A43; }
-  #printSection .rp-table tfoot td:first-child { border-top: 1.5px solid #64748B; }
-  #printSection .print-grand-total { padding: 10px 14px; margin-top: 12px; }
-  #printSection .print-grand-total .lbl { font-size: 12.5pt; }
-  #printSection .print-grand-total .val { font-size: 17pt; }
-  #printSection .print-footer { font-size: 9.5pt; margin-top: 14px; padding-top: 6px; color: #475569; }
+    html.print-pdf #printSection .rp-table td { font-weight: 600; color: #000; }
+  html.print-pdf #printSection .pt th, html.print-pdf #printSection .rp-table th { font-size: 11.5pt; }
+  html.print-pdf #printSection .rp-table td:nth-child(1), html.print-pdf #printSection .rp-table td:nth-child(4), html.print-pdf #printSection .rp-table td:nth-child(5), html.print-pdf #printSection .rp-table td:nth-child(6) { white-space: nowrap; }
+  html.print-pdf #printSection .rp-table tfoot td { font-size: 13pt; font-weight: 800; color: #0B2A43; }
+  html.print-pdf #printSection .rp-table tfoot td:first-child { border-top: 1.5px solid #64748B; }
+  html.print-pdf #printSection .print-grand-total { padding: 10px 14px; margin-top: 12px; }
+  html.print-pdf #printSection .print-grand-total .lbl { font-size: 12.5pt; }
+  html.print-pdf #printSection .print-grand-total .val { font-size: 17pt; }
+  html.print-pdf #printSection .print-footer { font-size: 10pt; margin-top: 14px; padding-top: 6px; color: #475569; }
+}
+
+/* ===== নোট (Add Note) ফিচার ===== */
+.pv-fi textarea { min-height: 110px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); padding: 10px 12px; font-size: 14.5px; line-height: 1.5; color: var(--ink); font-family: inherit; resize: vertical; width: 100%; box-sizing: border-box; }
+.pv-fi textarea:focus { outline: none; border-color: var(--accent-ink); }
+
+/* ===== Save Note (Settings) মোডাল ===== */
+#noteTplModal { position: fixed; inset: 0; z-index: 400; display: none; align-items: center; justify-content: center; background: rgba(15,23,42,.55); padding: 16px; }
+#noteTplModal.open { display: flex; }
+#noteTplModal .cbox { background: var(--surface); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; width: 100%; max-width: 460px; max-height: 90vh; overflow: auto; }
+#noteTplModal h3 { margin: 0 0 6px; font-size: 17px; display: flex; align-items: center; gap: 8px; }
+#noteTplModal h3 .msi { color: var(--accent-2); font-size: 20px; }
+#noteTplModal .cnote { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 14px; line-height: 1.5; }
+#noteTplModal textarea { min-height: 170px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); padding: 10px 12px; font-size: 14.5px; line-height: 1.5; color: var(--ink); font-family: inherit; resize: vertical; width: 100%; box-sizing: border-box; }
+#noteTplModal textarea:focus { outline: none; border-color: var(--accent-ink); }
+#noteTplModal .crow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+#ntMsg { margin-top: 10px; font-size: 12.5px; min-height: 16px; color: var(--ink-soft); }
+.pv-noteform { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; gap: 14px; }
+.pv-note-text { font-size: 14px; line-height: 1.55; color: var(--ink); white-space: pre-wrap; word-break: break-word; }
+.pv-item.is-note .pv-item-ico { background: #FEF3C7; }
+.pv-item.is-note .pv-item-ico .material-symbols-outlined { color: #B45309; }
+[data-theme="dark"] .pv-item.is-note .pv-item-ico { background: rgba(251, 191, 36, 0.15); }
+[data-theme="dark"] .pv-item.is-note .pv-item-ico .material-symbols-outlined { color: #FBBF24; }
+@media print {
+  .pt-notes { margin-top: 8px; }
+  .pt-notes-title { font-size: 9pt; font-weight: bold; margin: 0 0 3px; color: #0F172A; page-break-after: avoid; break-after: avoid; }
+  .pt-note { display: flex; gap: 6px; align-items: flex-start; border: 1px solid #CBD5E1; border-radius: 4px; padding: 4px 6px; margin-bottom: 3px; font-size: 8.5pt; page-break-inside: avoid; break-inside: avoid; }
+  .pt-note-no { font-weight: bold; color: #475569; white-space: nowrap; }
+  .pt-note-text { white-space: pre-wrap; overflow-wrap: anywhere; flex: 1; min-width: 0; font-weight: 600; }
+  #printSection .pt-note, #printSection .pt-note .pt-note-text { font-weight: 600; }
+  html.print-pdf #printSection .pt-notes { margin-top: 12px; }
+  html.print-pdf #printSection .pt-notes-title { font-size: 12pt; margin-bottom: 5px; }
+  html.print-pdf #printSection .pt-note { font-size: 12.5pt; padding: 6px 9px; margin-bottom: 5px; border-color: #94A3B8; }
 }
 </style>
 </head>
@@ -1643,8 +1687,8 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   <nav class="calc-nav">
     <button class="calc-nav-item active" onclick="switchTab('tabCustomer', this)"><span class="material-symbols-outlined msi">person</span><span data-en="Customer Profile">কাস্টমার প্রোফাইল</span></button>
     <button class="calc-nav-item" onclick="switchTab('tabFloor', this)"><span class="material-symbols-outlined msi">grid_view</span><span data-en="Floor &amp; Skirting">ফ্লোর ও স্কার্টিং টাইলস</span></button>
-    <button class="calc-nav-item" onclick="switchTab('tabWall', this)"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Decorate Wall Tiles">ডেকোরেট ওয়াল টাইলস</span></button>
-    <button class="calc-nav-item" onclick="switchTab('tabWallX', this)"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Wall Tiles">ওয়াল টাইলস</span></button>
+    <button class="calc-nav-item" onclick="switchTab('tabWall', this)"><span class="material-symbols-outlined msi">palette</span><span data-en="Decorate Wall Tiles">ডেকোরেট ওয়াল টাইলস</span></button>
+    <button class="calc-nav-item" onclick="switchTab('tabWallX', this)"><span class="material-symbols-outlined msi">view_quilt</span><span data-en="Wall Tiles">ওয়াল টাইলস</span></button>
     <button class="calc-nav-item" onclick="switchTab('tabTak', this)"><span class="material-symbols-outlined msi">kitchen</span><span data-en="Shelf / Kitchen">তাক / কিচেন স্ল্যাব</span></button>
     <button class="calc-nav-item" onclick="switchTab('tabStairs', this)"><span class="material-symbols-outlined msi">stairs</span><span data-en="Stair Tiles">সিঁড়ির টাইলস</span></button>
     <button class="calc-nav-item" onclick="switchTab('tabCart', this)"><span class="material-symbols-outlined msi">add_shopping_cart</span><span data-en="Add Cart Item">কার্ট আইটেম যোগ করুন</span></button>
@@ -1657,6 +1701,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       <div class="nav-set-menu" id="navSetMenu">
         <div class="nav-set-email" id="navSetEmail"><span class="material-symbols-outlined msi">account_circle</span><span id="navSetEmailTxt">-</span></div>
         <button type="button" class="nav-set-btn" onclick="openAppOwner()"><span class="material-symbols-outlined msi">admin_panel_settings</span><span data-en="App Owner">অ্যাপ ওনার</span><span class="nav-badge" id="ownerBadge" style="display:none">0</span></button>
+        <button type="button" class="nav-set-btn" onclick="openSaveNote()"><span class="material-symbols-outlined msi">sticky_note_2</span><span data-en="Save Note">সেভ নোট</span></button>
         <button type="button" class="nav-set-btn" onclick="openChangePass()"><span class="material-symbols-outlined msi">lock_reset</span><span data-en="Change Password">পাসওয়ার্ড পরিবর্তন</span></button>
         <button type="button" class="nav-set-btn install-app-btn" id="installAppBtn" style="display:none" onclick="installApp()"><span class="material-symbols-outlined msi">install_mobile</span><span data-en="Install App">অ্যাপ ইনস্টল করুন</span></button>
         <button type="button" class="nav-set-btn danger" onclick="navLogout()"><span class="material-symbols-outlined msi">logout</span><span data-en="Logout">লগআউট</span></button>
@@ -1674,8 +1719,8 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
         <div id="editOrderTitle" style="margin-bottom:10px;"></div>
         <div class="action-bar" style="margin-top:0;">
           <button type="button" class="ord-btn" onclick="activateTab('tabFloor')"><span class="material-symbols-outlined msi">grid_view</span><span data-en="Floor &amp; Skirting">ফ্লোর ও স্কার্টিং</span></button>
-          <button type="button" class="ord-btn" onclick="activateTab('tabWall')"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Decorate Wall Tiles">ডেকোরেট ওয়াল টাইলস</span></button>
-          <button type="button" class="ord-btn" onclick="activateTab('tabWallX')"><span class="material-symbols-outlined msi">wall_art</span><span data-en="Wall Tiles">ওয়াল টাইলস</span></button>
+          <button type="button" class="ord-btn" onclick="activateTab('tabWall')"><span class="material-symbols-outlined msi">palette</span><span data-en="Decorate Wall Tiles">ডেকোরেট ওয়াল টাইলস</span></button>
+          <button type="button" class="ord-btn" onclick="activateTab('tabWallX')"><span class="material-symbols-outlined msi">view_quilt</span><span data-en="Wall Tiles">ওয়াল টাইলস</span></button>
           <button type="button" class="ord-btn" onclick="activateTab('tabTak')"><span class="material-symbols-outlined msi">kitchen</span><span data-en="Shelf / Kitchen">তাক / কিচেন স্ল্যাব</span></button>
           <button type="button" class="ord-btn" onclick="activateTab('tabStairs')"><span class="material-symbols-outlined msi">stairs</span><span data-en="Stair Tiles">সিঁড়ির টাইলস</span></button>
         </div>
@@ -2259,7 +2304,8 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
         <div class="ig"><label data-en="Confirmed to">কনফার্ম পর্যন্ত (তারিখ)</label><input type="date" id="rep_to" oninput="renderReport()" /></div>
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn primary" onclick="renderReport()"><span class="material-symbols-outlined msi">search</span><span data-en="Show">দেখুন</span></button></div>
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="document.getElementById('rep_from').value='';document.getElementById('rep_to').value='';renderReport()"><span class="material-symbols-outlined msi">filter_alt_off</span><span data-en="Clear">ফিল্টার মুছুন</span></button></div>
-        <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="printReport()"><span class="material-symbols-outlined msi">print</span><span data-en="Print report">রিপোর্ট প্রিন্ট</span></button></div>
+        <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="printReport('pdf')"><span class="material-symbols-outlined msi">picture_as_pdf</span><span data-en="Save PDF">PDF সেভ</span></button></div>
+        <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="printReport()"><span class="material-symbols-outlined msi">print</span><span data-en="Print">প্রিন্ট</span></button></div>
       </div>
       <div class="ord-list" id="rep_list"></div>
       <div class="card" id="rep_total" style="margin-top:14px;"></div>
@@ -2414,6 +2460,18 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
     </div>
     <p class="cnote" id="ownerAccount">-</p>
     <div class="crow"><button type="button" class="ord-btn" onclick="closeAppOwner()"><span class="material-symbols-outlined msi">close</span><span data-en="Close">বন্ধ</span></button></div>
+  </div>
+</div>
+<div id="noteTplModal" onclick="if(event.target===this)closeSaveNote()">
+  <div class="cbox">
+    <h3><span class="material-symbols-outlined msi">sticky_note_2</span><span data-en="Save Note">সেভ নোট</span></h3>
+    <p class="cnote" data-en="This note is saved to the cloud (Supabase) and can be edited any time. Use the “Past Note” button in a customer profile to insert it quickly.">এই নোটটি ক্লাউডে (Supabase) সেভ থাকবে এবং যেকোনো সময় এডিট করা যাবে। কাস্টমার প্রোফাইলে “Past Note” বাটন চাপলে এটি দ্রুত বসে যাবে।</p>
+    <textarea id="nt_text" maxlength="3000" autocomplete="off"></textarea>
+    <div class="crow">
+      <button type="button" class="ord-btn primary" onclick="saveNoteTemplate()"><span class="material-symbols-outlined msi">save</span><span data-en="Save Note">সেভ নোট</span></button>
+      <button type="button" class="ord-btn" onclick="closeSaveNote()"><span class="material-symbols-outlined msi">close</span><span data-en="Cancel">বাতিল</span></button>
+    </div>
+    <div id="ntMsg"></div>
   </div>
 </div>
 <div id="ownerDash" onclick="if(event.target===this)ownerDashClose()">
@@ -2896,7 +2954,8 @@ const CART_LABEL = {
   wall:   () => tr('ডেকোরেট ওয়াল টাইলস', 'Decorate Wall Tiles'),
   wallx:  () => tr('ওয়াল টাইলস', 'Wall Tiles'),
   tak:    () => tr('তাক / কিচেন স্ল্যাব', 'Shelf / Kitchen Slab'),
-  stairs: () => tr('সিঁড়ি ও চৌকি', 'Stairs & Chowki')
+  stairs: () => tr('সিঁড়ি ও চৌকি', 'Stairs & Chowki'),
+  note:   () => tr('নোট', 'Note')
 };
 
 function loadCart() {
@@ -3275,6 +3334,7 @@ function editItem(source, index) {
   const list = source === 'cart' ? cart : ((orderOf(source) || {}).cartItems);
   const it = list && list[index];
   if (!it) return;
+  if (it.type === 'note') { if (source !== 'cart') openNoteForm(source, index); return; }
   captureOrigin();
   itemEdit = { source, index, type: it.type };
   applyGroupInputs(it.type, it.inputs);
@@ -3372,15 +3432,19 @@ function editCartCustomer() {
 /* --- কাস্টমার প্রোফাইল পেজ: তালিকায় ক্লিক করলে বিস্তারিত ও অপশনগুলো --- */
 function closeCustomerView() {}
 
-const PV_ICON = { floor: 'grid_view', wall: 'wall_art', wallx: 'wall_art', tak: 'kitchen', stairs: 'stairs' };
+const PV_ICON = { floor: 'grid_view', wall: 'palette', wallx: 'view_quilt', tak: 'kitchen', stairs: 'stairs', note: 'sticky_note_2' };
 
 let pvEditing = null;    // order whose profile edit form is open
+let pvNoting = null;     // { id, index (null = new note), draft } — note form state
 let addTilesMode = null; // order that new calculations are being added to
 let addTilesType = null; // calculator chosen for the new calculation
 
 function openCustomerView(id) {
   const o = orders.find(x => x.id === id);
   if (!o) return;
+  const _pnEl = document.getElementById('pn_text');
+  if (pvNoting && _pnEl) pvNoting.draft = _pnEl.value;
+  if (pvNoting && pvNoting.id !== id) pvNoting = null;
   window._pvOpenId = id;
   const serial = filteredOrders(o.status).indexOf(o) + 1;
   const backTab = CART_STATUS_TAB[o.status] || 'tabPending';
@@ -3420,7 +3484,34 @@ function openCustomerView(id) {
       </div>
     </div>`;
 
+  const noting = !!(pvNoting && pvNoting.id === id);
+  const noteForm = noting ? `
+    <div class="pv-noteform">
+      <label class="pv-fi"><span>${pvNoting.index == null ? tr('নতুন নোট', 'New note') : tr('নোট এডিট', 'Edit note') + ' #' + (pvNoting.index + 1)}</span>
+        <textarea id="pn_text" maxlength="3000" placeholder="${tr('এখানে নোট লিখুন…', 'Write your note here…')}">${escapeHtml(pvNoting.draft || '')}</textarea>
+      </label>
+      <div class="pv-editactions">
+        <button type="button" class="pv-btn primary" onclick="saveNote('${o.id}')"><span class="material-symbols-outlined">save</span>${tr('নোট সেভ করুন', 'Save note')}</button>
+        <button type="button" class="pv-btn" onclick="cancelNoteForm('${o.id}')"><span class="material-symbols-outlined">close</span>${tr('বাতিল', 'Cancel')}</button>
+      </div>
+    </div>` : '';
+
   const items = (o.cartItems || []).map((c, i) => {
+    if (c.type === 'note') {
+      return `<div class="pv-item is-note">
+      <div class="pv-item-ico"><span class="material-symbols-outlined">sticky_note_2</span></div>
+      <div class="pv-item-body">
+        <div class="pv-item-title">${tr('নোট', 'Note')} <span class="pv-no">#${i + 1}</span></div>
+        <div class="pv-note-text">${escapeHtml(c.text || '')}</div>
+      </div>
+      <div class="pv-item-right">
+        <div class="pv-item-actions">
+          <button type="button" class="pv-btn small" onclick="editItem('${o.id}', ${i})"><span class="material-symbols-outlined">edit</span>${tr('এডিট', 'Edit')}</button>
+          <button type="button" class="pv-btn small danger" onclick="deleteOrderItem('${o.id}', ${i})"><span class="material-symbols-outlined">delete</span>${tr('মুছুন', 'Delete')}</button>
+        </div>
+      </div>
+    </div>`;
+    }
     const codes = (c.codes || []).map(k => `<span class="pv-code"><em>${escapeHtml(L10n(k.label))}</em>${escapeHtml(k.value)}</span>`).join('');
     return `<div class="pv-item">
       <div class="pv-item-ico"><span class="material-symbols-outlined">${PV_ICON[c.type] || 'calculate'}</span></div>
@@ -3447,8 +3538,8 @@ function openCustomerView(id) {
 
   const addCards = [
     ['floor', 'grid_view', tr('ফ্লোর ও স্কার্টিং', 'Floor & Skirting')],
-    ['wall', 'wall_art', tr('ডেকোরেট ওয়াল টাইলস', 'Decorate Wall Tiles')],
-    ['wallx', 'wall_art', tr('ওয়াল টাইলস', 'Wall Tiles')],
+    ['wall', 'palette', tr('ডেকোরেট ওয়াল টাইলস', 'Decorate Wall Tiles')],
+    ['wallx', 'view_quilt', tr('ওয়াল টাইলস', 'Wall Tiles')],
     ['tak', 'kitchen', tr('তাক / স্ল্যাব', 'Shelf / Slab')],
     ['stairs', 'stairs', tr('সিঁড়ি ও চৌকি', 'Stairs & Chowki')]
   ].map(([t, ic, lb]) => `<button type="button" class="pv-add-card" onclick="startAddTiles('${o.id}','${t}')"><span class="material-symbols-outlined">${ic}</span><b>${lb}</b><small>${tr('যোগ করুন', 'Add')}</small></button>`).join('');
@@ -3480,11 +3571,15 @@ function openCustomerView(id) {
     <div class="pv-actions">
       <button type="button" class="pv-btn${editing ? ' active' : ''}" onclick="togglePvEdit('${o.id}')"><span class="material-symbols-outlined">edit</span>${tr('প্রোফাইল এডিট', 'Edit profile')}</button>
       ${statusBtn}
-      <button type="button" class="pv-btn" onclick="printOrderView('${o.id}')"><span class="material-symbols-outlined">picture_as_pdf</span>${tr('প্রিন্ট / PDF', 'Print / PDF')}</button>
+      <button type="button" class="pv-btn" onclick="printOrderView('${o.id}', null, 'pdf')"><span class="material-symbols-outlined">picture_as_pdf</span>${tr('PDF সেভ', 'Save PDF')}</button>
+      <button type="button" class="pv-btn" onclick="printOrderView('${o.id}')"><span class="material-symbols-outlined">print</span>${tr('প্রিন্ট', 'Print')}</button>
+      <button type="button" class="pv-btn${noting && pvNoting.index == null && !pvNoting.past ? ' active' : ''}" onclick="openNoteForm('${o.id}', null)"><span class="material-symbols-outlined">note_add</span>${tr('নোট যোগ করুন', 'Add Note')}</button>
+      <button type="button" class="pv-btn${noting && pvNoting.index == null && pvNoting.past ? ' active' : ''}" onclick="openPastNote('${o.id}')"><span class="material-symbols-outlined">content_paste</span>${tr('পাস্ট নোট', 'Past Note')}</button>
       <button type="button" class="pv-btn danger" onclick="deleteFromView('${o.id}')"><span class="material-symbols-outlined">delete</span>${tr('অর্ডার মুছুন', 'Delete order')}</button>
     </div>
 
     ${editing ? editForm : ''}
+    ${noteForm}
 
     <div class="pv-block">
       <div class="pv-block-head"><h3>${tr('হিসাবসমূহ', 'Calculations')}</h3><span class="pv-count">${itemsCount ? itemsCount + ' ' + tr('টি আইটেম', 'items') : ''}</span></div>
@@ -3496,12 +3591,151 @@ function openCustomerView(id) {
       <div class="pv-add-grid">${addCards}</div>
     </div>`;
   activateTab('tabCustView');
+  if (noting && pvNoting && pvNoting.focus) {
+    pvNoting.focus = false;
+    setTimeout(() => { const ta = document.getElementById('pn_text'); if (ta) { try { ta.focus({ preventScroll: false }); const n = ta.value.length; ta.setSelectionRange(n, n); } catch (e) {} } }, 60);
+  }
 }
 
 function togglePvEdit(id) {
   pvEditing = pvEditing === id ? null : id;
+  if (pvEditing === id) pvNoting = null;
   openCustomerView(id);
 }
+
+/* --- নোট: যোগ / এডিট / সেভ / বাতিল (নোট কাস্টমার প্রোফাইলের পণ্য-তালিকার সিরিয়ালেই বসে; দাম বা পিসে কোনো প্রভাব নেই) --- */
+function openNoteForm(id, index) {
+  const o = orders.find(x => x.id === id);
+  if (!o) return;
+  const existing = (index != null && o.cartItems && o.cartItems[index] && o.cartItems[index].type === 'note') ? o.cartItems[index] : null;
+  pvEditing = null;
+  pvNoting = { id, index: existing ? index : null, draft: existing ? (existing.text || '') : '1. ', focus: true };
+  openCustomerView(id);
+}
+
+function cancelNoteForm(id) {
+  pvNoting = null;
+  openCustomerView(id);
+}
+
+function saveNote(id) {
+  const o = orders.find(x => x.id === id);
+  if (!o || !pvNoting || pvNoting.id !== id) return;
+  const el = document.getElementById('pn_text');
+  const text = noteCleanup(el ? el.value : (pvNoting.draft || ''));
+  if (!text.trim()) {
+    showToast(tr('আগে নোট লিখুন।', 'Please write a note first.'), true);
+    return;
+  }
+  o.cartItems = o.cartItems || [];
+  const isNew = pvNoting.index == null;
+  if (isNew) {
+    o.cartItems.push({ type: 'note', text, detail: '', pcs: 0, price: 0, items: {}, codes: [], lines: null, inputs: null });
+  } else if (o.cartItems[pvNoting.index] && o.cartItems[pvNoting.index].type === 'note') {
+    o.cartItems[pvNoting.index].text = text;
+  }
+  recomputeOrder(o);
+  o.updatedAt = new Date().toISOString();
+  persistOrders();
+  renderOrders();
+  pvNoting = null;
+  openCustomerView(id);
+  showToast(isNew ? tr('নোট যোগ হয়েছে।', 'Note added.') : tr('নোট আপডেট হয়েছে।', 'Note updated.'), false);
+}
+
+/* --- নোট অটো-সিরিয়াল (1. 2. 3. …) + Save Note (Settings) + Past Note --- */
+const NOTE_TPL_KEY = 'savedNoteTemplate';   // Supabase app_data-তে সিঙ্ক হয় (cloudSync SYNC_KEYS)
+function getNoteTemplate() {
+  try { const raw = localStorage.getItem(NOTE_TPL_KEY); if (raw == null) return ''; const v = JSON.parse(raw); return typeof v === 'string' ? v : ''; }
+  catch (e) { return ''; }
+}
+function noteCleanup(t) {
+  // শেষের ফাঁকা সিরিয়াল ("3. ") ও অতিরিক্ত ফাঁকা লাইন বাদ
+  let x = String(t || '').replace(/\r\n?/g, '\n');
+  x = x.replace(/(\n[ \t]*\d+\.[ \t]*)+\s*$/g, '');
+  x = x.replace(/^[ \t]*\d+\.[ \t]*\s*$/g, '');
+  return x.replace(/\s+$/g, '').replace(/^\s*\n/g, '');
+}
+function noteAutoSerial(ta) {
+  // Enter (কীবোর্ড / মোবাইল কীবোর্ড / অন্য ডিভাইস) চেপে নতুন লাইন হলে পরের সিরিয়াল নিজে বসবে
+  const prev = ta._prevVal == null ? '' : ta._prevVal;
+  const val = ta.value, pos = ta.selectionStart;
+  if (val.length === prev.length + 1 && pos > 0 && val.charAt(pos - 1) === '\n') {
+    const before = val.slice(0, pos - 1).split('\n');   // নতুন লাইনের আগের সব লাইন
+    let last = null;
+    for (let i = before.length - 1; i >= 0; i--) {
+      const m = /^\s*(\d+)\.(\s|$)/.exec(before[i]);
+      if (m) { last = parseInt(m[1], 10); break; }
+    }
+    const n = last != null ? last + 1 : before.length + 1;
+    const ins = n + '. ';
+    ta.value = val.slice(0, pos) + ins + val.slice(pos);
+    const np = pos + ins.length;
+    try { ta.setSelectionRange(np, np); } catch (e) {}
+  }
+  ta._prevVal = ta.value;
+}
+document.addEventListener('input', function (ev) {
+  const ta = ev.target;
+  if (!ta || (ta.id !== 'pn_text' && ta.id !== 'nt_text')) return;
+  if (ev.isComposing) { return; }
+  noteAutoSerial(ta);
+});
+document.addEventListener('focusin', function (ev) {
+  const ta = ev.target;
+  if (!ta || (ta.id !== 'pn_text' && ta.id !== 'nt_text')) return;
+  if (!ta.value.trim()) { ta.value = '1. '; try { ta.setSelectionRange(3, 3); } catch (e) {} }
+  ta._prevVal = ta.value;
+});
+
+/* Past Note: সেভ করা নোট দিয়ে "Add Note"-এর মতো ফর্ম খোলে */
+function openPastNote(id) {
+  const o = orders.find(x => x.id === id);
+  if (!o) return;
+  const tpl = getNoteTemplate();
+  pvEditing = null;
+  if (!tpl.trim()) {
+    pvNoting = { id, index: null, draft: '1. ', focus: true, past: true };
+    openCustomerView(id);
+    showToast(tr('কোনো Save Note নেই — আগে Settings → Save Note থেকে নোট সেভ করুন।', 'No Save Note found — first save one from Settings → Save Note.'), true);
+    return;
+  }
+  pvNoting = { id, index: null, draft: tpl, focus: true, past: true };
+  openCustomerView(id);
+}
+
+/* Save Note (Settings গিয়ার মেনু) */
+function openSaveNote() {
+  try { if (typeof toggleSideNav === 'function') toggleSideNav(false); } catch (e) {}
+  const ta = document.getElementById('nt_text');
+  const m = document.getElementById('ntMsg');
+  if (!ta) return;
+  ta.placeholder = tr('এখানে সেভ নোট লিখুন…', 'Write your Save Note here…');
+  ta.value = getNoteTemplate() || '1. ';
+  ta._prevVal = ta.value;
+  if (m) m.textContent = '';
+  document.getElementById('noteTplModal').classList.add('open');
+  setTimeout(() => { try { ta.focus(); const n = ta.value.length; ta.setSelectionRange(n, n); } catch (e) {} }, 60);
+}
+function closeSaveNote() {
+  const el = document.getElementById('noteTplModal');
+  if (el) el.classList.remove('open');
+}
+function saveNoteTemplate() {
+  const ta = document.getElementById('nt_text');
+  if (!ta) return;
+  const text = noteCleanup(ta.value);
+  try { localStorage.setItem(NOTE_TPL_KEY, JSON.stringify(text)); }   // সিঙ্ক হুক এটি ধরে Supabase-এ পাঠাবে
+  catch (e) { showToast(tr('নোট সেভ করা যায়নি।', 'Could not save the note.'), true); return; }
+  closeSaveNote();
+  let signed = false;
+  try { signed = !!JSON.parse(localStorage.getItem('tilesCloudSession')); } catch (e) {}
+  if (!text.trim()) showToast(tr('Save Note মুছে ফেলা হয়েছে।', 'Save Note cleared.'), false);
+  else showToast(signed ? tr('Save Note সেভ হয়েছে (Supabase-এ সিঙ্ক হচ্ছে)।', 'Save Note saved (syncing to Supabase).') : tr('Save Note এই ডিভাইসে সেভ হয়েছে; লগইন করলে ক্লাউডে যাবে।', 'Save Note saved on this device; it will sync after login.'), false);
+}
+document.addEventListener('keydown', function (ev) {
+  if (ev.key === 'Escape') { const m = document.getElementById('noteTplModal'); if (m && m.classList.contains('open')) closeSaveNote(); }
+});
 
 /* --- রিপোর্ট: কনফার্ম অল হিস্টোরি থেকে তারিখ অনুযায়ী প্রোফাইল --- */
 function reportRows() {
@@ -3545,7 +3779,18 @@ function renderReport() {
     <div class="pv-total" style="margin-top:10px;"><span>${tr('গ্র্যান্ড টোটাল (মোট পরিশোধ)', 'Grand total (amount paid)')}</span><strong>৳ ${Math.round(t.paid).toLocaleString('en-BD')}</strong></div>`;
 }
 
-function printReport() {
+function runPrint(mode) {
+  const root = document.documentElement;
+  root.classList.remove('print-pdf');
+  if (mode === 'pdf') {
+    root.classList.add('print-pdf');
+    const off = () => { root.classList.remove('print-pdf'); window.removeEventListener('afterprint', off); };
+    window.addEventListener('afterprint', off);
+  }
+  window.print();
+}
+
+function printReport(mode) {
   const rows = reportRows();
   const from = (document.getElementById('rep_from') || {}).value || '';
   const to = (document.getElementById('rep_to') || {}).value || '';
@@ -3597,7 +3842,7 @@ function printReport() {
       <div class="print-grand-total"><div class="lbl">${tr('গ্র্যান্ড টোটাল (মোট পরিশোধ):', 'Grand total (amount paid):')}</div><div class="val">${money(t.paid)}</div></div>
       <div class="print-footer"><div>${tr('সফটওয়্যার Owner By: Foijol Muhammad Minar', 'Software Owner By: Foijol Muhammad Minar')}</div><div>${tr('ধন্যবাদ! আবার আসবেন।', 'Thank you!')}</div></div>
     </div>`;
-  window.print();
+  runPrint(mode);
 }
 
 function saveProfileEdit(id) {
@@ -3624,14 +3869,16 @@ function saveProfileEdit(id) {
 function deleteOrderItem(id, index) {
   const o = orders.find(x => x.id === id);
   if (!o || !o.cartItems || !o.cartItems[index]) return;
-  if (!confirm(tr('এই হিসাবটি মুছে ফেলবেন?', 'Delete this calculation?'))) return;
+  const _isNote = o.cartItems[index].type === 'note';
+  if (!confirm(_isNote ? tr('এই নোটটি মুছে ফেলবেন?', 'Delete this note?') : tr('এই হিসাবটি মুছে ফেলবেন?', 'Delete this calculation?'))) return;
   o.cartItems.splice(index, 1);
+  if (pvNoting && pvNoting.id === id) pvNoting = null;
   recomputeOrder(o);
   persistOrders();
   renderOrders();
   if (itemEdit && itemEdit.source === id) { itemEdit = null; refreshItemEditBar(); }
   openCustomerView(id);
-  showToast(tr('হিসাবটি মুছে ফেলা হয়েছে।', 'Calculation deleted.'), false);
+  showToast(_isNote ? tr('নোটটি মুছে ফেলা হয়েছে।', 'Note deleted.') : tr('হিসাবটি মুছে ফেলা হয়েছে।', 'Calculation deleted.'), false);
 }
 
 function startAddTiles(id, type) {
@@ -3672,12 +3919,12 @@ const INV_T = {
   bn: { title: 'Minar Tiles Calculator', sub: 'কম্বাইন্ড শোরুম ও বিজনেস চালান মেমো', date: 'তারিখ', invoice: 'ইনভয়েস', status: 'অবস্থা',
         custName: 'কাস্টমারের নাম', mobile: 'মোবাইল নম্বর', address: 'ঠিকানা', invNo: 'ইনভয়েস নম্বর', delivery: 'ডেলিভারির তারিখ',
         code: 'মডেল কোড', size: 'টাইলসের মাপ', sqft: 'মোট Sqft', rate: 'দাম (৳/Sqft)', pcs: 'পিস (Pcs)', boxes: 'বক্স / লুজ', price: 'মূল্য (৳)',
-        total: 'Total', grand: 'সর্বমোট প্রাক্কলিত চালান মূল্য (Grand Total):', footer: 'সফটওয়্যার Owner By: Foijol Muhammad Minar', thanks: 'ধন্যবাদ! আবার আসবেন।',
+        total: 'Total', grand: 'সর্বমোট প্রাক্কলিত চালান মূল্য (Grand Total):', notes: 'নোট / এক্সট্রা প্রোডাক্ট', footer: 'সফটওয়্যার Owner By: Foijol Muhammad Minar', thanks: 'ধন্যবাদ! আবার আসবেন।',
         status: { pending: 'পেন্ডিং', delivery: 'ডেলিভারিতে', confirmed: 'কনফার্মড' }, loc: 'bn-BD' },
   en: { title: 'Minar Tiles Calculator', sub: 'Combined Showroom & Business Invoice', date: 'Date', invoice: 'Invoice', status: 'Status',
         custName: 'Customer Name', mobile: 'Mobile Number', address: 'Address', invNo: 'Invoice Number', delivery: 'Delivery Date',
         code: 'Model Code', size: 'Tile Size', sqft: 'Total Sqft', rate: 'Price (৳/Sqft)', pcs: 'Pieces (Pcs)', boxes: 'Box / Loose', price: 'Amount (৳)',
-        total: 'Total', grand: 'Estimated Grand Total:', footer: 'Software Owner By: Foijol Muhammad Minar', thanks: 'Thank you! Please visit again.',
+        total: 'Total', grand: 'Estimated Grand Total:', notes: 'Note / Extra Product', footer: 'Software Owner By: Foijol Muhammad Minar', thanks: 'Thank you! Please visit again.',
         status: { pending: 'Pending', delivery: 'Out for delivery', confirmed: 'Confirmed' }, loc: 'en-GB' }
 };
 const INV_NAMES = [
@@ -3698,7 +3945,7 @@ function invBoxes(text, lang) {
   return legacyL10n(String(text || ''), lang === 'en' ? 'en' : 'bn');
 }
 
-function printOrderView(id, lang) {
+function printOrderView(id, lang, mode) {
   lang = lang ? (lang === 'en' ? 'en' : 'bn') : (currentLang === 'en' ? 'en' : 'bn');
   const T = INV_T[lang];
   const o = orders.find(x => x.id === id);
@@ -3715,6 +3962,7 @@ function printOrderView(id, lang) {
 
   const TYPE_ORDER = { floor: 0, wall: 1, wallx: 2, tak: 3, stairs: 4 };
   const ordered = (o.cartItems || []).map((c, idx) => ({ c, idx }))
+    .filter(({ c }) => c.type !== 'note')
     .sort((a, b) => ((TYPE_ORDER[a.c.type] ?? 9) - (TYPE_ORDER[b.c.type] ?? 9)) || (a.idx - b.idx));
   const sections = ordered.map(({ c }, i) => {
     const sm = (c.lines && c.lines.summary) || {};
@@ -3725,7 +3973,7 @@ function printOrderView(id, lang) {
     const body = rows.map(r => `
         <tr>
           <td>${escapeHtml(r.code || '-')}</td>
-          <td>${escapeHtml(r.size || '-')}</td>
+          <td class="pt-size">${escapeHtml(r.size || '-')}</td>
           <td class="num">${fmt(r.sqft || 0)}</td>
           <td class="num">${r.rate ? escapeHtml(String(r.rate)) : '-'}</td>
           <td class="num">${fmt(r.pcs || 0)}</td>
@@ -3743,7 +3991,13 @@ function printOrderView(id, lang) {
         <tfoot><tr><td colspan="2">${T.total}</td><td class="num">${fmt(sqftSum)}</td><td></td><td class="num">${fmt(pcsSum)}</td><td></td><td class="num">${money(c.price)}</td></tr></tfoot>
       </table>`;
   }).join('');
-  const fallback = `<div class="pt-title">${escapeHtml(orderItemsText(o))}</div>`;
+  const fallback = (o.cartItems || []).length ? '' : `<div class="pt-title">${escapeHtml(orderItemsText(o))}</div>`;
+  const noteList = (o.cartItems || []).map((c, idx) => ({ c, idx })).filter(({ c }) => c.type === 'note' && String(c.text || '').trim());
+  const notesHtml = noteList.length ? `
+      <div class="pt-notes">
+        <div class="pt-notes-title">${T.notes}</div>
+        ${noteList.map(({ c, idx }) => `<div class="pt-note"><span class="pt-note-text">${escapeHtml(c.text)}</span></div>`).join('')}
+      </div>` : '';
 
   document.getElementById('printSection').innerHTML = `
     <style>
@@ -3753,7 +4007,9 @@ function printOrderView(id, lang) {
       .pt th, .pt td, .pt-detail th, .pt-detail td { border: 1px solid #CBD5E1; padding: 3px 4px; text-align: left; vertical-align: top; }
       .pt th, .pt-detail th { background: #F1F5F9; color: #0F172A; font-weight: 600; }
       .pt td.num { text-align: right; white-space: nowrap; }
-      .pt tfoot td { font-weight: bold; background: none; border-left: none; border-right: none; border-bottom: none; }
+      .pt tfoot td { font-weight: bold; background: none; border-top: 1px solid #94A3B8; border-bottom: 1px solid #94A3B8; border-left: none; border-right: none; }
+      .pt tfoot td:first-child { border-left: 1px solid #94A3B8; }
+      .pt tfoot td:last-child { border-right: 1px solid #94A3B8; }
       .pt-sub { font-size: 7.5pt; font-weight: bold; color: #475569; margin: 5px 0 2px; }
       .pt-detail { margin-bottom: 4px; }
       #printSection, #printSection * { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: #000; }
@@ -3762,6 +4018,27 @@ function printOrderView(id, lang) {
       .pt-title { page-break-after: avoid; break-after: avoid; }
       .pt-owner { color: #1E3A5F !important; }
       .print-header-titles h2 { text-transform: none !important; }
+
+      /* ===== সাধারণ Print বোতামের ফন্ট সাইজ ও ওজন (Save PDF অপরিবর্তিত) ===== */
+      html:not(.print-pdf) #printSection .pt-owner { font-size: 9pt; }
+      html:not(.print-pdf) #printSection .print-header-titles h2 { font-size: 13pt; }
+      html:not(.print-pdf) #printSection .print-header-titles p { font-size: 8pt; }
+      html:not(.print-pdf) #printSection .print-meta { font-size: 8pt; font-weight: 400; }
+      html:not(.print-pdf) #printSection .print-meta strong { font-weight: 400; }
+      html:not(.print-pdf) #printSection .print-customer { font-size: 10pt; }
+      html:not(.print-pdf) #printSection .print-customer .pc-row { font-weight: 640; }
+      html:not(.print-pdf) #printSection .print-customer .pc-lbl { font-size: 8pt; font-weight: 550; }
+      html:not(.print-pdf) #printSection .pt-title { font-size: 8pt; font-weight: 610; }
+      html:not(.print-pdf) #printSection .pt th { font-size: 9pt; }
+      html:not(.print-pdf) #printSection .pt tbody td { font-size: 10pt; }
+      html:not(.print-pdf) #printSection .pt td.pt-size { font-size: 9.5pt; white-space: nowrap; }
+      html:not(.print-pdf) #printSection .pt tfoot td { font-size: 11pt; font-weight: bold; }
+      html:not(.print-pdf) #printSection .print-grand-total .lbl { font-size: 10pt; }
+      html:not(.print-pdf) #printSection .print-grand-total .val { font-size: 12pt; }
+      html:not(.print-pdf) #printSection .pt-notes-title { font-size: 8pt; }
+      html:not(.print-pdf) #printSection .pt-note { font-size: 10pt; font-weight: 600; }
+      html:not(.print-pdf) #printSection .pt-note-text { font-weight: 600; }
+      html:not(.print-pdf) #printSection .print-footer { font-size: 7.5pt; }
 
 </style>
     <div class="print-invoice-box">
@@ -3779,9 +4056,10 @@ function printOrderView(id, lang) {
       </div>
       ${sections || fallback}
       <div class="print-grand-total"><div class="lbl">${T.grand}</div><div class="val">${money(o.total)}</div></div>
+      ${notesHtml}
       <div class="print-footer"><div>${T.footer}</div><div>${T.thanks}</div></div>
     </div>`;
-  window.print();
+  runPrint(mode);
 }
 
 function statusFromView(id, status) {
@@ -4896,7 +5174,7 @@ const REQUIRE_LOGIN_GATE = true;   // true = সবাইকে লগইন/আ
 const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থাকলে শেষবার approved ইউজার এত ঘণ্টা পর্যন্ত অফলাইনে ঢুকতে পারবে
 (function cloudSync() {
   const ORD = 'tilesOrders', TOMB = 'tilesOrdersDel', CART = 'tilesCartData';
-  const SYNC_KEYS = [ORD, TOMB, CART, 'savedTileSizes', 'savedModelCodes'];
+  const SYNC_KEYS = [ORD, TOMB, CART, 'savedTileSizes', 'savedModelCodes', 'savedNoteTemplate'];
   const SESS_KEY = 'tilesCloudSession', META_KEY = 'tilesCloudMeta', ACCESS_KEY = 'tilesAccessCache';
   const btn = document.getElementById('cloudBtn');
   const $ = id => document.getElementById(id);
@@ -4909,7 +5187,7 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
   function gatePanel(id) { ['agChecking', 'agOffline'].forEach(p => { $(p).style.display = (p === id) ? '' : 'none'; }); }
   function storeNote(n) { try { localStorage.setItem('tilesLoginNote', JSON.stringify(n)); } catch (e) {} }
   function closeOverlays() {
-    ['cloudModal', 'pwModal', 'ownerModal'].forEach(id => { const el = $(id); if (el) el.classList.remove('open'); });
+    ['cloudModal', 'pwModal', 'ownerModal', 'noteTplModal'].forEach(id => { const el = $(id); if (el) el.classList.remove('open'); });
     if (typeof window.ownerDashClose === 'function') window.ownerDashClose();
   }
   function showLoginGate() { closeOverlays(); location.replace(LOGIN_PAGE); }
@@ -4984,7 +5262,7 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
   function schedulePush() {
     if (!session) return;
     clearTimeout(pushTimer);
-    pushTimer = setTimeout(sync, 1500);
+    pushTimer = setTimeout(sync, 400);   // Add To Cart / অর্ডার পরিবর্তনের প্রায় সঙ্গে সঙ্গেই ক্লাউডে
   }
 
   /* ---------- মার্জ ---------- */
@@ -5043,7 +5321,7 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
     }
 
     // ৩) বাকি ডেটা: সর্বশেষ পরিবর্তন জেতে
-    [CART, 'savedTileSizes', 'savedModelCodes'].forEach(k => {
+    [CART, 'savedTileSizes', 'savedModelCodes', 'savedNoteTemplate'].forEach(k => {
       const row = by[k], lo = get(k);
       if (row) {
         if (meta.dirty[k]) return;
@@ -5137,6 +5415,32 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
     keys.forEach(k => { if (get(k) === snap[k] || !(k in snap)) delete meta.dirty[k]; });
     saveMeta();
   }
+
+  /* ---------- অ্যাপ বন্ধ / ব্যাকগ্রাউন্ডে যাওয়ার মুহূর্তে বাকি ডেটা ক্লাউডে পাঠানো (keepalive) ---------- */
+  function flushKeepalive() {
+    try {
+      if (!session || !appUnlocked || !session.access_token) return;
+      const fresh = meta.last && (Date.now() - meta.last) < 300000;   // সাম্প্রতিক সিঙ্ক থাকলেই অর্ডার ওভাররাইট নিরাপদ
+      const keys = SYNC_KEYS.filter(k => meta.dirty[k] && (fresh || (k !== ORD && k !== TOMB)));
+      if (!keys.length) return;
+      const body = [];
+      keys.forEach(k => {
+        const raw = get(k);
+        const dflt = (k === TOMB) ? {} : (k === CART ? null : []);
+        const val = raw == null ? dflt : jparse(raw, dflt);
+        if (val !== null) body.push({ user_id: session.user.id, key: k, value: val });
+      });
+      if (!body.length) return;
+      const payload = JSON.stringify(body);
+      fetch(BASE + '/rest/v1/app_data?on_conflict=user_id,key', {
+        method: 'POST', keepalive: payload.length < 60000, cache: 'no-store', body: payload,
+        headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + session.access_token, 'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates' }
+      }).catch(() => {});
+      // dirty চিহ্ন রাখা হলো — পরেরবার অ্যাপ খুললে (বা অন্য ডিভাইসে) পুল→মার্জ→পুশ আবার নিশ্চিত করবে
+    } catch (e) {}
+  }
+  window.addEventListener('pagehide', flushKeepalive);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) flushKeepalive(); });
   async function sync() {
     if (!session || !appUnlocked) return;
     if (busy) { again = true; return; }
