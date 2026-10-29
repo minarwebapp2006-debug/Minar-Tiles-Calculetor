@@ -1021,6 +1021,7 @@ html.lite .app-header, html.lite .lang-toggle, html.lite .theme-toggle, html.lit
 .nav-set-email { background: var(--surface-2); cursor: default; }
 .nav-set-email span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .nav-set-btn { cursor: pointer; transition: background .2s, transform .15s var(--ease); }
+.nav-set-btn.install-app-btn { color: #2F8F72; background: #EAFBF3; }
 .nav-set-btn:hover { background: var(--surface-2); transform: translateX(2px); }
 .nav-set-btn .msi, .nav-set-email .msi { font-size: 18px; color: var(--accent-2); flex-shrink: 0; }
 .nav-set-btn.danger { background: #FEF2F2; border-color: #FCA5A5; color: #B91C1C; }
@@ -3761,9 +3762,6 @@ function printOrderView(id, lang) {
       .pt-title { page-break-after: avoid; break-after: avoid; }
       .pt-owner { color: #1E3A5F !important; }
       .print-header-titles h2 { text-transform: none !important; }
-        .install-app-btn { color: #2F8F72; background: #EAFBF3; }
-html.lite *, html.lite *::before, html.lite *::after { transition: none !important; animation: none !important; backdrop-filter: none !important; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
 
 </style>
     <div class="print-invoice-box">
