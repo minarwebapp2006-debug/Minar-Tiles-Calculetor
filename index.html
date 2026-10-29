@@ -218,11 +218,6 @@ button, input, select { font-family: inherit; }
 .cust-meta { font-size: 12.5px; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 4px; word-break: break-word; }
 .cust-meta .msi { font-size: 15px; color: var(--ink-faint); }
 .cust-row .ord-name { margin: 0; font-size: 15px; }
-.cust-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 8px; }
-.cdf { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; }
-.cdf.full { grid-column: 1 / -1; }
-.cdf-lbl { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
-.cdf-val { display: block; font-size: 15px; font-weight: 600; color: var(--ink); word-break: break-word; }
 .ord-serial { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--floor); color: #FFFFFF; font-size: 12px; font-weight: 700; margin-right: 8px; vertical-align: middle; }
 .cust-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 58; align-items: center; justify-content: center; padding: 16px; }
 .cust-modal.show { display: flex; }
@@ -336,7 +331,7 @@ body {
   box-shadow: 0 0 0 4px var(--ring);
 }
 [data-theme="dark"] .sec { color: var(--accent-2); }
-.card, .cdf, .auto-box {
+.card, .auto-box {
   border-radius: var(--radius-sm);
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
 }
@@ -388,9 +383,8 @@ body {
 }
 .ord-card:hover, .cust-row:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 .ord-serial { background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); box-shadow: 0 4px 10px rgba(0,119,182,0.25); }
-.cust-detail-grid .cdf { background: var(--surface-2); }
 .ord-total { font-variant-numeric: tabular-nums; }
-.cdf-val, .cval, .fval { font-variant-numeric: tabular-nums; }
+.cval, .fval { font-variant-numeric: tabular-nums; }
 
 /* Toast & edit bar */
 #appToast, #itemEditBar { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 16px; }
@@ -707,13 +701,11 @@ body {
 .pv-btn.small { height: 34px; padding: 0 12px; font-size: 12.5px; border-radius: 10px; }
 .pv-hero { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 22px; border-radius: 20px; background: linear-gradient(135deg, #EEF5FC 0%, #F3FBFD 100%); border: 1px solid var(--border); }
 [data-theme="dark"] .pv-hero { background: linear-gradient(135deg, #1B2633 0%, #17232E 100%); }
-.pv-avatar { width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700; color: #0F3B57; background: linear-gradient(135deg, #6FA8DC 0%, #A5DCEB 100%); flex-shrink: 0; }
 .pv-hero-text { flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .pv-status { align-self: flex-start; font-size: 11.5px; font-weight: 700; letter-spacing: .02em; padding: 3px 10px; border-radius: 999px; background: var(--surface); color: var(--ink-soft); border: 1px solid var(--border); }
 .pv-status-delivery { color: var(--floor-ink); }
 .pv-status-confirmed { color: var(--deep-ink); }
 .pv-name { margin: 0; font-size: clamp(20px, 2.4vw, 26px); font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
-.pv-sub { font-size: 13px; color: var(--ink-soft); }
 .pv-total { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
 .pv-total span { font-size: 12px; color: var(--ink-soft); }
 .pv-total strong { font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; color: var(--accent-ink); font-variant-numeric: tabular-nums; }
@@ -722,7 +714,6 @@ body {
 .pv-block-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .pv-block-head h3 { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
 .pv-count { font-size: 12px; color: var(--ink-faint); }
-.pv-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
 .pv-field { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); }
 .pv-field > .material-symbols-outlined { font-size: 20px; color: var(--accent-ink); margin-top: 2px; }
 .pv-field small { display: block; font-size: 11.5px; color: var(--ink-soft); margin-bottom: 3px; }
@@ -1466,6 +1457,141 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   .g-pack .ig label { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 }
 @media (max-width: 899.98px) and (max-height: 520px) { .panel .ig input, .panel .ig select { height: 28px !important; min-height: 28px !important; } }
+
+.ord-btn.sm { padding: 5px 10px; font-size: 12px; min-height: 0; border-radius: 8px; gap: 4px; }
+.ord-btn.sm .msi { font-size: 15px; }
+.cp-top-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.action-bar.cp-top-actions { justify-content: flex-start; }
+.action-bar.cp-top-actions { flex-wrap: nowrap !important; gap: 6px !important; }
+.action-bar.cp-top-actions .ord-btn.sm { flex: 0 1 auto !important; width: auto !important; min-width: 0 !important; max-width: none; min-height: 38px !important; padding: 6px 9px !important; font-size: 12px !important; white-space: normal !important; line-height: 1.2; text-align: left; justify-content: flex-start !important; }
+/* ===== Universal responsive layer (additive, screen only; print/logic untouched) ===== */
+@media screen {
+  :root { --tap: 48px; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { padding-top: env(safe-area-inset-top); }
+  img, svg, canvas, video { max-width: 100%; }
+  .panel, .card { min-width: 0; }
+  table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Touch targets: 44pt iOS / 48dp Android */
+  @media (pointer: coarse) {
+    button, .calc-nav-item, .ord-btn, .nav-toggle, select, input:not([type=checkbox]):not([type=radio]) { min-height: 44px; }
+    .calc-nav-item, .ord-btn, .nav-toggle { min-height: var(--tap); min-width: 44px; }
+    .nav-toggle { width: var(--tap); height: var(--tap); }
+  }
+
+  /* Visible keyboard / D-pad focus */
+  :focus-visible { outline: 3px solid #0077B6; outline-offset: 2px; border-radius: 8px; }
+
+  /* Smartwatch: 192-260 px */
+  @media (max-width: 260px) {
+    html { font-size: 12px; }
+    .app-shell { padding-left: 6px; padding-right: 6px; max-width: 100%; }
+    .app-titles p, .app-mark { display: none; }
+    .tab-content.active, .grid2, .grid3, .ord-list, .ord-filter { grid-template-columns: 1fr !important; gap: 8px; }
+    .panel { padding: 10px; border-radius: 14px; }
+    .calc-nav { width: 100vw; max-width: 100vw; }
+    .action-bar { flex-direction: column; }
+  }
+
+  /* Small phones 261-359 */
+  @media (min-width: 261px) and (max-width: 359.98px) {
+    .grid2, .grid3 { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .app-shell { padding-left: 8px; padding-right: 8px; }
+  }
+
+  /* Phones 360-599: single column */
+  @media (max-width: 599.98px) {
+    .tab-content.active { grid-template-columns: minmax(0, 1fr); }
+    .ord-list { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* Foldables / tablets 600-1023: two-column panels, drawer navigation */
+  @media (min-width: 600px) and (max-width: 1023.98px) {
+    .tab-content.active { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 600px) and (max-width: 899.98px) { .calc-nav { width: 300px; } }
+
+  /* Laptops / desktops 1024+: fluid grid, 1440 cap */
+  @media (min-width: 1024px) {
+    .app-shell { max-width: 1440px; }
+    .tab-content.active { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); }
+  }
+  @media (min-width: 1440px) { .app-shell { padding-left: 40px; padding-right: 40px; } }
+
+  /* Ultra-wide */
+  @media (min-width: 1920px) { .app-shell { max-width: 1440px; } }
+
+  /* Smart TV 10-foot UI */
+  @media (min-width: 1920px) and (hover: none) {
+    html { font-size: 20px; }
+    .app-shell { max-width: 1840px; }
+    .calc-nav-item, .ord-btn, button { min-height: 64px; }
+    :focus-visible { outline-width: 5px; outline-offset: 4px; }
+  }
+
+  /* Landscape phones: avoid tall chrome */
+  @media (max-height: 480px) and (orientation: landscape) { .tab-content.active { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+}
+
+/* ===== 2K/4K monitors, small iPhones, standalone (installed) mode ===== */
+@media screen {
+  @media (min-width: 2560px) and (hover: hover) { .app-shell { max-width: 1440px; margin-left: auto; margin-right: auto; } }
+  /* Large tablets (iPad Pro / Tab S) held portrait or landscape: 3-column panel grid */
+  @media (min-width: 1024px) and (max-width: 1400px) and (hover: none) and (pointer: coarse) { .tab-content.active { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 380px) { .panel { padding-left: 12px; padding-right: 12px; } }
+  @media (display-mode: standalone), (display-mode: fullscreen), (display-mode: minimal-ui) {
+    body { padding-bottom: env(safe-area-inset-bottom); overscroll-behavior-y: contain; }
+  }
+  .calc-nav, #authGate { max-height: 100vh; max-height: 100dvh; }
+}
+</style>
+<style id="printReadable">
+/* ===== প্রিন্ট / PDF: বড় ও স্পষ্ট ফন্ট (মোবাইল ও যেকোনো ডিভাইসে সহজে পড়া যায়) — হিসাব ও ডেটা অপরিবর্তিত ===== */
+@media print {
+  @page { size: A4 portrait; margin: 0.35in; }
+  html, body { font-size: 10.5pt !important; line-height: 1.4; }
+  #printSection { line-height: 1.4; -webkit-font-smoothing: antialiased; }
+  #printSection .print-invoice-box { padding: 14px 16px; border-width: 1.5px; }
+  #printSection .print-header { padding-bottom: 3px; margin-bottom: 5px; }
+  #printSection .print-header-titles h2 { font-size: 13pt; line-height: 1.1; }
+  #printSection .print-header-titles p { font-size: 8.5pt; margin-top: 0; color: #334155; }
+  #printSection .print-meta { font-size: 9.5pt; line-height: 1.25; color: #000; font-weight: 600; }
+  #printSection .print-meta strong { font-weight: 800; color: #0B2A43; }
+  #printSection .pt-owner, #printSection .rp-owner { font-size: 9.5pt; padding-bottom: 2px; margin-bottom: 4px; }
+  #printSection .print-customer { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; align-items: start; padding: 11px 14px; margin-top: 0; margin-bottom: 12px; border: 1.5px solid #64748B; background: #F8FBFD; font-size: 12.5pt; }
+  #printSection .print-customer .pc-row { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; min-width: 0; font-weight: 700; color: #000; }
+  #printSection .print-customer .pc-row > span { overflow-wrap: anywhere; }
+  #printSection .print-customer .pc-lbl { font-size: 9.5pt; font-weight: 700; color: #475569; letter-spacing: .02em; white-space: normal; }
+  #printSection .print-customer .pc-row:nth-child(1) { grid-column: 1 / -1; padding-bottom: 8px; border-bottom: 1px dashed #94A3B8; }
+  #printSection .print-customer .pc-row:nth-child(1) > span:last-child { font-size: 15pt; font-weight: 800; }
+  #printSection .print-customer .pc-row:nth-child(2) { grid-column: 1; grid-row: 2; }
+  #printSection .print-customer .pc-row:nth-child(4) { grid-column: 2; grid-row: 2; }
+  #printSection .print-customer .pc-row:nth-child(3) { grid-column: 1; grid-row: 3; }
+  #printSection .print-customer .pc-row:nth-child(5) { grid-column: 2; grid-row: 3; }
+  #printSection .pt-title { font-size: 12pt; margin: 14px 0 6px; }
+  #printSection .pt, #printSection .pt-detail, #printSection .rp-table { font-size: 10pt; }
+  #printSection .pt th, #printSection .pt td, #printSection .pt-detail th, #printSection .pt-detail td,
+  #printSection .rp-table th, #printSection .rp-table td { padding: 3px 5px; border-color: #94A3B8; line-height: 1.3; }
+  #printSection .pt th, #printSection .pt-detail th, #printSection .rp-table th { background: #E6EFF7; font-weight: 700; color: #0B2A43; }
+  #printSection .pt tfoot td, #printSection .rp-table tfoot td { font-size: 10.5pt; }
+  #printSection .pt { break-inside: avoid; page-break-inside: avoid; margin-bottom: 4px; }
+  #printSection .pt thead, #printSection .rp-table thead { display: table-header-group; }
+  #printSection .pt tr, #printSection .rp-table tr { break-inside: avoid; page-break-inside: avoid; }
+  /* কাস্টমার রিপোর্ট প্রিন্ট: একই বড়, স্পষ্ট ও গাঢ় ডেটা */
+  #printSection .rp-table { font-size: 10.5pt; }
+  #printSection .rp-table td { font-weight: 600; color: #000; }
+  #printSection .rp-table th { font-size: 10pt; }
+  #printSection .rp-table td:nth-child(1), #printSection .rp-table td:nth-child(4), #printSection .rp-table td:nth-child(5), #printSection .rp-table td:nth-child(6) { white-space: nowrap; }
+  #printSection .rp-table tfoot td { font-size: 12pt; font-weight: 800; color: #0B2A43; }
+  #printSection .rp-table tfoot td:first-child { border-top: 1.5px solid #64748B; }
+  #printSection .print-grand-total { padding: 10px 14px; margin-top: 12px; }
+  #printSection .print-grand-total .lbl { font-size: 12.5pt; }
+  #printSection .print-grand-total .val { font-size: 17pt; }
+  #printSection .print-footer { font-size: 9.5pt; margin-top: 14px; padding-top: 6px; color: #475569; }
+}
 </style>
 </head>
 <body>
@@ -1542,7 +1668,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   <div id="tabCustomer" class="tab-content active">
     <div class="panel">
       <p class="sec" data-en="Customer Profile">কাস্টমার প্রোফাইল</p>
-      <div class="action-bar" style="margin-top:0; margin-bottom:14px;"><button type="button" class="ord-btn primary" onclick="addCustomerToCart()"><span class="material-symbols-outlined msi">add_shopping_cart</span><span data-en="Add To Cart">কার্টে যোগ করুন</span></button></div>
+      <div class="action-bar cp-top-actions" style="margin-top:0; margin-bottom:14px;"><button type="button" class="ord-btn primary sm" onclick="addCustomerToCart()"><span class="material-symbols-outlined msi">add_shopping_cart</span><span data-en="Add To Cart">কার্টে যোগ করুন</span></button><button type="button" class="ord-btn primary sm" onclick="saveOrder()"><span class="material-symbols-outlined msi">inventory_2</span><span data-en="Save Order (Pending)">অর্ডার সেভ করুন (পেন্ডিং)</span></button></div>
       <div id="editOrderBar" class="auto-box" style="display:none;">
         <div id="editOrderTitle" style="margin-bottom:10px;"></div>
         <div class="action-bar" style="margin-top:0;">
@@ -1573,7 +1699,6 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
         </div>
       </div>
       <div class="action-bar">
-        <button class="btn-action btn-print" onclick="saveOrder()"><span class="material-symbols-outlined msi">inventory_2</span><span data-en="Save Order (Pending)">অর্ডার সেভ করুন (পেন্ডিং)</span></button>
         <button class="btn-action btn-reset" onclick="resetForm('tabCustomer')"><span class="material-symbols-outlined msi">restart_alt</span><span data-en="Reset Profile">প্রোফাইল রিসেট করুন</span></button>
         <p class="clabel" id="orderSaveMsg" style="flex-basis:100%; margin:0; font-weight:600;"></p>
       </div>
@@ -2370,6 +2495,12 @@ function resetForm(tabId) {
       input.value = '';
     }
   });
+  container.querySelectorAll('textarea').forEach(t => { t.value = ''; });
+  container.querySelectorAll('select').forEach(sel => {
+    let idx = 0;
+    for (let k = 0; k < sel.options.length; k++) { if (sel.options[k].defaultSelected) { idx = k; break; } }
+    sel.selectedIndex = idx;
+  });
   
   applyCustomerProfileMode();
   applyStairMode();
@@ -2377,6 +2508,10 @@ function resetForm(tabId) {
   calcWall(); calcWallX();
   calcTak();
   calcStairs();
+}
+
+function clearAllForms() {
+  ['tabCustomer', 'tabFloor', 'tabWall', 'tabWallX', 'tabTak', 'tabStairs'].forEach(id => { if (document.getElementById(id)) resetForm(id); });
 }
 
 /* --- কাস্টমার প্রোফাইল --- */
@@ -2545,8 +2680,11 @@ function saveOrder() {
     status: 'pending'
   });
   persistOrders();
+  editOrigin = null;
+  clearAllForms();
   renderOrders();
-  showOrderMsg(tr('অর্ডার "পেন্ডিং → ডেলিভারি" ট্যাবে সেভ হয়েছে।', 'Order saved to "Pending To Delivery".'), false);
+  showToast(tr('অর্ডার "পেন্ডিং → ডেলিভারি" ট্যাবে সেভ হয়েছে।', 'Order saved to "Pending To Delivery".'), false);
+  activateTab('tabPending');
 }
 
 function moveOrder(id, status) {
@@ -2670,6 +2808,7 @@ function openOrderProfile(id) {
   if (on) on.checked = true;
   if (!o.cartItems) applyOrderInputs(o.inputs);
   refreshEditBar();
+  captureOrigin();
   activateTab('tabCustomer');
 }
 
@@ -2698,19 +2837,29 @@ function updateOrder() {
   }
   persistOrders();
   renderOrders();
+  const statusTab = CART_STATUS_TAB[o.status] || 'tabPending';
+  editingOrderId = null;
+  if (!o.cartItems) applyOrderInputs({});
+  ORDER_PROFILE_IDS.forEach(fid => { const el = document.getElementById(fid); if (el) el.value = ''; });
+  resetForm('tabCustomer');
   refreshEditBar();
-  if (o.cartItems) { showToast(tr('অর্ডার আপডেট হয়েছে।', 'Order updated.'), false); openCustomerView(o.id); }
-  else { showOrderMsg(tr('অর্ডার আপডেট হয়েছে।', 'Order updated.'), false); }
+  showToast(tr('অর্ডার আপডেট হয়েছে।', 'Order updated.'), false);
+  if (!editOrigin) editOrigin = { tab: 'tabCustView', order: o.id };
+  returnToOrigin(statusTab);
 }
 
 function cancelOrderEdit() {
+  const wasEditing = !!editingOrderId;
+  const prev = orders.find(x => x.id === editingOrderId);
   editingOrderId = null;
   ORDER_PROFILE_IDS.forEach(fid => { const el = document.getElementById(fid); if (el) el.value = ''; });
   const off = document.querySelector('input[name="custProfileMode"][value="off"]');
   if (off) off.checked = true;
   applyOrderInputs({});
   refreshEditBar();
+  resetForm('tabCustomer');
   showOrderMsg(tr('এডিট বন্ধ হয়েছে এবং ফর্ম খালি করা হয়েছে।', 'Editor closed and form cleared.'), false);
+  if (wasEditing) returnToOrigin(prev ? (CART_STATUS_TAB[prev.status] || 'tabPending') : 'tabPending');
 }
 
 /* --- কার্ট (Add To Cart): একই কাস্টমারের একাধিক হিসাব --- */
@@ -2718,6 +2867,22 @@ const CART_KEY = 'tilesCartData';
 let cart = [];
 let cartCustomer = null;
 let itemEdit = null; // { source: "cart" | orderId, index, type }
+let editOrigin = null; // { tab, order } — where an Edit was started, so Update/Cancel can return there
+const EDIT_FORM_TABS = ['tabCustomer', 'tabFloor', 'tabWall', 'tabWallX', 'tabTak', 'tabStairs'];
+function captureOrigin() {
+  const a = document.querySelector('.tab-content.active');
+  const tab = a ? a.id : 'tabPending';
+  if (editOrigin && EDIT_FORM_TABS.includes(tab)) return; // already editing: keep the first origin
+  editOrigin = { tab, order: tab === 'tabCustView' ? window._pvOpenId : null };
+}
+function returnToOrigin(fallbackTab) {
+  const o = editOrigin;
+  editOrigin = null;
+  if (o && o.tab === 'tabCustView' && o.order && orders.some(x => x.id === o.order)) { pvEditing = null; openCustomerView(o.order); return; }
+  const t = (o && o.tab && o.tab !== 'tabCustView' && !EDIT_FORM_TABS.includes(o.tab)) ? o.tab : fallbackTab;
+  activateTab(t);
+  if (t === 'tabReport') renderReport();
+}
 const CART_GROUPS = {
   floor: { ids: ['pricePerSqft','fLenFt','fLenIn','fWidFt','fWidIn','fSqft','fCustomPerimeter','fTileL','fTileW','fWastage','fPerBox','sDoorQty','sDoorWidth','sHt','sWastage','fCode'], radios: ['floorMode'] },
   wall:   { ids: ['wTotalSqft','wHtFt','wTileH','wTileW','wLightRows','wDecorRows','wDarkRows','wDeductSqft','wWastage','wPerBox','wPriceStd','wPriceDecor','wLightCode','wDecorCode','wDarkCode'], radios: [] },
@@ -2772,7 +2937,10 @@ function addCustomerToCart() {
   cartCustomer = p;
   persistCart();
   renderCart();
+  editOrigin = null;
+  resetForm('tabCustomer');
   showToast(tr('কাস্টমার প্রোফাইল কার্টে যোগ হয়েছে।', 'Customer profile added to cart.'), false);
+  activateTab('tabCart');
 }
 
 function collectGroupInputs(type) {
@@ -2954,6 +3122,7 @@ function codesFor(type) {
 }
 
 function addToCart(type) {
+  if (typeof _calcQueued !== 'undefined' && _calcQueued) recalcAll();
   const r = calcResultFor(type);
   if (!r || r.pcs <= 0) {
     showToast(tr('আগে এই হিসাবের মাপ দিন।', 'Enter the measurements for this calculation first.'), true);
@@ -3105,6 +3274,7 @@ function editItem(source, index) {
   const list = source === 'cart' ? cart : ((orderOf(source) || {}).cartItems);
   const it = list && list[index];
   if (!it) return;
+  captureOrigin();
   itemEdit = { source, index, type: it.type };
   applyGroupInputs(it.type, it.inputs);
   refreshItemEditBar();
@@ -3124,9 +3294,13 @@ function refreshItemEditBar() {
 function cancelItemEdit() {
   if (!itemEdit) return;
   const type = itemEdit.type;
+  const src = itemEdit.source;
+  const o = orderOf(src);
+  const fallback = src === 'cart' ? 'tabCart' : ((o && CART_STATUS_TAB[o.status]) || 'tabPending');
   itemEdit = null;
   resetForm(CART_TAB[type]);
   refreshItemEditBar();
+  returnToOrigin(fallback);
 }
 
 function recomputeOrder(o) {
@@ -3146,6 +3320,7 @@ function recomputeOrder(o) {
 
 function updateEditingItem() {
   if (!itemEdit) return;
+  if (_calcQueued) recalcAll();
   const type = itemEdit.type;
   const r = calcResultFor(type);
   if (!r || r.pcs <= 0) {
@@ -3174,10 +3349,11 @@ function updateEditingItem() {
   refreshItemEditBar();
   const label = CART_LABEL[type]();
   showToast(tr(`"${label}" আপডেট হয়েছে।`, `"${label}" updated.`), false);
-  activateTab(backTab);
+  returnToOrigin(backTab);
 }
 
 function editCartCustomer() {
+  captureOrigin();
   const c = cartCustomer || {};
   const setField = (fid, v) => { const el = document.getElementById(fid); if (el) el.value = v || ''; };
   setField('cName', c.name);
@@ -3212,11 +3388,13 @@ function openCustomerView(id) {
   const initial = escapeHtml(name.trim().charAt(0).toUpperCase() || '?');
 
   const field = (icon, lbl, val) => `<div class="pv-field"><small><span class="material-symbols-outlined">${icon}</span>${lbl}</small><b>${val}</b></div>`;
-  const info = [
+  const heroInfo = [
     field('call', tr('মোবাইল', 'Mobile'), escapeHtml(o.phone || '—')),
     field('receipt_long', tr('ইনভয়েস', 'Invoice'), escapeHtml(o.invoice || '—')),
     field('location_on', tr('ঠিকানা', 'Address'), escapeHtml(o.address || '—')),
-    field('event', tr('ডেলিভারির তারিখ', 'Delivery date'), fmtDate(o.deliveryDate)),
+    field('event', tr('ডেলিভারির তারিখ', 'Delivery date'), fmtDate(o.deliveryDate))
+  ].join('');
+  const info = [
     field('payments', tr('পণ্যের মোট টাকা', 'Product total'), o.totalAmount != null && o.totalAmount !== '' ? '৳ ' + Math.round(o.totalAmount).toLocaleString('en-BD') : '—'),
     field('paid', tr('পণ্যের মোট টাকা পরিশোধ', 'Amount paid'), o.paidAmount != null && o.paidAmount !== '' ? '৳ ' + Math.round(o.paidAmount).toLocaleString('en-BD') : '—'),
     o.status !== 'pending' ? field('local_shipping', tr('ডেলিভারি দেওয়া', 'Delivered on'), fmtDate(o.deliveredAt)) : '',
@@ -3290,13 +3468,12 @@ function openCustomerView(id) {
     </div>
 
     <div class="pv-hero">
-      <div class="pv-avatar">${initial}</div>
       <div class="pv-hero-text">
         <span class="pv-status pv-status-${o.status}">${statusLabel}</span>
         <h2 class="pv-name">${escapeHtml(name)}</h2>
-        <div class="pv-sub">${o.invoice ? '#' + escapeHtml(o.invoice) : tr('ইনভয়েস নেই', 'No invoice')}</div>
       </div>
       <div class="pv-total"><span>${tr('সর্বমোট', 'Grand total')}</span><strong>৳ ${(o.total || 0).toLocaleString('en-BD')}</strong></div>
+      <div class="pv-hero-info">${heroInfo}${info}</div>
     </div>
 
     <div class="pv-actions">
@@ -3307,11 +3484,6 @@ function openCustomerView(id) {
     </div>
 
     ${editing ? editForm : ''}
-
-    <div class="pv-block">
-      <div class="pv-block-head"><h3>${tr('কাস্টমার তথ্য', 'Customer details')}</h3></div>
-      <div class="pv-info">${info}</div>
-    </div>
 
     <div class="pv-block">
       <div class="pv-block-head"><h3>${tr('হিসাবসমূহ', 'Calculations')}</h3><span class="pv-count">${itemsCount ? itemsCount + ' ' + tr('টি আইটেম', 'items') : ''}</span></div>
@@ -3592,6 +3764,7 @@ function printOrderView(id, lang) {
         .install-app-btn { color: #2F8F72; background: #EAFBF3; }
 html.lite *, html.lite *::before, html.lite *::after { transition: none !important; animation: none !important; backdrop-filter: none !important; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
+
 </style>
     <div class="print-invoice-box">
       <div class="pt-owner">Foijol Muhammad Minar</div>
@@ -3615,7 +3788,13 @@ html.lite *, html.lite *::before, html.lite *::after { transition: none !importa
 
 function statusFromView(id, status) {
   moveOrder(id, status);
-  openCustomerView(id);
+  const msg = {
+    pending: tr('অর্ডার পেন্ডিং তালিকায় ফিরেছে।', 'Order moved back to Pending.'),
+    delivery: tr('অর্ডার "ডেলিভারি → কনফার্ম" তালিকায় গেছে।', 'Order moved to "Delivery To Confirm".'),
+    confirmed: tr('অর্ডার "কনফার্ম অল হিস্টোরি"-তে গেছে।', 'Order moved to "Confirm All History".')
+  }[status];
+  showToast(msg || '', false);
+  activateTab(CART_STATUS_TAB[status] || 'tabPending');
 }
 
 function deleteFromView(id) {
@@ -3625,14 +3804,6 @@ function deleteFromView(id) {
   if (!orders.some(x => x.id === id)) activateTab(back);
 }
 
-/* --- সেকশন ক্লিয়ার: এক ক্লিকে ওই অংশের সব ইনপুট মুছে ফেলা --- */
-const CLEAR_SECTIONS = {
-  floor:  { ids: ['fLenFt','fLenIn','fWidFt','fWidIn','fSqft','fCustomPerimeter'], radios: { floorMode: 'dim' }, selects: [] },
-  wall:   { ids: ['wTotalSqft','wHtFt','wTileH','wTileW'], radios: {}, selects: [] },
-  wallx:  { ids: ['xTotalSqft','xHtFt','xTileH','xTileW'], radios: {}, selects: [] },
-  tak:    { ids: ['tLen','tWid','tSqft','tEdge'], radios: { takMode: 'dim' }, selects: ['tSides'] },
-  stairs: { ids: ['stSteps','stTreadL','stTreadW','stRiserL','stRiserW','stSkirtL','stSkirtW','stSqft','stSqftRiser'], radios: { stairMode: 'inch' }, selects: [] }
-};
 
 function clearSection(key) {
   const tabId = CART_TAB[key];
@@ -3727,296 +3898,7 @@ function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 }
 
-function buildCustomerBlock() {
-  const checked = document.querySelector('input[name="custProfileMode"]:checked');
-  if (!checked || checked.value !== 'on') return '';
 
-  const read = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
-  const name = read('cName');
-  const phone = read('cPhone');
-  const address = read('cAddress');
-  const invoice = read('cInvoice');
-  const dateRaw = read('cDelivery');
-
-  let dateTxt = '';
-  if (dateRaw) {
-    const parts = dateRaw.split('-');
-    if (parts.length === 3) {
-      const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
-      dateTxt = d.toLocaleDateString(currentLang === 'en' ? 'en-GB' : 'bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
-    }
-  }
-
-  if (!name && !phone && !address && !invoice && !dateTxt) return '';
-
-  const row = (label, value, full) => value
-    ? `<div class="pc-row${full ? ' pc-full' : ''}"><span class="pc-lbl">${label}:</span><span>${escapeHtml(value)}</span></div>`
-    : '';
-
-  return `
-      <div class="print-customer">
-        ${row(tr('কাস্টমারের নাম', 'Customer Name'), name, false)}
-        ${row(tr('মোবাইল নম্বর', 'Mobile Number'), phone, false)}
-        ${row(tr('ঠিকানা', 'Address'), address, true)}
-        ${row(tr('ইনভয়েস নম্বর', 'Invoice Number'), invoice, false)}
-        ${row(tr('ডেলিভারির তারিখ', 'Delivery Date'), dateTxt, false)}
-      </div>
-  `;
-}
-
-/* --- অল-ইন-ওয়ান ১-পেজ A4 প্রফেশনাল এডজাস্টেড প্রিন্টিং স্ক্রিপ্ট --- */
-function printReceipt() {
-  const printContainer = document.getElementById('printSection');
-  const now = new Date();
-  const LOC = currentLang === 'en' ? 'en-GB' : 'bn-BD';
-  const LOC_T = currentLang === 'en' ? 'en-US' : 'bn-BD';
-  const dateStr = now.toLocaleDateString(LOC, { year: 'numeric', month: 'long', day: 'numeric' });
-  const timeStr = now.toLocaleTimeString(LOC_T, { hour: '2-digit', minute: '2-digit' });
-
-  // ফ্লোর ডাটা
-  const fFinalPcs = parseInt(document.getElementById('resFFinal').innerText) || 0;
-  const sFinalPcs = parseInt(document.getElementById('resSFinal').innerText) || 0;
-  const fSingleArea = parseFloat(document.getElementById('resSingleArea').innerText) || 0;
-  const priceSqft = getVal('pricePerSqft');
-
-  // ওয়াল ডাটা
-  const wLightPcs = parseInt(document.getElementById('resLightPcs').innerText) || 0;
-  const wDecorPcs = parseInt(document.getElementById('resDecorPcs').innerText) || 0;
-  const wDarkPcs = parseInt(document.getElementById('resDarkPcs').innerText) || 0;
-
-  // তাক ডাটা
-  const tTotalPcs = parseInt(document.getElementById('resTakTotal').innerText) || 0;
-
-  let grandTotalCalculatedPrice = 0;
-
-  let content = `
-    <div class="print-invoice-box">
-      <div class="print-header">
-        <div class="print-header-titles">
-          <h2>MINAR TILES CALCULATOR</h2>
-          <p>${tr('কম্বাইন্ড শোরুম ও বিজনেস চালান মেমো', 'Combined Showroom & Business Invoice')}</p>
-        </div>
-        <div class="print-meta">
-          <div><strong>${tr('তারিখ', 'Date')}:</strong> ${dateStr}</div>
-          <div><strong>${tr('সময়', 'Time')}:</strong> ${timeStr}</div>
-        </div>
-      </div>
-      ${buildCustomerBlock()}
-  `;
-
-  // ১. ফ্লোর ও স্কার্টিং টেবিল
-  if (fFinalPcs > 0 || sFinalPcs > 0) {
-    const fPrice = Math.round(fFinalPcs * fSingleArea * priceSqft);
-    const sPrice = Math.round(sFinalPcs * fSingleArea * priceSqft);
-    grandTotalCalculatedPrice += (fPrice + sPrice);
-
-    content += `
-      <div class="print-section-title">${tr('১. ফ্লোর ও স্কার্টিং টাইলস', '1. Floor & Skirting Tiles')}</div>
-      <table class="print-table">
-        <thead>
-          <tr>
-            <th>${tr('আইটেম বিবরণ', 'Item Description')}</th>
-            <th>${tr('মাপ / কুপন', 'Size / Coupon')}</th>
-            <th>${tr('পরিমাণ (Pcs)', 'Quantity (Pcs)')}</th>
-            <th>${tr('বক্স / কার্টন', 'Box / Carton')}</th>
-            <th>${tr('মোট মূল্য (৳)', 'Total Price (৳)')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${fFinalPcs > 0 ? `
-          <tr>
-            <td><strong>${tr('ফ্লোর টাইলস', 'Floor Tiles')}</strong></td>
-            <td>${getVal('fTileL')}" × ${getVal('fTileW')}"</td>
-            <td>${fFinalPcs} ${tr('পিস', 'pcs')}</td>
-            <td>${document.getElementById('resFBoxes').innerText}</td>
-            <td>৳${fPrice.toLocaleString('en-BD')}</td>
-          </tr>` : ''}
-          ${sFinalPcs > 0 ? `
-          <tr>
-            <td><strong>${tr('স্কার্টিং (কাটিং)', 'Skirting (Cutting)')}</strong></td>
-            <td>${tr('উচ্চতা', 'Height')}: ${getVal('sHt')}" (${document.getElementById('resCutsPerTile').innerText}${tr('টি কুপন', ' coupons')})</td>
-            <td>${sFinalPcs} ${tr('পিস', 'pcs')}</td>
-            <td>${document.getElementById('resSBoxes').innerText}</td>
-            <td>৳${sPrice.toLocaleString('en-BD')}</td>
-          </tr>` : ''}
-        </tbody>
-      </table>
-    `;
-  }
-
-  // ২. ওয়াল টাইলস টেবিল
-  if (wLightPcs > 0 || wDecorPcs > 0 || wDarkPcs > 0) {
-    const lPrice = parseInt(document.getElementById('resLightPrice').innerText.replace(/,/g, '')) || 0;
-    const dPrice = parseInt(document.getElementById('resDecorPrice').innerText.replace(/,/g, '')) || 0;
-    const dkPrice = parseInt(document.getElementById('resDarkPrice').innerText.replace(/,/g, '')) || 0;
-    grandTotalCalculatedPrice += (lPrice + dPrice + dkPrice);
-
-    content += `
-      <div class="print-section-title">${tr('২. ডেকোরেট ওয়াল টাইলস', '2. Decorate Wall Tiles')}</div>
-      <table class="print-table">
-        <thead>
-          <tr>
-            <th>${tr('ক্যাটাগরি', 'Category')}</th>
-            <th>${tr('সারি (Rows)', 'Rows')}</th>
-            <th>${tr('পরিমাণ (Pcs & Sqft)', 'Quantity (Pcs & Sqft)')}</th>
-            <th>${tr('বক্স ব্রেকডাউন', 'Box Breakdown')}</th>
-            <th>${tr('মোট মূল্য (৳)', 'Total Price (৳)')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${wLightPcs > 0 ? `
-          <tr>
-            <td><strong>${tr('লাইট টাইলস', 'Light Tiles')}</strong></td>
-            <td>${getVal('wLightRows')}${tr(' টি', '')}</td>
-            <td>${wLightPcs} ${tr('পিস', 'pcs')} (${document.getElementById('resLightDetail').innerText})</td>
-            <td>${document.getElementById('resLightBoxes').innerText}</td>
-            <td>৳${lPrice.toLocaleString('en-BD')}</td>
-          </tr>` : ''}
-          ${wDecorPcs > 0 ? `
-          <tr>
-            <td><strong>${tr('ডেকোর টাইলস', 'Decor Tiles')}</strong></td>
-            <td>${getVal('wDecorRows')}${tr(' টি', '')}</td>
-            <td>${wDecorPcs} ${tr('পিস', 'pcs')} (${document.getElementById('resDecorDetail').innerText})</td>
-            <td>${document.getElementById('resDecorBoxes').innerText}</td>
-            <td>৳${dPrice.toLocaleString('en-BD')}</td>
-          </tr>` : ''}
-          ${wDarkPcs > 0 ? `
-          <tr>
-            <td><strong>${tr('ডিপ টাইলস', 'Deep Tiles')}</strong></td>
-            <td>${getVal('wDarkRows')}${tr(' টি', '')}</td>
-            <td>${wDarkPcs} ${tr('পিস', 'pcs')} (${document.getElementById('resDarkDetail').innerText})</td>
-            <td>${document.getElementById('resDarkBoxes').innerText}</td>
-            <td>৳${dkPrice.toLocaleString('en-BD')}</td>
-          </tr>` : ''}
-        </tbody>
-      </table>
-    `;
-  }
-
-  // ৩. ওয়াল টাইলস (একক ধরন)
-  const wxPcs = parseInt(document.getElementById('xResPcs').innerText) || 0;
-  if (wxPcs > 0) {
-    const wxPrice = parseInt(document.getElementById('xResPrice').innerText.replace(/,/g, '')) || 0;
-    grandTotalCalculatedPrice += wxPrice;
-
-    content += `
-      <div class="print-section-title">${tr('৩. ওয়াল টাইলস', '3. Wall Tiles')}</div>
-      <table class="print-table">
-        <thead>
-          <tr>
-            <th>${tr('ক্যাটাগরি', 'Category')}</th>
-            <th>${tr('সারি (Rows)', 'Rows')}</th>
-            <th>${tr('পরিমাণ (Pcs & Sqft)', 'Quantity (Pcs & Sqft)')}</th>
-            <th>${tr('বক্স ব্রেকডাউন', 'Box Breakdown')}</th>
-            <th>${tr('মোট মূল্য (৳)', 'Total Price (৳)')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>${tr('ওয়াল টাইলস', 'Wall Tiles')}</strong></td>
-            <td>${getVal('xRows')}${tr(' টি', '')}</td>
-            <td>${wxPcs} ${tr('পিস', 'pcs')} (${document.getElementById('xResDetail').innerText})</td>
-            <td>${document.getElementById('xResBoxes').innerText}</td>
-            <td>৳${wxPrice.toLocaleString('en-BD')}</td>
-          </tr>
-        </tbody>
-      </table>
-    `;
-  }
-
-  // ৪. তাক / কিচেন স্ল্যাব টেবিল
-  if (tTotalPcs > 0) {
-    const tPrice = parseInt(document.getElementById('resTakPrice').innerText.replace(/,/g, '')) || 0;
-    grandTotalCalculatedPrice += tPrice;
-
-    content += `
-      <div class="print-section-title">${tr('৪. তাক / কিচেন স্ল্যাব', '4. Shelf / Kitchen Slab')}</div>
-      <table class="print-table">
-        <thead>
-          <tr>
-            <th>${tr('সেকশন', 'Section')}</th>
-            <th>${tr('ক্ষেত্রফল (Sqft)', 'Area (Sqft)')}</th>
-            <th>${tr('প্রয়োজনীয় টাইলস', 'Tiles Required')}</th>
-            <th>${tr('বক্স হিসাব', 'Box Count')}</th>
-            <th>${tr('মোট মূল্য (৳)', 'Total Price (৳)')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>${tr('স্ল্যাব ও ফ্রন্ট বিট', 'Slab & Front Edge')}</strong></td>
-            <td>${document.getElementById('resTakArea').innerText} Sqft</td>
-            <td>${tTotalPcs} ${tr('পিস', 'pcs')}</td>
-            <td>${document.getElementById('resTakBoxes').innerText}</td>
-            <td>৳${tPrice.toLocaleString('en-BD')}</td>
-          </tr>
-        </tbody>
-      </table>
-    `;
-  }
-
-  // এডজাস্টেড সর্বমোট গ্র্যান্ড টোটাল
-  // ৪. সিঁড়ি ও চৌকি টেবিল
-  if (stairsResult.stairPcs > 0 || stairsResult.chPcs > 0) {
-    grandTotalCalculatedPrice += (stairsResult.stairPrice + stairsResult.chPrice);
-
-    content += `
-      <div class="print-section-title">${tr('৫. সিঁড়ির টাইলস ও চৌকি', '5. Stair Tiles & Chowki')}</div>
-      <table class="print-table">
-        <thead>
-          <tr>
-            <th>${tr('আইটেম বিবরণ', 'Item Description')}</th>
-            <th>${tr('টাইলস মাপ', 'Tile Size')}</th>
-            <th>${tr('পরিমাণ (Pcs)', 'Quantity (Pcs)')}</th>
-            <th>${tr('বক্স / কার্টন', 'Box / Carton')}</th>
-            <th>${tr('মোট মূল্য (৳)', 'Total Price (৳)')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${stairsResult.stepPcs > 0 ? `
-          <tr>
-            <td><strong>${tr('সিঁড়ির ধাপ', 'Stair Steps')}</strong> ${stairsResult.stepLabel}<br><span style="font-size:7pt;color:#5C6B65;">${stairsResult.stepDetail}</span></td>
-            <td>${stairsResult.stepTile}</td>
-            <td>${stairsResult.stepPcs} ${tr('পিস', 'pcs')}</td>
-            <td>${stairsResult.stepBoxes}</td>
-            <td>৳${stairsResult.stepPrice.toLocaleString('en-BD')}</td>
-          </tr>` : ''}
-          ${stairsResult.rsPcs > 0 ? `
-          <tr>
-            <td><strong>${tr('রাইজার + স্কার্টিং', 'Riser + Skirting')}</strong> ${stairsResult.rsLabel}<br><span style="font-size:7pt;color:#5C6B65;">${stairsResult.rsDetail}</span></td>
-            <td>${stairsResult.rsTile}</td>
-            <td>${stairsResult.rsPcs} ${tr('পিস', 'pcs')}</td>
-            <td>${stairsResult.rsBoxes}</td>
-            <td>৳${stairsResult.rsPrice.toLocaleString('en-BD')}</td>
-          </tr>` : ''}
-          ${stairsResult.chPcs > 0 ? `
-          <tr>
-            <td><strong>${tr('চৌকি', 'Chowki')}</strong> (${stairsResult.chArea.toFixed(1)} Sqft)</td>
-            <td>${stairsResult.chTile}</td>
-            <td>${stairsResult.chPcs} ${tr('পিস', 'pcs')}</td>
-            <td>${stairsResult.chBoxes}</td>
-            <td>৳${stairsResult.chPrice.toLocaleString('en-BD')}</td>
-          </tr>` : ''}
-        </tbody>
-      </table>
-    `;
-  }
-
-  content += `
-      <div class="print-grand-total">
-        <div class="lbl">${tr('সর্বমোট প্রাক্কলিত চালান মূল্য (Grand Total):', 'Estimated Grand Total:')}</div>
-        <div class="val">৳${grandTotalCalculatedPrice.toLocaleString('en-BD')}</div>
-      </div>
-
-      <div class="print-footer">
-        <div>${tr('সফটওয়্যার', 'Software')}: My Tiles Calculator - Showroom Edition</div>
-        <div>${tr('ধন্যবাদ! আবার আসবেন।', 'Thank you! Please visit again.')}</div>
-      </div>
-    </div>
-  `;
-  
-  printContainer.innerHTML = content;
-  window.print();
-}
 
 function toggleSideNav(force) {
   const nav = document.querySelector('.calc-nav');
@@ -5975,11 +5857,9 @@ if ('serviceWorker' in navigator) {
 
 /* হিরো: ছবি | নাম | সর্বমোট — এক সারিতে */
 .pv-hero { display: grid !important; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 14px !important; border-radius: 16px; }
-.pv-avatar { width: 48px !important; height: 48px !important; border-radius: 14px !important; font-size: 20px !important; }
 .pv-hero-text { flex: none; gap: 3px; min-width: 0; }
 .pv-status { font-size: 11px; padding: 2px 9px; }
 .pv-name { font-size: clamp(16px, 4.6vw, 22px) !important; line-height: 1.2; }
-.pv-sub { font-size: 12px; }
 .pv-total { align-items: flex-end; text-align: right; }
 .pv-total span { font-size: 11px; }
 .pv-total strong { font-size: clamp(16px, 4.8vw, 22px) !important; white-space: nowrap; }
@@ -5990,12 +5870,10 @@ if ('serviceWorker' in navigator) {
 
 /* কাস্টমার তথ্য: ২ কলাম, আইকন+লেবেল এক লাইনে, নিচে মান */
 .pv-block { gap: 8px; }
-.pv-info { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
 .pv-field { flex-direction: column; align-items: stretch !important; gap: 3px !important; padding: 9px 11px !important; border-radius: 12px !important; min-width: 0; }
 .pv-field small { display: flex; align-items: center; gap: 5px; margin: 0 !important; font-size: 11px; line-height: 1.25; color: var(--ink-soft); }
 .pv-field small .material-symbols-outlined { font-size: 16px; color: var(--accent-ink); }
 .pv-field b { font-size: 13.5px !important; line-height: 1.3; overflow-wrap: anywhere; }
-@media (max-width: 719.98px) { .pv-info > .pv-field:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 
 /* হিসাবের আইটেম */
 .pv-items { gap: 8px; }
@@ -6025,13 +5903,28 @@ if ('serviceWorker' in navigator) {
 
 @media (min-width: 720px) {
   #custViewBody { padding: 20px !important; gap: 16px !important; }
-  .pv-info { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
   .pv-add-grid { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
   .pv-add-card small { display: block; }
   .pv-actions { display: flex !important; flex-wrap: wrap; }
   .pv-actions .pv-btn { padding: 6px 16px !important; }
   .pv-editgrid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
   .pv-full { grid-column: span 2; }
+}
+</style>
+<style id="pvHeroInfo">
+/* ===== কাস্টমার প্রোফাইল হিরো: ছবি (অ্যাভাটার) ছাড়া; মোবাইল, ইনভয়েস, ঠিকানা ও ডেলিভারির তারিখ কার্ডের ভেতরে কমপ্যাক্ট ===== */
+.pv-hero { grid-template-columns: minmax(0, 1fr) auto !important; align-items: end !important; row-gap: 10px !important; }
+.pv-hero .pv-name, .pv-hero .pv-total strong { line-height: 1.2 !important; }
+.pv-hero .pv-hero-text, .pv-hero .pv-total { align-self: end; }
+.pv-hero .pv-total { text-align: right; }
+.pv-hero-info { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 8px; margin: 0; padding: 0; border: 0; }
+.pv-hero-info .pv-field { padding: 8px 10px !important; border-radius: 12px !important; background: rgba(255, 255, 255, 0.72); background: color-mix(in srgb, var(--surface) 78%, transparent); }
+.pv-hero-info .pv-field b { font-size: 13px !important; line-height: 1.3; }
+.pv-hero-info .pv-field small { font-size: 10.5px; }
+[data-theme="dark"] .pv-hero-info .pv-field { background: rgba(255, 255, 255, 0.05); }
+@media (max-width: 359.98px) { .pv-hero-info { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 720px) {
+  .pv-hero-info { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 }
 </style>
 <script id="iconGuard">
@@ -6080,6 +5973,26 @@ if ('serviceWorker' in navigator) {
     document.fonts.addEventListener('loadingdone', function () { setTimeout(fontCheck, 100); });
     document.fonts.addEventListener('loadingerror', function () { setTimeout(fontCheck, 100); });
   }
+})();
+</script>
+
+<script>
+/* Remote / D-pad arrow-key focus navigation (TV, keyboard). No effect on touch or typing. */
+(function(){
+  var SEL='button:not([disabled]), a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  document.addEventListener('keydown', function(e){
+    var k=e.key; if(k!=='ArrowDown'&&k!=='ArrowUp'&&k!=='ArrowLeft'&&k!=='ArrowRight') return;
+    var a=document.activeElement, t=a&&a.tagName;
+    if(t==='TEXTAREA'||(t==='INPUT'&&/^(text|search|tel|email|password|url|number)$/i.test(a.type||'text'))||t==='SELECT') return;
+    var els=[].filter.call(document.querySelectorAll(SEL),function(x){return x.offsetParent!==null;});
+    if(!els.length) return;
+    if(!a||a===document.body){els[0].focus();e.preventDefault();return;}
+    var r=a.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,best=null,bd=1e9;
+    els.forEach(function(x){ if(x===a) return; var q=x.getBoundingClientRect(),dx=q.left+q.width/2-cx,dy=q.top+q.height/2-cy,ok=
+      k==='ArrowDown'?dy>4:k==='ArrowUp'?dy<-4:k==='ArrowRight'?dx>4:dx<-4;
+      if(!ok) return; var d=(k==='ArrowDown'||k==='ArrowUp')?Math.abs(dy)+Math.abs(dx)*2:Math.abs(dx)+Math.abs(dy)*2; if(d<bd){bd=d;best=x;}});
+    if(best){best.focus({preventScroll:false});best.scrollIntoView({block:'nearest'});e.preventDefault();}
+  });
 })();
 </script>
 </body></html>
