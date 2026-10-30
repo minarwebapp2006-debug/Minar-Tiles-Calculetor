@@ -4,6 +4,11 @@
 <title>Minar Tiles Calculator - Digital App</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0077B6">
+<script>/* সেভ করা থিম (Light/Dark/System) প্রথম রেন্ডারের আগেই বসানো */(function(){try{var m=localStorage.getItem("tilesTheme");if(m==="light"||m==="dark"||m==="system"){var d=m==="dark"||(m==="system"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light");}}catch(e){}})();</script>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Minar Tiles">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <!-- Browser tab favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-glass-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-glass.png">
@@ -1158,11 +1163,11 @@ button, a, input, select, label, .calc-nav-item { touch-action: manipulation; }
   .panel { padding: 13px; }
 }
 /* পপআপ/মোডাল: কিবোর্ডের উপরে থাকবে, ভেতরে স্ক্রল হবে, কখনও কেটে যাবে না */
-.cust-modal, #cloudModal, #pwModal, #ownerModal, #ownerDash {
+.cust-modal, #cloudModal, #pwModal, #ownerModal, #ownerDash, #repDelModal {
   align-items: flex-start !important; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
   padding: 16px 16px calc(16px + var(--kb)) !important;
 }
-.cust-modal-box, #cloudModal .cbox, #pwModal .cbox, #ownerModal .cbox, #ownerDash .od-box {
+.cust-modal-box, #cloudModal .cbox, #pwModal .cbox, #ownerModal .cbox, #ownerDash .od-box, #repDelModal .cbox {
   margin: auto !important; max-height: calc(var(--vvh) - 32px) !important; overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
 #authGate { padding-bottom: calc(16px + var(--kb)); }
@@ -1202,7 +1207,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   .panel { padding: 12px; border-radius: 16px; }
   .fval { font-size: clamp(17px, 5.6vw, 22px); }
   .calc-nav { width: min(270px, 86vw); }
-  .cust-modal-box, #cloudModal .cbox, #pwModal .cbox, #ownerModal .cbox, #ownerDash .od-box { padding-left: 14px; padding-right: 14px; }
+  .cust-modal-box, #cloudModal .cbox, #pwModal .cbox, #ownerModal .cbox, #ownerDash .od-box, #repDelModal .cbox { padding-left: 14px; padding-right: 14px; }
 }
 /* ছোট উচ্চতা (ল্যান্ডস্কেপ / কিবোর্ড খোলা) */
 @media (max-height: 520px) {
@@ -1467,7 +1472,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
 .action-bar.cp-top-actions .ord-btn.sm { flex: 0 1 auto !important; width: auto !important; min-width: 0 !important; max-width: none; min-height: 38px !important; padding: 6px 9px !important; font-size: 12px !important; white-space: normal !important; line-height: 1.2; text-align: left; justify-content: flex-start !important; }
 /* ===== Universal responsive layer (additive, screen only; print/logic untouched) ===== */
 @media screen {
-  :root { --tap: 48px; }
+  :root { --tap: 48px; --sp-1: 4px; --sp-2: 8px; --sp-3: 16px; --sp-4: 24px; --sp-5: 32px; --sp-6: 48px; }
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body { padding-top: env(safe-area-inset-top); }
   img, svg, canvas, video { max-width: 100%; }
@@ -1531,6 +1536,19 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
     .app-shell { max-width: 1840px; }
     .calc-nav-item, .ord-btn, button { min-height: 64px; }
     :focus-visible { outline-width: 5px; outline-offset: 4px; }
+  }
+
+  /* iPhone/iPad Safari: 16px+ inputs so the page never auto-zooms on focus */
+  @supports (-webkit-touch-callout: none) {
+    input:not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea { font-size: 16px !important; }
+  }
+
+  /* 4K Smart TV (3840 px wide): larger 10-foot UI, content kept readable */
+  @media (min-width: 3200px) and (hover: none) {
+    html { font-size: 28px; }
+    .app-shell { max-width: 2560px; }
+    .calc-nav-item, .ord-btn, button { min-height: 88px; }
+    :focus-visible { outline-width: 6px; outline-offset: 5px; }
   }
 
   /* Landscape phones: avoid tall chrome */
@@ -1620,6 +1638,33 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
 #noteTplModal textarea:focus { outline: none; border-color: var(--accent-ink); }
 #noteTplModal .crow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 #ntMsg { margin-top: 10px; font-size: 12.5px; min-height: 16px; color: var(--ink-soft); }
+
+/* ===== Report → Delete Data (পাসওয়ার্ড নিশ্চিতকরণ মডাল) ===== */
+#repDelModal { position: fixed; inset: 0; z-index: 400; display: none; align-items: center; justify-content: center; background: rgba(15,23,42,.55); padding: 16px; }
+#repDelModal.open { display: flex; }
+#repDelModal .cbox { background: var(--surface); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; width: 100%; max-width: 420px; max-height: 90vh; overflow: auto; }
+#repDelModal h3 { margin: 0 0 6px; font-size: 17px; display: flex; align-items: center; gap: 8px; }
+#repDelModal h3 .msi { color: #DC2626; font-size: 20px; }
+#repDelModal .cnote { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5; }
+#repDelModal .rd-sum { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; margin: 0 0 12px; font-size: 13px; line-height: 1.7; }
+#repDelModal .rd-sum b { color: var(--ink); }
+#repDelModal .rd-warn { display: flex; gap: 8px; align-items: flex-start; background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; border-radius: 12px; padding: 9px 11px; margin: 0 0 12px; font-size: 12.5px; line-height: 1.5; }
+#repDelModal .rd-warn .msi { color: #DC2626; font-size: 18px; flex: none; }
+[data-theme="dark"] #repDelModal .rd-warn { background: rgba(220,38,38,.12); border-color: rgba(248,113,113,.35); color: #FCA5A5; }
+#repDelModal .ig { margin-bottom: 12px; }
+#repDelModal .crow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+#repDelModal .ord-btn.danger.solid { background: #DC2626; border-color: #DC2626; color: #fff; }
+#repDelModal .ord-btn.danger.solid .msi { color: #fff; }
+#repDelModal .ord-btn[disabled] { opacity: .6; cursor: not-allowed; }
+#rdMsg { margin-top: 10px; font-size: 12.5px; min-height: 16px; color: var(--ink-soft); line-height: 1.5; }
+#rdMsg.err { color: #DC2626; font-weight: 600; }
+#rdMsg.ok { color: #16A34A; font-weight: 600; }
+/* Report ফিল্টারে Print-এর পরে Delete Data যোগ হওয়ায় Print-এর আগের পিল-লুক অপরিবর্তিত রাখা */
+#tabReport .ord-filter .ig:nth-last-child(2) .ord-btn { height: 42px; padding: 0 16px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+#tabReport .ord-filter .ig:nth-last-child(2) .ord-btn:hover { color: var(--ink); background: var(--surface-2); transform: none; }
+#tabReport .ord-filter .ig:last-child .ord-btn.danger, #tabReport .ord-filter .ig:last-child .ord-btn.danger .msi { color: #DC2626; border-color: #FCA5A5; }
+#tabReport .ord-filter .ig:last-child .ord-btn.danger:hover { background: #FEF2F2; color: #B91C1C; }
+@media (max-width: 640px) { #tabReport .ord-filter .ig:nth-last-child(2) .ord-btn { height: 40px; padding: 0 10px; font-size: 13px; width: 100%; justify-content: center; } }
 .pv-noteform { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; gap: 14px; }
 .pv-note-text { font-size: 14px; line-height: 1.55; color: var(--ink); white-space: pre-wrap; word-break: break-word; }
 .pv-item.is-note .pv-item-ico { background: #FEF3C7; }
@@ -2306,6 +2351,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="document.getElementById('rep_from').value='';document.getElementById('rep_to').value='';renderReport()"><span class="material-symbols-outlined msi">filter_alt_off</span><span data-en="Clear">ফিল্টার মুছুন</span></button></div>
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="printReport('pdf')"><span class="material-symbols-outlined msi">picture_as_pdf</span><span data-en="Save PDF">PDF সেভ</span></button></div>
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="printReport()"><span class="material-symbols-outlined msi">print</span><span data-en="Print">প্রিন্ট</span></button></div>
+        <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn danger" id="rep_del_btn" onclick="openReportDelete()"><span class="material-symbols-outlined msi">delete</span><span data-en="Delete Data">ডেটা মুছুন</span></button></div>
       </div>
       <div class="ord-list" id="rep_list"></div>
       <div class="card" id="rep_total" style="margin-top:14px;"></div>
@@ -2472,6 +2518,20 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       <button type="button" class="ord-btn" onclick="closeSaveNote()"><span class="material-symbols-outlined msi">close</span><span data-en="Cancel">বাতিল</span></button>
     </div>
     <div id="ntMsg"></div>
+  </div>
+</div>
+<div id="repDelModal" onclick="if(event.target===this)closeReportDelete()">
+  <div class="cbox" role="dialog" aria-modal="true">
+    <h3><span class="material-symbols-outlined msi">delete</span><span data-en="Delete Data">ডেটা মুছুন</span></h3>
+    <p class="cnote" data-en="Confirmed orders in the selected date range will be deleted permanently from this device and from the cloud (Supabase).">নির্বাচিত তারিখের কনফার্ম করা অর্ডারগুলো এই ডিভাইস ও ক্লাউড (Supabase) — দুই জায়গা থেকেই স্থায়ীভাবে মুছে যাবে।</p>
+    <div class="rd-sum" id="rdSummary"></div>
+    <div class="rd-warn"><span class="material-symbols-outlined msi">warning</span><span data-en="This cannot be undone. Enter your login password to confirm.">এটি আর ফেরানো যাবে না। নিশ্চিত করতে আপনার লগইন পাসওয়ার্ড দিন।</span></div>
+    <div class="ig"><label data-en="Login Password">লগইন পাসওয়ার্ড</label><div class="pw-wrap"><input type="password" id="rdPass" autocomplete="current-password" onkeydown="if(event.key==='Enter'){event.preventDefault();confirmReportDelete();}"><button type="button" class="pw-eye" onclick="togglePwEye('rdPass', this)" aria-label="Show / Hide"><span class="material-symbols-outlined msi">visibility</span></button></div></div>
+    <div class="crow">
+      <button type="button" class="ord-btn danger solid" id="rdConfirmBtn" onclick="confirmReportDelete()"><span class="material-symbols-outlined msi">delete</span><span data-en="Confirm &amp; Delete">নিশ্চিত করে মুছুন</span></button>
+      <button type="button" class="ord-btn" onclick="closeReportDelete()"><span class="material-symbols-outlined msi">close</span><span data-en="Cancel">বাতিল</span></button>
+    </div>
+    <div id="rdMsg"></div>
   </div>
 </div>
 <div id="ownerDash" onclick="if(event.target===this)ownerDashClose()">
@@ -3790,6 +3850,89 @@ function runPrint(mode) {
   window.print();
 }
 
+/* --- রিপোর্ট: তারিখ অনুযায়ী ডেটা মোছা (Delete Data) — লগইন পাসওয়ার্ড 100% সঠিক হলে তবেই --- */
+let _rdBusy = false, _rdIds = [];
+function _rdMsg(txt, kind) {
+  const m = document.getElementById('rdMsg'); if (!m) return;
+  m.textContent = txt || ''; m.className = kind || '';
+}
+function closeReportDelete() {
+  if (_rdBusy) return;
+  const md = document.getElementById('repDelModal'); if (md) md.classList.remove('open');
+  const pw = document.getElementById('rdPass');
+  if (pw) { pw.value = ''; pw.type = 'password'; const ic = pw.parentNode && pw.parentNode.querySelector('.pw-eye .msi'); if (ic) ic.textContent = 'visibility'; }
+  _rdMsg(''); _rdIds = [];
+}
+function openReportDelete() {
+  const from = (document.getElementById('rep_from') || {}).value || '';
+  const to = (document.getElementById('rep_to') || {}).value || '';
+  if (!from || !to) { showToast(tr('ডেটা মুছতে “থেকে” ও “পর্যন্ত” — দুটি তারিখই নির্বাচন করুন।', 'Select both the “from” and “to” dates to delete data.'), true); return; }
+  if (from > to) { showToast(tr('শুরুর তারিখ শেষ তারিখের পরে হতে পারবে না।', 'The start date cannot be after the end date.'), true); return; }
+  if (typeof window.cloudVerifyPassword !== 'function') {
+    showToast(tr('লগইন সিস্টেম চালু নেই (প্রিভিউ মোড)। পাসওয়ার্ড যাচাই ছাড়া ডেটা মোছা যাবে না — প্রকাশিত অ্যাপে লগইন করে চেষ্টা করুন।', 'Login is not active (preview mode). Data cannot be deleted without password verification — log in on the published app and try again.'), true);
+    return;
+  }
+  const rows = reportRows();
+  if (!rows.length) { showToast(tr('এই তারিখের মধ্যে মোছার মতো কনফার্ম করা অর্ডার নেই।', 'No confirmed orders in this date range to delete.'), true); return; }
+  _rdIds = rows.map(o => o.id);
+  const t = reportTotals(rows);
+  const money = n => '৳ ' + Math.round(n || 0).toLocaleString('en-BD');
+  document.getElementById('rdSummary').innerHTML =
+    `<div>${tr('সময়কাল', 'Period')}: <b>${escapeHtml(fmtDate(from))} — ${escapeHtml(fmtDate(to))}</b></div>` +
+    `<div>${tr('মোট প্রোফাইল', 'Profiles')}: <b>${rows.length}</b></div>` +
+    `<div>${tr('পণ্যের মোট টাকা', 'Product total')}: <b>${money(t.total)}</b> &nbsp;|&nbsp; ${tr('পরিশোধ', 'Paid')}: <b>${money(t.paid)}</b></div>`;
+  const pw = document.getElementById('rdPass'); pw.value = ''; pw.type = 'password';
+  const ic = pw.parentNode.querySelector('.pw-eye .msi'); if (ic) ic.textContent = 'visibility';
+  _rdMsg('');
+  document.getElementById('repDelModal').classList.add('open');
+  setTimeout(() => { try { pw.focus(); } catch (e) {} }, 60);
+}
+async function confirmReportDelete() {
+  if (_rdBusy) return;
+  const pw = document.getElementById('rdPass');
+  const pass = pw ? pw.value : '';
+  if (!pass) { _rdMsg(tr('লগইন পাসওয়ার্ড দিন।', 'Enter your login password.'), 'err'); try { pw.focus(); } catch (e) {} return; }
+  const btn = document.getElementById('rdConfirmBtn');
+  _rdBusy = true; if (btn) btn.disabled = true;
+  _rdMsg(tr('পাসওয়ার্ড যাচাই হচ্ছে…', 'Verifying password…'), '');
+  try {
+    // ধাপ ১: লগইন পাসওয়ার্ড সার্ভারে (Supabase) যাচাই — শুধু সঠিক হলেই এগোবে
+    let ok = false;
+    try { ok = await window.cloudVerifyPassword(pass); }
+    catch (e) {
+      const msg = e && e.code === 'nosession' ? tr('লগইন সেশন নেই — আগে লগইন করুন।', 'No login session — please log in first.')
+        : tr('পাসওয়ার্ড যাচাই করা যায়নি (ইন্টারনেট/সার্ভার সমস্যা)। কিছুই মোছা হয়নি, আবার চেষ্টা করুন।', 'Could not verify the password (network/server problem). Nothing was deleted — please try again.');
+      _rdMsg(msg, 'err'); return;
+    }
+    if (!ok) {
+      _rdMsg(tr('পাসওয়ার্ড ভুল। কোনো ডেটা মোছা হয়নি।', 'Wrong password. No data was deleted.'), 'err');
+      pw.value = ''; try { pw.focus(); } catch (e) {} return;
+    }
+    // ধাপ ২: এখনো একই তারিখ-সীমার কনফার্ম অর্ডারই কিনা নিশ্চিত করে লোকাল থেকে মোছা
+    const idSet = new Set(_rdIds.map(String));
+    const before = orders.length;
+    orders = orders.filter(o => !(o && o.status === 'confirmed' && idSet.has(String(o.id))));
+    const removed = before - orders.length;
+    persistOrders();   // মোছার রেকর্ড (tombstone) তৈরি হয় — যাতে ক্লাউড থেকে ফিরে না আসে
+    renderOrders();
+    renderReport();
+    pw.value = '';
+    // ধাপ ৩: ক্লাউড থেকেও মোছা (সিঙ্ক করে নিশ্চিত)
+    _rdMsg(tr('ক্লাউড থেকে মোছা হচ্ছে…', 'Deleting from the cloud…'), '');
+    let cloudOk = false;
+    try { cloudOk = typeof window.cloudFlushNow === 'function' ? await window.cloudFlushNow() : false; } catch (e) { cloudOk = false; }
+    _rdBusy = false;
+    closeReportDelete();
+    if (cloudOk) showToast(tr(`${removed}টি প্রোফাইল এই ডিভাইস ও ক্লাউড — দুই জায়গা থেকেই মুছে ফেলা হয়েছে।`, `${removed} profile(s) deleted from this device and the cloud.`), false);
+    else showToast(tr(`${removed}টি প্রোফাইল এই ডিভাইস থেকে মোছা হয়েছে; ইন্টারনেট এলে ক্লাউড থেকেও স্বয়ংক্রিয়ভাবে মুছে যাবে।`, `${removed} profile(s) deleted on this device; they will be removed from the cloud automatically once you are online.`), true);
+  } finally {
+    _rdBusy = false; if (btn) btn.disabled = false;
+  }
+}
+document.addEventListener('keydown', function (ev) {
+  if (ev.key === 'Escape') { const m = document.getElementById('repDelModal'); if (m && m.classList.contains('open')) closeReportDelete(); }
+});
+
 function printReport(mode) {
   const rows = reportRows();
   const from = (document.getElementById('rep_from') || {}).value || '';
@@ -4207,6 +4350,8 @@ function getVal(id) {
 }
 
 function setTheme(mode) {
+  if (mode !== 'light' && mode !== 'dark') mode = 'system';
+  try { localStorage.setItem('tilesTheme', mode); } catch (e) {}
   document.getElementById('themeLight').classList.remove('active');
   document.getElementById('themeDark').classList.remove('active');
   document.getElementById('themeSystem').classList.remove('active');
@@ -5100,6 +5245,18 @@ renderCart();
   }, true);
 })();
 
+/* সেভ করা থিম ফিরিয়ে আনা (অ্যাপ বন্ধ করে খুললেও Light/Dark/System থাকবে) */
+(function restoreTheme() {
+  let saved = null;
+  try { saved = localStorage.getItem('tilesTheme'); } catch (e) {}
+  if (saved === 'light' || saved === 'dark' || saved === 'system') setTheme(saved);
+  try {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const onChange = () => { let m = null; try { m = localStorage.getItem('tilesTheme'); } catch (e) {} if (m === 'system') setTheme('system'); };
+    if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+  } catch (e) {}
+})();
+
 /* সেভ করা ভাষা ফিরিয়ে আনা (রিলোড করলেও ভাষা থাকবে) */
 (function restoreLanguage() {
   let saved = 'bn';
@@ -5652,6 +5809,32 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
     dropSession(); msg('');
   };
 
+  /* ---------- Report → Delete Data: লগইন পাসওয়ার্ড যাচাই (সার্ভারে সাইন-ইন করে) ---------- */
+  window.cloudVerifyPassword = async function (pass) {
+    if (!session || !session.user || !session.user.email) { const e = new Error('no session'); e.code = 'nosession'; throw e; }
+    if (!pass) return false;
+    let j;
+    try { j = await authReq('password', { email: session.user.email, password: pass }); }
+    catch (e) {
+      if (e.status === 400 || e.status === 401 || e.status === 422) return false;   // ভুল পাসওয়ার্ড
+      throw e;                                                                      // নেটওয়ার্ক/সার্ভার সমস্যা — যাচাই হয়নি
+    }
+    if (!j || !j.user || j.user.id !== session.user.id) return false;                // অন্য অ্যাকাউন্টের হলে গ্রহণযোগ্য নয়
+    setSession(j);
+    return true;
+  };
+  /* অর্ডার/মোছার রেকর্ড ক্লাউডে পৌঁছেছে কিনা নিশ্চিত করে সিঙ্ক (true = ক্লাউডে সম্পন্ন) */
+  window.cloudFlushNow = async function () {
+    if (!session || !appUnlocked) return false;
+    for (let n = 0; n < 4; n++) {
+      let w = 0; while (busy && w < 60) { await new Promise(r => setTimeout(r, 200)); w++; }
+      clearTimeout(pushTimer);
+      await sync();
+      if (!meta.dirty[ORD] && !meta.dirty[TOMB]) return true;
+    }
+    return false;
+  };
+
   /* ---------- Settings (গিয়ার) মেনু: পাসওয়ার্ড পরিবর্তন ----------
      ১) পুরনো পাসওয়ার্ড দিয়ে আবার লগইন করে যাচাই করা হয় — ভুল হলে কিছুই বদলায় না।
      ২) ঠিক হলে তবেই নতুন পাসওয়ার্ড সেট হয়। */
@@ -5745,7 +5928,7 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
     if (e.key !== 'Enter' || e.isComposing) return;
     const el = e.target;
     if (!el || el.tagName !== 'INPUT' || /^(checkbox|radio|button|submit)$/.test(el.type)) return;
-    if (el.hasAttribute('data-ordfilter') || el.closest('#authGate, .cust-modal, #cloudModal, #pwModal, #ownerModal, #ownerDash')) return;
+    if (el.hasAttribute('data-ordfilter') || el.closest('#authGate, .cust-modal, #cloudModal, #pwModal, #ownerModal, #ownerDash, #repDelModal')) return;
     if (document.querySelector('.mc-pop.open')) return;         // মডেল-কোড সাজেশন খোলা থাকলে সেটাই কাজ করবে
     const scope = el.closest('.tab-content, .panel'); if (!scope) return;
     const list = [...scope.querySelectorAll('input:not([type=hidden]):not([type=radio]):not([type=checkbox]):not([disabled]), select:not([disabled])')]
