@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="bn"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
-<title>Minar Tiles Calculator - Digital App</title>
+<title>Minar Tiles Calculator - Showroom Edition</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0077B6">
 <script>/* সেভ করা থিম (Light/Dark/System) প্রথম রেন্ডারের আগেই বসানো */(function(){try{var m=localStorage.getItem("tilesTheme");if(m==="light"||m==="dark"||m==="system"){var d=m==="dark"||(m==="system"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light");}}catch(e){}})();</script>
@@ -19,8 +19,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap"></noscript>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,content_paste,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,note_add,paid,palette,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,sticky_note_2,summarize,touch_app,tune,undo,verified,verified_user,view_quilt,visibility,visibility_off,wall_art,warning&amp;display=block" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,content_paste,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,note_add,paid,palette,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,stairs,sticky_note_2,summarize,touch_app,tune,undo,verified,verified_user,view_quilt,visibility,visibility_off,wall_art,warning&amp;display=block"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,content_paste,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,info,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,note_add,paid,palette,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,square_foot,stairs,sticky_note_2,straighten,summarize,touch_app,tune,undo,verified,verified_user,view_quilt,visibility,visibility_off,wall_art,warning,drag_indicator&amp;display=block" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_circle,add_shopping_cart,add_task,admin_panel_settings,arrow_back,backspace,block,bookmarks,brightness_auto,calculate,call,check,check_circle,close,cloud_done,cloud_off,cloud_sync,content_paste,dark_mode,delete,edit,error,event,expand_more,filter_alt_off,grid_view,hourglass_top,info,install_mobile,inventory_2,kitchen,light_mode,local_shipping,location_on,lock,lock_open,lock_reset,login,logout,mail,menu,note_add,paid,palette,payments,pending_actions,person,person_add,person_remove,picture_as_pdf,print,qr_code_2,receipt_long,refresh,remove_shopping_cart,restart_alt,save,search,settings,square_foot,stairs,sticky_note_2,straighten,summarize,touch_app,tune,undo,verified,verified_user,view_quilt,visibility,visibility_off,wall_art,warning,drag_indicator&amp;display=block"></noscript>
 <script>/* Lite mode: কম শক্তির ডিভাইসে ব্লার/অ্যানিমেশন বন্ধ। জোর করতে: localStorage.tilesLite="1" (বন্ধ: "0") */
 (function(){try{var n=navigator,c=n.connection||{};var low=(n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||c.saveData===true||/(^|-)2g$/.test(c.effectiveType||"");var pref=null;try{pref=localStorage.getItem("tilesLite");}catch(e){}if(pref==="1"||(pref!=="0"&&low))document.documentElement.classList.add("lite");}catch(e){}})();</script>
 <script>window.__MTC_PREVIEW=(function(){try{var q=location.search;if(/[?&]login=on/.test(q))return false;if(/[?&]preview=1/.test(q))return true;var p=location.protocol,h=location.hostname;if(p!=='http:'&&p!=='https:')return true;if(!h||h==='localhost'||h==='127.0.0.1'||/\.local$/.test(h))return true;if(/(claude|anthropic|usercontent|sandbox|codepen|codesandbox|stackblitz|jsfiddle|webcontainer|htmlpreview|githack|csb\.app)/i.test(h))return true;return false;}catch(e){return false;}})();</script>
@@ -1799,10 +1799,16 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   <!-- ১. ফ্লোর ও স্কার্টিং ট্যাব -->
   <div id="tabFloor" class="tab-content">
     <div class="panel" style="grid-column: 1 / -1;"><div class="action-bar" style="margin-top: 0px; margin-bottom: 16px;"><button type="button" class="ord-btn primary" onclick="addToCart('floor')"><span class="material-symbols-outlined msi">add_shopping_cart</span><span data-en="Add To Cart">কার্টে যোগ করুন</span></button><button type="button" class="ord-btn clear-sec-btn" onclick="clearSection('floor')"><span class="material-symbols-outlined msi">backspace</span><span data-en="Clear Section">এই অংশ মুছুন</span></button></div>
-      <p class="sec" data-en="Floor Measurement Type">ফ্লোরের পরিমাপের ধরন</p>
+      <p class="sec" data-en="Customer Measurement Type">কাস্টমারের মাপের ধরন</p>
       <div class="mode-toggle">
-        <label><input type="radio" name="floorMode" value="dim" checked=""><div class="mode-btn" data-en="Length × Width">দৈর্ঘ্য × প্রস্থ</div></label>
-        <label><input type="radio" name="floorMode" value="sqft"><div class="mode-btn" data-en="Direct Sqft">সরাসরি বর্গফুট</div></label>
+        <label><input type="radio" name="floorMode" value="inch"><div class="mode-btn"><span class="material-symbols-outlined msi">straighten</span><span data-en="Inch × Inch">ইঞ্চি × ইঞ্চি</span></div></label>
+        <label><input type="radio" name="floorMode" value="dim" checked=""><div class="mode-btn"><span class="material-symbols-outlined msi">square_foot</span><span data-en="Feet × Feet">ফুট × ফুট</span></div></label>
+        <label><input type="radio" name="floorMode" value="sqft"><div class="mode-btn"><span class="material-symbols-outlined msi">grid_view</span><span data-en="Total Sqft">মোট বর্গফুট</span></div></label>
+      </div><div id="fInchInputs" style="display: none;">
+        <div class="grid2">
+          <div class="ig"><label data-en="Room Length (in)">ঘরের দৈর্ঘ্য (ইঞ্চি)</label><input type="number" id="fLenOnlyIn" placeholder="0" inputmode="decimal"></div>
+          <div class="ig"><label data-en="Room Width (in)">ঘরের প্রস্থ (ইঞ্চি)</label><input type="number" id="fWidOnlyIn" placeholder="0" inputmode="decimal"></div>
+        </div>
       </div><div id="fDimInputs">
         <div class="grid2">
           <div class="ig"><label data-en="Length (ft)">দৈর্ঘ্য (ফুট)</label><input type="number" id="fLenFt" placeholder="0"></div>
@@ -1838,7 +1844,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       </div><p class="sec" data-en="Tile Size &amp; Packing">টাইলসের মাপ ও প্যাকিং</p><div class="ig" style="margin-bottom:12px;"><label data-en="Tiles Model Code">টাইলসের মডেল কোড</label><input type="text" id="fCode" placeholder="" autocomplete="off"></div><div class="grid2">
         <div class="ig"><label data-en="Length (in)">দৈর্ঘ্য (ইঞ্চি)</label><input type="number" id="fTileL" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
         <div class="ig"><label data-en="Width (in)">প্রস্থ (ইঞ্চি)</label><input type="number" id="fTileW" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
-      </div><div class="grid2">
+      </div><div class="size-chips" id="fSizeChips"></div><div class="grid2">
         <div class="ig"><label data-en="Floor Wastage (%)">ফ্লোর ওয়েস্টেজ (%)</label><input type="number" id="fWastage" placeholder="0"></div>
         <div class="ig"><label data-en="Tiles per Box (pcs)">প্রতি বক্সে টাইলস (পিস)</label><input type="number" id="fPerBox" placeholder="0"></div>
       </div><p class="sec" data-en="Price per Sqft (৳)">মূল্য (প্রতি বর্গফুট)</p><div class="ig"><label data-en="Price per Sqft (৳)">প্রতি স্কয়ারফুটের দাম (৳)</label><input type="number" id="pricePerSqft" placeholder="0"></div>
@@ -1903,6 +1909,10 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
         <div><div class="flabel" data-en="Required Boxes (Carton)">প্রয়োজনীয় বক্স (Carton)</div><div class="fsub" data-en="Boxes &amp; Loose Tiles">বক্স ও লুজ পিস</div></div>
         <div><span class="fval" style="font-size:18px;" id="resTotalBoxes">0 Box, 0 Pcs</span></div>
       </div>
+      <div class="final-bar tt" style="margin-bottom:8px;">
+        <div><div class="flabel" data-en="Price per Tile (1 pc)">১টি টাইলসের দাম</div><div class="fsub" data-en="Tile Sqft × Price per Sqft">টাইলসের Sqft × প্রতি Sqft দাম</div></div>
+        <div><span class="fval" style="font-size:20px;" id="resPricePerTile">0</span><span class="funit"> ৳</span></div>
+      </div>
       <div class="final-bar tt">
         <div><div class="flabel" data-en="Estimated Grand Total">আনুমানিক সর্বমোট</div><div class="fsub" id="resPriceCalcSub">Total Sqft × Price</div></div>
         <div><span class="fval" id="resTotalPrice">0</span><span class="funit"> ৳</span></div>
@@ -1922,7 +1932,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       <div class="grid2">
         <div class="ig"><label data-en="Tile Height (in)">টাইলসের উচ্চতা (ইঞ্চি)</label><input type="number" id="wTileH" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
         <div class="ig"><label data-en="Tile Width (in)">টাইলসের চওড়া (ইঞ্চি)</label><input type="number" id="wTileW" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
-      </div>
+      </div><div class="size-chips" id="wSizeChips"></div>
     
       <p class="sec" data-en="Rows Configuration">সারি (ROWS) নির্বাচন</p>
       <div class="auto-box" id="autoRowText" data-bn="উচ্চতায় মোট সম্ভাব্য সারি: 0 টি" data-en="Total Possible Rows: 0">উচ্চতায় মোট সম্ভাব্য সারি: 0 টি</div>
@@ -2030,7 +2040,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       <div class="grid2">
         <div class="ig"><label data-en="Tile Height (in)">টাইলসের উচ্চতা (ইঞ্চি)</label><input type="number" id="xTileH" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
         <div class="ig"><label data-en="Tile Width (in)">টাইলসের চওড়া (ইঞ্চি)</label><input type="number" id="xTileW" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
-      </div>
+      </div><div class="size-chips" id="xSizeChips"></div>
 
       <p class="sec" data-en="Rows Configuration">সারি (ROWS) নির্বাচন</p>
       <div class="auto-box" id="autoRowTextX" data-bn="উচ্চতায় মোট সম্ভাব্য সারি: 0 টি" data-en="Total Possible Rows: 0">উচ্চতায় মোট সম্ভাব্য সারি: 0 টি</div>
@@ -2089,8 +2099,8 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
     <div class="panel" style="grid-column: 1 / -1;"><div class="action-bar" style="margin-top: 0px; margin-bottom: 16px;"><button type="button" class="ord-btn primary" onclick="addToCart('tak')"><span class="material-symbols-outlined msi">add_shopping_cart</span><span data-en="Add To Cart">কার্টে যোগ করুন</span></button><button type="button" class="ord-btn clear-sec-btn" onclick="clearSection('tak')"><span class="material-symbols-outlined msi">backspace</span><span data-en="Clear Section">এই অংশ মুছুন</span></button></div>
       <p class="sec" data-en="Slab Measurement Type">স্ল্যাবের মাপের ধরন</p>
       <div class="mode-toggle">
-        <label><input type="radio" name="takMode" value="dim" checked=""><div class="mode-btn" data-en="Feet (Length × Width)">ফিটে (দৈর্ঘ্য × প্রস্থ)</div></label>
-        <label><input type="radio" name="takMode" value="sqft"><div class="mode-btn" data-en="Direct Sqft">বর্গফুটে (সরাসরি)</div></label>
+        <label><input type="radio" name="takMode" value="dim" checked=""><div class="mode-btn"><span class="material-symbols-outlined msi">square_foot</span><span data-en="Feet (Length × Width)">ফিটে (দৈর্ঘ্য × প্রস্থ)</span></div></label>
+        <label><input type="radio" name="takMode" value="sqft"><div class="mode-btn"><span class="material-symbols-outlined msi">grid_view</span><span data-en="Direct Sqft">বর্গফুটে (সরাসরি)</span></div></label>
       </div>
       <p class="sec" data-en="Slab / Shelf Dimensions">স্ল্যাবের পরিমাপ</p>
       <div id="tDimInputs">
@@ -2119,7 +2129,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       <div class="grid2">
         <div class="ig"><label data-en="Tile Length (in)">টাইলসের দৈর্ঘ্য (ইঞ্চি)</label><input type="number" id="tTileL" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
         <div class="ig"><label data-en="Tile Width (in)">টাইলসের প্রস্থ (ইঞ্চি)</label><input type="number" id="tTileW" placeholder="0" list="savedSizes" onchange="saveTileSize(this.value)"></div>
-      </div>
+      </div><div class="size-chips" id="tSizeChips"></div>
       <div class="grid3">
         <div class="ig"><label data-en="Tiles / Box">বক্সে টাইলস (পিস)</label><input type="number" id="tPerBox" placeholder="0"></div>
         <div class="ig"><label data-en="Wastage (%)">ওয়েস্টেজ (%)</label><input type="number" id="tWastage" placeholder="0"></div>
@@ -2179,8 +2189,8 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       </div>
       <p class="sec" data-en="Stair Measurement Type">সিঁড়ির মাপের ধরন</p>
       <div class="mode-toggle" style="margin-bottom:0;">
-        <label><input type="radio" name="stairMode" value="inch" checked=""><div class="mode-btn" data-en="Inches (Length × Width)">ইঞ্চিতে (লম্বা × প্রস্থ)</div></label>
-        <label><input type="radio" name="stairMode" value="sqft"><div class="mode-btn" data-en="Direct Sqft">বর্গফুটে (সরাসরি)</div></label>
+        <label><input type="radio" name="stairMode" value="inch" checked=""><div class="mode-btn"><span class="material-symbols-outlined msi">straighten</span><span data-en="Inches (Length × Width)">ইঞ্চিতে (লম্বা × প্রস্থ)</span></div></label>
+        <label><input type="radio" name="stairMode" value="sqft"><div class="mode-btn"><span class="material-symbols-outlined msi">grid_view</span><span data-en="Direct Sqft">বর্গফুটে (সরাসরি)</span></div></label>
       </div>
       
     </div>
@@ -2232,13 +2242,13 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       <div class="grid2">
         <div class="ig"><label data-en="Step tile length (in)">ধাপের টাইলসের দৈর্ঘ্য (ইঞ্চি)</label><input type="number" id="stTileL" placeholder="0" step="any"></div>
         <div class="ig"><label data-en="Step tile width (in)">ধাপের টাইলসের প্রস্থ (ইঞ্চি)</label><input type="number" id="stTileW" placeholder="0" step="any"></div>
-      </div>
+      </div><div class="size-chips" id="stSizeChips"></div>
       
       
     </div><div class="panel" id="stRiserTilePanel"><p class="sec" data-en="Riser + Skirting Tile Size" style="margin-top:18px;">রাইজার + স্কার্টিংয়ের টাইলসের মাপ</p><div class="grid2">
         <div class="ig"><label data-en="Riser + skirting tile length (in)">রাইজার + স্কার্টিংয়ের টাইলসের দৈর্ঘ্য (ইঞ্চি)</label><input type="number" id="stRiserTileL" placeholder="0" step="any"></div>
         <div class="ig"><label data-en="Riser + skirting tile width (in)">রাইজার + স্কার্টিংয়ের টাইলসের প্রস্থ (ইঞ্চি)</label><input type="number" id="stRiserTileW" placeholder="0" step="any"></div>
-      </div></div>
+      </div><div class="size-chips" id="stRSizeChips"></div></div>
 
     <div class="panel">
       <p class="sec" data-en="Stair Price &amp; Packing">সিঁড়ির দাম ও প্যাকিং</p>
@@ -2256,7 +2266,7 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
 
     <div class="panel">
       <p class="sec" data-en="Chowki Tile Size, Packing &amp; Price">চৌকির টাইলসের মাপ, প্যাকিং ও দাম</p>
-      <div class="grid2">
+      <div class="size-chips" id="chSizeChips"></div><div class="grid2">
         <div class="ig"><label data-en="Chowki tile length (in)">চৌকির টাইলসের দৈর্ঘ্য (ইঞ্চি)</label><input type="number" id="chTileL" placeholder="0" step="any"></div>
         <div class="ig"><label data-en="Chowki tile width (in)">চৌকির টাইলসের প্রস্থ (ইঞ্চি)</label><input type="number" id="chTileW" placeholder="0" step="any"></div>
         <div class="ig"><label data-en="Chowki price (৳/Sqft)">চৌকির দাম (৳/Sqft)</label><input type="number" id="chPrice" placeholder="0" step="any"></div>
@@ -2347,8 +2357,10 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
       <div class="ord-filter">
         <div class="ig"><label data-en="Confirmed from">কনফার্ম থেকে (তারিখ)</label><input type="date" id="rep_from" oninput="renderReport()" /></div>
         <div class="ig"><label data-en="Confirmed to">কনফার্ম পর্যন্ত (তারিখ)</label><input type="date" id="rep_to" oninput="renderReport()" /></div>
+        <div class="ig"><label data-en="Year">সাল</label><input type="number" id="rep_year" min="1900" max="2100" step="1" placeholder="2026" oninput="applyReportMonth()" /></div>
+        <div class="ig"><label data-en="Month">মাস</label><select id="rep_month" onchange="applyReportMonth()"><option value="" data-en="All months">সব মাস</option><option value="1" data-en="January">জানুয়ারি</option><option value="2" data-en="February">ফেব্রুয়ারি</option><option value="3" data-en="March">মার্চ</option><option value="4" data-en="April">এপ্রিল</option><option value="5" data-en="May">মে</option><option value="6" data-en="June">জুন</option><option value="7" data-en="July">জুলাই</option><option value="8" data-en="August">আগস্ট</option><option value="9" data-en="September">সেপ্টেম্বর</option><option value="10" data-en="October">অক্টোবর</option><option value="11" data-en="November">নভেম্বর</option><option value="12" data-en="December">ডিসেম্বর</option></select></div>
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn primary" onclick="renderReport()"><span class="material-symbols-outlined msi">search</span><span data-en="Show">দেখুন</span></button></div>
-        <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="document.getElementById('rep_from').value='';document.getElementById('rep_to').value='';renderReport()"><span class="material-symbols-outlined msi">filter_alt_off</span><span data-en="Clear">ফিল্টার মুছুন</span></button></div>
+        <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="clearReportFilter()"><span class="material-symbols-outlined msi">filter_alt_off</span><span data-en="Clear">ফিল্টার মুছুন</span></button></div>
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="printReport('pdf')"><span class="material-symbols-outlined msi">picture_as_pdf</span><span data-en="Save PDF">PDF সেভ</span></button></div>
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn" onclick="printReport()"><span class="material-symbols-outlined msi">print</span><span data-en="Print">প্রিন্ট</span></button></div>
         <div class="ig"><label>&nbsp;</label><button type="button" class="ord-btn danger" id="rep_del_btn" onclick="openReportDelete()"><span class="material-symbols-outlined msi">delete</span><span data-en="Delete Data">ডেটা মুছুন</span></button></div>
@@ -2365,14 +2377,10 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   <div id="tabCart" class="tab-content">
     <div class="panel" style="grid-column: 1 / -1;">
       <p class="sec" data-en="Add Cart Item">কার্ট আইটেম যোগ করুন</p>
-      <div class="card" style="margin-bottom:14px;">
-        <p class="clabel" data-en="Customer">কাস্টমার</p>
-        <p class="flabel" id="cartCustomerInfo">-</p>
-        <button type="button" class="ord-btn" onclick="editCartCustomer()" style="margin-top:8px;"><span class="material-symbols-outlined msi">edit</span><span data-en="Edit Customer">কাস্টমার এডিট</span></button>
-      </div>
+      <div id="cartCustomers"></div>
       <div class="ord-list" id="cartList"></div>
       <p class="ord-count" id="cartSummary" style="margin-top:12px;"></p>
-      <div class="action-bar">
+      <div class="action-bar" id="cartGlobalActions">
         <button type="button" class="btn-action btn-print" onclick="cartToPending()"><span class="material-symbols-outlined msi">local_shipping</span><span data-en="Pending To Delivery">পেন্ডিং → ডেলিভারি</span></button>
         <button type="button" class="btn-action btn-reset" onclick="clearCart()"><span class="material-symbols-outlined msi">remove_shopping_cart</span><span data-en="Clear Cart">কার্ট খালি করুন</span></button>
       </div>
@@ -2459,6 +2467,13 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   <span id="itemEditTitle" style="font-weight:700; font-size:13px; flex:1 1 auto;"></span>
   <button type="button" class="ord-btn primary" onclick="updateEditingItem()"><span class="material-symbols-outlined msi">save</span><span data-en="Update Item">আইটেম আপডেট করুন</span></button>
   <button type="button" class="ord-btn" onclick="cancelItemEdit()"><span class="material-symbols-outlined msi">close</span><span data-en="Cancel">বাতিল</span></button>
+</div>
+
+<!-- কাস্টমার প্রোফাইল এডিট বার: আপডেট / বাতিল -->
+<div id="custEditBar" style="display:none; position:fixed; left:0; right:0; bottom:0; z-index:55; background:var(--surface); border-top:2px solid var(--floor); box-shadow:var(--shadow); padding:12px 16px; align-items:center; gap:12px; flex-wrap:wrap;">
+  <span id="custEditTitle" style="font-weight:700; font-size:13px; flex:1 1 auto;"></span>
+  <button type="button" class="ord-btn primary" onclick="addCustomerToCart()"><span class="material-symbols-outlined msi">save</span><span data-en="Update Customer">কাস্টমার আপডেট করুন</span></button>
+  <button type="button" class="ord-btn" onclick="cancelCustomerEdit()"><span class="material-symbols-outlined msi">close</span><span data-en="Cancel">বাতিল</span></button>
 </div>
 
 <!-- কাস্টমার প্রোফাইল ভিউ -->
@@ -2623,6 +2638,8 @@ function resetForm(tabId) {
   
   applyCustomerProfileMode();
   applyStairMode();
+  applyFloorModeUI();
+  syncFloorChips();
   calculateFloorAndSkirting();
   calcWall(); calcWallX();
   calcTak();
@@ -2737,10 +2754,10 @@ function collectOrderSnapshot() {
 
   const fPcs = intOf('resFFinal');
   const sPcs = intOf('resSFinal');
-  const single = parseFloat(txt('resSingleArea')) || 0;
+  const single = (getVal('fTileL') > 0 && getVal('fTileW') > 0) ? (getVal('fTileL') * getVal('fTileW')) / 144 : 0;
   const priceSqft = getVal('pricePerSqft');
   if (fPcs > 0 || sPcs > 0) {
-    total += Math.round(fPcs * single * priceSqft) + Math.round(sPcs * single * priceSqft);
+    total += Math.round((fPcs + sPcs) * single * priceSqft);
     items.floor = fPcs; items.skirting = sPcs;
   }
 
@@ -2810,7 +2827,7 @@ function moveOrder(id, status) {
   const o = orders.find(x => x.id === id);
   if (!o) return;
   o.status = status;
-  if (status === 'pending') { delete o.deliveredAt; delete o.confirmedAt; }
+  if (status === 'pending') { delete o.deliveredAt; delete o.confirmedAt; (o.cartItems || []).forEach(c => { delete c.handedOver; delete c.handedAt; }); }
   if (status === 'delivery') { o.deliveredAt = o.deliveredAt || todayStr(); delete o.confirmedAt; }
   if (status === 'confirmed') { o.deliveredAt = o.deliveredAt || todayStr(); o.confirmedAt = todayStr(); }
   persistOrders();
@@ -2860,9 +2877,8 @@ function collectOrderInputs() {
 }
 
 function syncModeVisibility() {
-  const isDim = (document.querySelector('input[name="floorMode"]:checked') || {}).value !== 'sqft';
-  document.getElementById('fDimInputs').style.display = isDim ? 'block' : 'none';
-  document.getElementById('fSqftInputs').style.display = isDim ? 'none' : 'block';
+  applyFloorModeUI();
+  syncFloorChips();
   applyStairMode();
   applyCustomerProfileMode();
 }
@@ -2984,7 +3000,8 @@ function cancelOrderEdit() {
 /* --- কার্ট (Add To Cart): একই কাস্টমারের একাধিক হিসাব --- */
 const CART_KEY = 'tilesCartData';
 let cart = [];
-let cartCustomer = null;
+let cartCustomers = [];      // একাধিক কাস্টমার প্রোফাইল: { id, name, phone, address, invoice, deliveryDate }
+let cartEditCustId = null;   // কোন কাস্টমার এডিট হচ্ছে
 let itemEdit = null; // { source: "cart" | orderId, index, type }
 let editOrigin = null; // { tab, order } — where an Edit was started, so Update/Cancel can return there
 const EDIT_FORM_TABS = ['tabCustomer', 'tabFloor', 'tabWall', 'tabWallX', 'tabTak', 'tabStairs'];
@@ -3003,7 +3020,7 @@ function returnToOrigin(fallbackTab) {
   if (t === 'tabReport') renderReport();
 }
 const CART_GROUPS = {
-  floor: { ids: ['pricePerSqft','fLenFt','fLenIn','fWidFt','fWidIn','fSqft','fCustomPerimeter','fTileL','fTileW','fWastage','fPerBox','sDoorQty','sDoorWidth','sHt','sWastage','fCode'], radios: ['floorMode'] },
+  floor: { ids: ['pricePerSqft','fLenOnlyIn','fWidOnlyIn','fLenFt','fLenIn','fWidFt','fWidIn','fSqft','fCustomPerimeter','fTileL','fTileW','fWastage','fPerBox','sDoorQty','sDoorWidth','sHt','sWastage','fCode'], radios: ['floorMode'] },
   wall:   { ids: ['wTotalSqft','wHtFt','wTileH','wTileW','wLightRows','wDecorRows','wDarkRows','wDeductSqft','wWastage','wPerBox','wPriceStd','wPriceDecor','wLightCode','wDecorCode','wDarkCode'], radios: [] },
   wallx:  { ids: ['xTotalSqft','xHtFt','xTileH','xTileW','xRows','xDeductSqft','xWastage','xPerBox','xPrice','xCode'], radios: [] },
   tak:    { ids: ['tLen','tWid','tSqft','tSides','tEdge','tTileL','tTileW','tPerBox','tWastage','tPrice','tTileCode'], radios: ['takMode'] },
@@ -3018,15 +3035,32 @@ const CART_LABEL = {
   note:   () => tr('নোট', 'Note')
 };
 
+function newCartCustId() { return 'k' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+function custById(id) { return cartCustomers.find(x => x.id === id) || null; }
+function custLabel(c) {
+  return `${c.name || tr('(নাম নেই)', '(no name)')}${c.phone ? ' · ' + c.phone : ''}${c.invoice ? ' · #' + c.invoice : ''}`;
+}
+function autoAssignUnassigned() {
+  if (cartCustomers.length === 1) cart.forEach(c => { if (!custById(c.custId)) c.custId = cartCustomers[0].id; });
+}
 function loadCart() {
   try {
     const raw = JSON.parse(localStorage.getItem(CART_KEY));
     cart = raw && Array.isArray(raw.cart) ? raw.cart : [];
-    cartCustomer = raw && raw.customer ? raw.customer : null;
-  } catch (e) { cart = []; cartCustomer = null; }
+    if (raw && Array.isArray(raw.customers)) {
+      cartCustomers = raw.customers;
+    } else if (raw && raw.customer) {
+      /* পুরোনো একক কাস্টমার সেভ থাকলে নতুন তালিকায় তুলে নেওয়া */
+      const id = newCartCustId();
+      cartCustomers = [Object.assign({}, raw.customer, { id })];
+      cart.forEach(c => { c.custId = id; });
+    } else {
+      cartCustomers = [];
+    }
+  } catch (e) { cart = []; cartCustomers = []; }
 }
 function persistCart() {
-  try { localStorage.setItem(CART_KEY, JSON.stringify({ cart, customer: cartCustomer })); } catch (e) {}
+  try { localStorage.setItem(CART_KEY, JSON.stringify({ cart, customers: cartCustomers })); } catch (e) {}
 }
 
 function showToast(text, isError) {
@@ -3054,13 +3088,31 @@ function addCustomerToCart() {
     showToast(tr('অন্তত নাম বা ইনভয়েস নম্বর দিন।', 'Enter at least a name or an invoice number.'), true);
     return;
   }
-  cartCustomer = p;
+  const editing = !!(cartEditCustId && custById(cartEditCustId));
+  if (editing) {
+    const id = cartEditCustId;
+    cartCustomers = cartCustomers.map(x => x.id === id ? Object.assign({ id }, p) : x);
+    cartEditCustId = null;
+  } else {
+    if (p.invoice && cartCustomers.some(x => x.invoice === p.invoice)) {
+      showToast(tr('এই ইনভয়েস নম্বর কার্টে আগেই আছে।', 'This invoice number is already in the cart.'), true);
+      return;
+    }
+    cartCustomers.push(Object.assign({ id: newCartCustId() }, p));
+    autoAssignUnassigned();
+  }
   persistCart();
   renderCart();
-  editOrigin = null;
+  refreshCustEditBar();
   resetForm('tabCustomer');
-  showToast(tr('কাস্টমার প্রোফাইল কার্টে যোগ হয়েছে।', 'Customer profile added to cart.'), false);
-  activateTab('tabCart');
+  if (editing) {
+    showToast(tr('কাস্টমার প্রোফাইল আপডেট হয়েছে।', 'Customer profile updated.'), false);
+    returnToOrigin('tabCart');
+  } else {
+    editOrigin = null;
+    showToast(tr('কাস্টমার প্রোফাইল কার্টে যোগ হয়েছে।', 'Customer profile added to cart.'), false);
+    activateTab('tabCart');
+  }
 }
 
 function collectGroupInputs(type) {
@@ -3095,9 +3147,9 @@ function _calcResultForLang(type) {
   const pcsTxt = tr('পিস', 'pcs');
   if (type === 'floor') {
     const f = intOf('resFFinal'), s = intOf('resSFinal');
-    const single = parseFloat(txt('resSingleArea')) || 0, price = getVal('pricePerSqft');
+    const single = (getVal('fTileL') > 0 && getVal('fTileW') > 0) ? (getVal('fTileL') * getVal('fTileW')) / 144 : 0, price = getVal('pricePerSqft');
     return { items: { floor: f, skirting: s }, pcs: f + s,
-      price: Math.round(f * single * price) + Math.round(s * single * price),
+      price: Math.round((f + s) * single * price),
       detail: `${tr('ফ্লোর', 'Floor')} ${f} ${pcsTxt} · ${tr('স্কার্টিং', 'Skirting')} ${s} ${pcsTxt}` + codeTxt(tr('মডেল কোড', 'Model code'), 'fCode') };
   }
   if (type === 'wall') {
@@ -3127,7 +3179,7 @@ function _calcResultForLang(type) {
 
 /* --- সম্পূর্ণ হিসাব সংরক্ষণ (প্রিন্ট/PDF-এর জন্য) --- */
 const CALC_INPUTS = {
-  floor: [['fLenFt','দৈর্ঘ্য (ফুট)','Length (ft)'],['fLenIn','দৈর্ঘ্য (ইঞ্চি)','Length (in)'],['fWidFt','প্রস্থ (ফুট)','Width (ft)'],['fWidIn','প্রস্থ (ইঞ্চি)','Width (in)'],['fSqft','মোট ফ্লোর (Sqft)','Total floor (Sqft)'],['fCustomPerimeter','মোট রানিং ফিট','Running feet (ft)'],['fTileL','টাইলসের দৈর্ঘ্য (ইঞ্চি)','Tile length (in)'],['fTileW','টাইলসের প্রস্থ (ইঞ্চি)','Tile width (in)'],['fWastage','ফ্লোর ওয়েস্টেজ (%)','Floor wastage (%)'],['fPerBox','প্রতি বক্সে পিস','Pcs per box'],['pricePerSqft','প্রতি Sqft দাম (৳)','Price per Sqft (৳)'],['sDoorQty','দরজার সংখ্যা','Number of doors'],['sDoorWidth','দরজার চওড়া (ফুট)','Door width (ft)'],['sHt','স্কার্টিং উচ্চতা (ইঞ্চি)','Skirting height (in)'],['sWastage','স্কার্টিং ওয়েস্টেজ (%)','Skirting wastage (%)'],['fCode','টাইলসের মডেল কোড','Tiles model code']],
+  floor: [['fLenOnlyIn','দৈর্ঘ্য (ইঞ্চি)','Length (in)'],['fWidOnlyIn','প্রস্থ (ইঞ্চি)','Width (in)'],['fLenFt','দৈর্ঘ্য (ফুট)','Length (ft)'],['fLenIn','দৈর্ঘ্য (ইঞ্চি)','Length (in)'],['fWidFt','প্রস্থ (ফুট)','Width (ft)'],['fWidIn','প্রস্থ (ইঞ্চি)','Width (in)'],['fSqft','মোট ফ্লোর (Sqft)','Total floor (Sqft)'],['fCustomPerimeter','মোট রানিং ফিট','Running feet (ft)'],['fTileL','টাইলসের দৈর্ঘ্য (ইঞ্চি)','Tile length (in)'],['fTileW','টাইলসের প্রস্থ (ইঞ্চি)','Tile width (in)'],['fWastage','ফ্লোর ওয়েস্টেজ (%)','Floor wastage (%)'],['fPerBox','প্রতি বক্সে পিস','Pcs per box'],['pricePerSqft','প্রতি Sqft দাম (৳)','Price per Sqft (৳)'],['sDoorQty','দরজার সংখ্যা','Number of doors'],['sDoorWidth','দরজার চওড়া (ফুট)','Door width (ft)'],['sHt','স্কার্টিং উচ্চতা (ইঞ্চি)','Skirting height (in)'],['sWastage','স্কার্টিং ওয়েস্টেজ (%)','Skirting wastage (%)'],['fCode','টাইলসের মডেল কোড','Tiles model code']],
   wall: [['wTotalSqft','ওয়ালের মোট Sqft','Wall total (Sqft)'],['wHtFt','ওয়ালের উচ্চতা (ফুট)','Wall height (ft)'],['wTileH','টাইলসের উচ্চতা (ইঞ্চি)','Tile height (in)'],['wTileW','টাইলসের চওড়া (ইঞ্চি)','Tile width (in)'],['wLightRows','লাইট সারি','Light rows'],['wDecorRows','ডেকোর সারি','Decor rows'],['wDarkRows','ডিপ সারি','Deep rows'],['wDeductSqft','দরজা/জানালা বাদ (Sqft)','Deducted (Sqft)'],['wWastage','ওয়েস্টেজ (%)','Wastage (%)'],['wPerBox','প্রতি বক্সে পিস','Pcs per box'],['wPriceStd','লাইট/ডিপ দর (৳/Sqft)','Light/Deep price (৳/Sqft)'],['wPriceDecor','ডেকোর দর (৳/Sqft)','Decor price (৳/Sqft)'],['wLightCode','লাইট কোড','Light code'],['wDecorCode','ডেকোর কোড','Decor code'],['wDarkCode','ডিপ কোড','Deep code']],
   wallx: [['xTotalSqft','ওয়ালের মোট Sqft','Wall total (Sqft)'],['xHtFt','ওয়ালের উচ্চতা (ফুট)','Wall height (ft)'],['xTileH','টাইলসের উচ্চতা (ইঞ্চি)','Tile height (in)'],['xTileW','টাইলসের চওড়া (ইঞ্চি)','Tile width (in)'],['xRows','টাইলস সারি','Tile rows'],['xDeductSqft','বাদ (Sqft)','Deduct (Sqft)'],['xWastage','ওয়েস্টেজ (%)','Wastage (%)'],['xPerBox','প্রতি বক্সে পিস','Pcs per box'],['xPrice','দর (৳/Sqft)','Price (৳/Sqft)'],['xCode','মডেল কোড','Model code']],
   tak: [['tLen','দৈর্ঘ্য (ফুট)','Length (ft)'],['tWid','প্রস্থ (ফুট)','Width (ft)'],['tSqft','মোট স্ল্যাব (Sqft)','Slab total (Sqft)'],['tSides','টাইলস বসানোর ধরন','Tile placement'],['tEdge','সামনের বিট (ইঞ্চি)','Front edge (in)'],['tTileL','টাইলসের দৈর্ঘ্য (ইঞ্চি)','Tile length (in)'],['tTileW','টাইলসের প্রস্থ (ইঞ্চি)','Tile width (in)'],['tPerBox','প্রতি বক্সে পিস','Pcs per box'],['tWastage','ওয়েস্টেজ (%)','Wastage (%)'],['tPrice','দাম (৳/Sqft)','Price (৳/Sqft)'],['tTileCode','টাইলসের মডেল কোড','Tiles model code']],
@@ -3241,18 +3293,31 @@ function codesFor(type) {
   }).filter(k => k.value);
 }
 
+/* টাইলসের মডেল কোড দেওয়া থাকলে মাপ ছাড়াই কার্টে যাবে; মাপ পরে এডিটে দেওয়া যাবে */
+const PENDING_ITEMS = { floor: { floor: 0, skirting: 0 }, wall: { wall: 0 }, wallx: { wall: 0 }, tak: { tak: 0 }, stairs: { stairs: 0, chowki: 0 } };
+function pendingResultFor(type) {
+  if (!PENDING_ITEMS[type] || !codesFor(type).length) return null;
+  return { items: Object.assign({}, PENDING_ITEMS[type]), pcs: 0, price: 0, pending: true,
+    detail: { bn: 'মাপ ও সাইজ পরে দেওয়া হবে', en: 'Size & measurement to be added later' } };
+}
+
 function addToCart(type) {
   if (typeof _calcQueued !== 'undefined' && _calcQueued) recalcAll();
-  const r = calcResultFor(type);
+  let r = calcResultFor(type);
   if (!r || r.pcs <= 0) {
-    showToast(tr('আগে এই হিসাবের মাপ দিন।', 'Enter the measurements for this calculation first.'), true);
-    return;
+    const pend = pendingResultFor(type);
+    if (!pend) {
+      showToast(tr('আগে এই হিসাবের মাপ দিন বা টাইলসের মডেল কোড দিন।', 'Enter the measurements or the tiles model code first.'), true);
+      return;
+    }
+    r = pend;
   }
+  bumpCartSizes(type);
   if (addTilesMode) {
     const target = orders.find(x => x.id === addTilesMode);
     if (target) {
       target.cartItems = target.cartItems || [];
-      target.cartItems.push({ type, detail: r.detail, pcs: r.pcs, price: r.price, items: r.items, codes: codesFor(type), lines: captureCalcLines(type), inputs: collectGroupInputs(type) });
+      target.cartItems.push({ type, detail: r.detail, pcs: r.pcs, price: r.price, items: r.items, codes: codesFor(type), lines: captureCalcLines(type), inputs: collectGroupInputs(type), pending: !!r.pending });
       recomputeOrder(target);
       persistOrders();
       renderOrders();
@@ -3267,7 +3332,7 @@ function addToCart(type) {
   cart.push({
     id: 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
     type, detail: r.detail, pcs: r.pcs, price: r.price, items: r.items, codes: codesFor(type), lines: captureCalcLines(type),
-    inputs: collectGroupInputs(type), addedAt: new Date().toISOString()
+    inputs: collectGroupInputs(type), pending: !!r.pending, custId: cartCustomers.length === 1 ? cartCustomers[0].id : null, addedAt: new Date().toISOString()
   });
   persistCart();
   renderCart();
@@ -3284,81 +3349,227 @@ function removeCartItem(id) {
 }
 
 function clearCart() {
-  if (!confirm(tr('কার্টের সব আইটেম ও কাস্টমার মুছে ফেলবেন?', 'Clear all cart items and the customer?'))) return;
+  if (!confirm(tr('কার্টের সব আইটেম ও সব কাস্টমার মুছে ফেলবেন?', 'Clear all cart items and all customers?'))) return;
   cart = [];
-  cartCustomer = null;
+  cartCustomers = [];
+  cartEditCustId = null;
   if (itemEdit && itemEdit.source === 'cart') { itemEdit = null; refreshItemEditBar(); }
   persistCart();
   renderCart();
 }
 
-function cartItemHtml(c, no, idx) {
-  return `<div class="ord-card">
-    <div class="ord-top">
-      <p class="ord-name">${escapeHtml(CART_LABEL[c.type]())} #${no}</p>
-      <span class="ord-inv">${c.pcs} ${tr('পিস', 'pcs')}</span>
+
+const CART_SHORT = {
+  floor:  () => tr('ফ্লোর', 'Floor'),
+  wall:   () => tr('ডেকোর ওয়াল', 'Decor Wall'),
+  wallx:  () => tr('ওয়াল', 'Wall'),
+  tak:    () => tr('তাক', 'Shelf'),
+  stairs: () => tr('সিঁড়ি', 'Stairs'),
+  note:   () => tr('নোট', 'Note')
+};
+const CART_SIZE_IDS = { floor: ['fTileL', 'fTileW'], wall: ['wTileH', 'wTileW'], wallx: ['xTileH', 'xTileW'], tak: ['tTileL', 'tTileW'], stairs: ['stTileL', 'stTileW'] };
+function cartRowHtml(c, no, unassigned) {
+  const codes = (c.codes || []).map(k => k.value).filter(Boolean).join(' / ');
+  const vals = (c.inputs && c.inputs.vals) || {};
+  const sz = CART_SIZE_IDS[c.type];
+  const L = sz ? vals[sz[0]] : '', W = sz ? vals[sz[1]] : '';
+  const name = (CART_SHORT[c.type] || CART_LABEL[c.type])();
+  const line = [name + (codes ? ` (${codes})` : ''), (L && W) ? `${L}×${W}"` : ''].filter(Boolean).join(' ');
+  return `<div class="cart-row${unassigned ? ' is-unassigned' : ''}">
+    <div class="cart-drag" data-drag="${c.id}" title="${escapeHtml(tr('টেনে কাস্টমারের কার্ডে দিন', 'Drag to a customer card'))}">
+      <span class="material-symbols-outlined msi cart-grip">drag_indicator</span>
+      <span class="cart-row-no">${no}.</span>
+      <span class="cart-row-name">${escapeHtml(line)}</span>
     </div>
-    <div class="ord-row">${escapeHtml(L10n(c.detail))}</div>
-    ${(c.codes || []).map(k => `<div class="ord-row"><span class="cust-meta">${escapeHtml(L10n(k.label))}: <b>${escapeHtml(k.value)}</b></span></div>`).join('')}
-    <div class="ord-total">৳ ${(c.price || 0).toLocaleString('en-BD')}</div>
-    <div class="ord-actions"><button type="button" class="ord-btn" onclick="editItem('cart', ${idx})"><span class="material-symbols-outlined msi">edit</span>${tr('এডিট', 'Edit')}</button><button type="button" class="ord-btn danger" onclick="removeCartItem('${c.id}')"><span class="material-symbols-outlined msi">delete</span>${tr('সরান', 'Remove')}</button></div>
+    <button type="button" class="cart-row-btn" onclick="editItem('cart', ${cart.indexOf(c)})" aria-label="${escapeHtml(tr('এডিট', 'Edit'))}"><span class="material-symbols-outlined msi">edit</span></button>
+    <button type="button" class="cart-row-btn danger" onclick="removeCartItem('${c.id}')" aria-label="${escapeHtml(tr('সরান', 'Remove'))}"><span class="material-symbols-outlined msi">delete</span></button>
   </div>`;
 }
 
+
+function custBlockHtml() {
+  const un = cart.filter(x => !custById(x.custId));
+  let html = '';
+  if (!cartCustomers.length && !cart.length) {
+    return `<div class="card" style="margin-bottom:14px;"><p class="clabel">${escapeHtml(tr('কাস্টমার', 'Customer'))}</p><p class="flabel">${escapeHtml(tr('কাস্টমার যোগ করা হয়নি। কাস্টমার প্রোফাইল ট্যাবে "কার্টে যোগ করুন" চাপুন।', 'No customer added. Press "Add To Cart" in Customer Profile.'))}</p></div>`;
+  }
+  html += cartCustomers.map((c, i) => {
+    const mine = cart.filter(x => x.custId === c.id);
+    const rows = mine.map((x, n) => cartRowHtml(x, n + 1, false)).join('')
+      || `<div class="cust-empty">${escapeHtml(tr('এখনো কোনো প্রোডাক্ট যুক্ত হয়নি', 'No products added yet'))}</div>`;
+    return `<div class="card cust-drop" data-drop="${c.id}" style="margin-bottom:12px;">
+      <div class="cust-head">
+        <div class="cust-head-text">
+          <p class="clabel">${escapeHtml(tr('কাস্টমার', 'Customer'))} ${i + 1}</p>
+          <p class="flabel">${escapeHtml(custLabel(c))}</p>
+        </div>
+        <button type="button" class="cart-row-btn" onclick="editCartCustomer('${c.id}')" aria-label="${escapeHtml(tr('এডিট', 'Edit'))}"><span class="material-symbols-outlined msi">edit</span></button>
+        <button type="button" class="cart-row-btn danger" onclick="removeCartCustomer('${c.id}')" aria-label="${escapeHtml(tr('মুছুন', 'Remove'))}"><span class="material-symbols-outlined msi">person_remove</span></button>
+      </div>
+      <div class="cust-rows">${rows}</div>
+      <div class="cust-actions">
+        <button type="button" class="btn-action btn-print" onclick="cartToPending('${c.id}')"><span class="material-symbols-outlined msi">local_shipping</span><span>${escapeHtml(tr('পেন্ডিং → ডেলিভারি', 'Pending To Delivery'))}</span></button>
+        <button type="button" class="btn-action btn-reset" onclick="clearCustomerItems('${c.id}')"><span class="material-symbols-outlined msi">remove_shopping_cart</span><span>${escapeHtml(tr('কার্ট খালি করুন', 'Clear Cart'))}</span></button>
+      </div>
+    </div>`;
+  }).join('');
+  if (un.length || cartCustomers.length) {
+    html += `<div class="card cust-drop unassigned" data-drop="none" style="margin-bottom:12px;">
+      <p class="clabel">${escapeHtml(tr('কাস্টমার নির্বাচন হয়নি', 'Not assigned to a customer'))}</p>
+      <div class="cust-rows">${un.map((x, n) => cartRowHtml(x, n + 1, true)).join('')
+        || `<div class="cust-empty">${escapeHtml(tr('সব প্রোডাক্ট কাস্টমারের সাথে যুক্ত', 'All products are assigned'))}</div>`}</div>
+    </div>`;
+  }
+  return html;
+}
+/* ---- আইটেম কাস্টমারে দেওয়া: টেনে দিন বা ড্রপডাউন থেকে বেছে নিন ---- */
+function assignCartItem(itemId, custId) {
+  const it = cart.find(x => x.id === itemId);
+  if (!it) return;
+  it.custId = custById(custId) ? custId : null;
+  persistCart();
+  renderCart();
+}
+let cartDrag = null;
+function cartDragMove(x, y) {
+  if (!cartDrag) return;
+  cartDrag.ghost.style.left = x + 'px';
+  cartDrag.ghost.style.top = (y - 28) + 'px';
+  const el = document.elementFromPoint(x, y);
+  const zone = el && el.closest ? el.closest('[data-drop]') : null;
+  document.querySelectorAll('.cust-drop.drop-over').forEach(z => { if (z !== zone) z.classList.remove('drop-over'); });
+  if (zone) zone.classList.add('drop-over');
+  cartDrag.zone = zone;
+}
+function cartDragEnd(cancel) {
+  if (!cartDrag) return;
+  const d = cartDrag;
+  cartDrag = null;
+  d.ghost.remove();
+  document.querySelectorAll('.cust-drop.drop-over').forEach(z => z.classList.remove('drop-over'));
+  if (cancel || !d.zone) return;
+  const target = d.zone.dataset.drop;
+  assignCartItem(d.itemId, target === 'none' ? null : target);
+}
+document.addEventListener('pointerdown', e => {
+  const h = e.target && e.target.closest ? e.target.closest('.cart-drag') : null;
+  if (!h || cartDrag) return;
+  const it = cart.find(x => x.id === h.dataset.drag);
+  if (!it) return;
+  e.preventDefault();
+  const ghost = document.createElement('div');
+  ghost.className = 'cart-ghost';
+  ghost.textContent = CART_LABEL[it.type]() + (it.pending ? '' : ' · ' + it.pcs + ' ' + tr('পিস', 'pcs'));
+  document.body.appendChild(ghost);
+  cartDrag = { itemId: it.id, ghost, zone: null };
+  cartDragMove(e.clientX, e.clientY);
+});
+document.addEventListener('pointermove', e => { if (cartDrag) { e.preventDefault(); cartDragMove(e.clientX, e.clientY); } }, { passive: false });
+document.addEventListener('pointerup', () => cartDragEnd(false));
+document.addEventListener('pointercancel', () => cartDragEnd(true));
+function refreshCustEditBar() {
+  const bar = document.getElementById('custEditBar');
+  if (!bar) return;
+  const c = cartEditCustId ? custById(cartEditCustId) : null;
+  if (!c) { bar.style.display = 'none'; return; }
+  document.getElementById('custEditTitle').textContent = `${tr('কাস্টমার এডিট হচ্ছে', 'Editing customer')}: ${c.name || tr('(নাম নেই)', '(no name)')}`;
+  bar.style.display = 'flex';
+}
+function cancelCustomerEdit() {
+  if (!cartEditCustId) return;
+  cartEditCustId = null;
+  refreshCustEditBar();
+  resetForm('tabCustomer');
+  returnToOrigin('tabCart');
+}
 function renderCart() {
   const list = document.getElementById('cartList');
   if (!list) return;
-  const info = document.getElementById('cartCustomerInfo');
+  const box = document.getElementById('cartCustomers');
   const sum = document.getElementById('cartSummary');
-  const c = cartCustomer;
-  info.textContent = c
-    ? `${c.name || tr('(নাম নেই)', '(no name)')}${c.phone ? ' · ' + c.phone : ''}${c.invoice ? ' · #' + c.invoice : ''}`
-    : tr('কাস্টমার যোগ করা হয়নি। কাস্টমার প্রোফাইল ট্যাবে "কার্টে যোগ করুন" চাপুন।',
-         'No customer added. Press "Add To Cart" in Customer Profile.');
-  list.innerHTML = cart.length
-    ? cart.map((c, i) => cartItemHtml(c, cart.filter(x => x.type === c.type).indexOf(c) + 1, i)).join('')
-    : `<div class="ord-empty">${tr('কার্ট খালি। হিসাবের ট্যাবে "কার্টে যোগ করুন" চাপুন।', 'Cart is empty. Press "Add To Cart" in a calculation tab.')}</div>`;
-  const totPcs = cart.reduce((a, x) => a + x.pcs, 0);
+  const bar = document.getElementById('cartGlobalActions');
+  if (box) box.innerHTML = custBlockHtml();
+  list.innerHTML = '';
+  list.style.display = 'none';
+  if (bar) bar.style.display = cartCustomers.length ? 'none' : '';
+  refreshCustEditBar();
+  const totPcs = cart.reduce((a, x) => a + (x.pcs || 0), 0);
   const totPrice = cart.reduce((a, x) => a + (x.price || 0), 0);
-  sum.textContent = `${cart.length} ${tr('টি আইটেম', 'items')} · ${totPcs} ${tr('পিস', 'pcs')} · ৳ ${totPrice.toLocaleString('en-BD')}`;
+  if (sum) sum.textContent = `${cart.length} ${tr('টি আইটেম', 'items')} · ${totPcs} ${tr('পিস', 'pcs')} · ৳ ${totPrice.toLocaleString('en-BD')}`;
 }
 
-function cartToPending() {
+function cartToPending(onlyId) {
   if (!cart.length) { showToast(tr('কার্ট খালি।', 'The cart is empty.'), true); return; }
-  const cust = cartCustomer || readProfile();
-  if (!cust.name && !cust.invoice) {
-    showToast(tr('আগে কাস্টমার প্রোফাইল কার্টে যোগ করুন।', 'Add a customer profile to the cart first.'), true);
-    return;
+  let groups;
+  if (typeof onlyId === 'string') {
+    const c = custById(onlyId);
+    if (!c) return;
+    const items = cart.filter(x => x.custId === c.id);
+    if (!items.length) { showToast(tr('এই কাস্টমারের কোনো প্রোডাক্ট নেই।', 'This customer has no products.'), true); return; }
+    groups = [{ cust: c, items }];
+  } else if (!cartCustomers.length) {
+    const cust = readProfile();
+    if (!cust.name && !cust.invoice) {
+      showToast(tr('আগে কাস্টমার প্রোফাইল কার্টে যোগ করুন।', 'Add a customer profile to the cart first.'), true);
+      return;
+    }
+    groups = [{ cust, items: cart.slice() }];
+  } else {
+    if (cart.some(x => !custById(x.custId))) {
+      showToast(tr('সব প্রোডাক্ট কোনো না কোনো কাস্টমারের সাথে যুক্ত করুন।', 'Assign every product to a customer first.'), true);
+      return;
+    }
+    groups = cartCustomers
+      .map(c => ({ cust: c, items: cart.filter(x => x.custId === c.id) }))
+      .filter(g => g.items.length);
   }
-  if (cust.invoice && orders.some(o => o.invoice === cust.invoice)) {
-    if (!confirm(tr('এই ইনভয়েস নম্বর আগেই আছে। তবুও সেভ করবেন?', 'This invoice number already exists. Save anyway?'))) return;
+  if (groups.some(g => g.cust.invoice && orders.some(o => o.invoice === g.cust.invoice))) {
+    if (!confirm(tr('কিছু ইনভয়েস নম্বর আগেই আছে। তবুও সেভ করবেন?', 'Some invoice numbers already exist. Save anyway?'))) return;
   }
-  const items = { floor: 0, skirting: 0, wall: 0, tak: 0, stairs: 0, chowki: 0 };
-  const inputs = { vals: {}, radios: {} };
-  let total = 0;
-  cart.forEach(c => {
-    Object.keys(c.items).forEach(k => { items[k] += c.items[k]; });
-    total += c.price || 0;
-    Object.assign(inputs.vals, c.inputs.vals);
-    Object.assign(inputs.radios, c.inputs.radios);
+  groups.forEach(g => {
+    const cust = g.cust;
+    const items = { floor: 0, skirting: 0, wall: 0, tak: 0, stairs: 0, chowki: 0 };
+    const inputs = { vals: {}, radios: {} };
+    let total = 0;
+    g.items.forEach(c => {
+      Object.keys(c.items || {}).forEach(k => { items[k] = (items[k] || 0) + c.items[k]; });
+      total += c.price || 0;
+      Object.assign(inputs.vals, (c.inputs && c.inputs.vals) || {});
+      Object.assign(inputs.radios, (c.inputs && c.inputs.radios) || {});
+    });
+    orders.push({
+      id: 'o' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+      createdAt: new Date().toISOString(),
+      invoice: cust.invoice || '', name: cust.name || '', phone: cust.phone || '',
+      address: cust.address || '', deliveryDate: cust.deliveryDate || '',
+      total, items, inputs, status: 'pending',
+      cartItems: g.items.map(c => ({ type: c.type, detail: c.detail, pcs: c.pcs, price: c.price, items: c.items, codes: c.codes || [], lines: c.lines || null, inputs: c.inputs, pending: !!c.pending }))
+    });
   });
-  orders.push({
-    id: 'o' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
-    createdAt: new Date().toISOString(),
-    invoice: cust.invoice || '', name: cust.name || '', phone: cust.phone || '',
-    address: cust.address || '', deliveryDate: cust.deliveryDate || '',
-    total, items, inputs, status: 'pending',
-    cartItems: cart.map(c => ({ type: c.type, detail: c.detail, pcs: c.pcs, price: c.price, items: c.items, codes: c.codes || [], lines: c.lines || null, inputs: c.inputs }))
-  });
+  const sentItems = new Set(groups.flatMap(g => g.items.map(x => x.id)));
+  const sentCust = new Set(groups.map(g => g.cust.id).filter(Boolean));
   persistOrders();
-  cart = [];
-  cartCustomer = null;
-  persistCart();
+  cart = cart.filter(x => !sentItems.has(x.id));
+  cartCustomers = cartCustomers.filter(c => !sentCust.has(c.id));
+  if (cartEditCustId && sentCust.has(cartEditCustId)) cartEditCustId = null;
   if (itemEdit && itemEdit.source === 'cart') { itemEdit = null; refreshItemEditBar(); }
+  persistCart();
   renderOrders();
   renderCart();
-  showToast(tr('কার্টের অর্ডার "পেন্ডিং → ডেলিভারি" ট্যাবে সেভ হয়েছে।', 'Cart saved to "Pending To Delivery".'), false);
+  showToast(tr(`${groups.length} টি অর্ডার "পেন্ডিং → ডেলিভারি" ট্যাবে সেভ হয়েছে।`, `${groups.length} order(s) saved to "Pending To Delivery".`), false);
   activateTab('tabPending');
+}
+
+function clearCustomerItems(id) {
+  const c = custById(id);
+  if (!c) return;
+  const n = cart.filter(x => x.custId === id).length;
+  if (!n) return;
+  if (!confirm(tr(`এই কাস্টমারের ${n} টি প্রোডাক্ট কার্ট থেকে মুছবেন? কাস্টমার প্রোফাইল থাকবে।`, `Remove ${n} product(s) of this customer from the cart? The profile stays.`))) return;
+  cart = cart.filter(x => x.custId !== id);
+  if (itemEdit && itemEdit.source === 'cart') { itemEdit = null; refreshItemEditBar(); }
+  persistCart();
+  renderCart();
 }
 
 /* --- আইটেম এডিট (কার্ট ও অর্ডারের প্রতিটি হিসাব) --- */
@@ -3443,12 +3654,16 @@ function updateEditingItem() {
   if (!itemEdit) return;
   if (_calcQueued) recalcAll();
   const type = itemEdit.type;
-  const r = calcResultFor(type);
+  let r = calcResultFor(type);
   if (!r || r.pcs <= 0) {
-    showToast(tr('আগে এই হিসাবের মাপ দিন।', 'Enter the measurements for this calculation first.'), true);
-    return;
+    const pend = pendingResultFor(type);
+    if (!pend) {
+      showToast(tr('আগে এই হিসাবের মাপ দিন বা টাইলসের মডেল কোড দিন।', 'Enter the measurements or the tiles model code first.'), true);
+      return;
+    }
+    r = pend;
   }
-  const entry = { type, detail: r.detail, pcs: r.pcs, price: r.price, items: r.items, codes: codesFor(type), lines: captureCalcLines(type), inputs: collectGroupInputs(type) };
+  const entry = { type, detail: r.detail, pcs: r.pcs, price: r.price, items: r.items, codes: codesFor(type), lines: captureCalcLines(type), inputs: collectGroupInputs(type), pending: !!r.pending };
   let backTab;
   if (itemEdit.source === 'cart') {
     if (!cart[itemEdit.index]) { cancelItemEdit(); return; }
@@ -3473,9 +3688,23 @@ function updateEditingItem() {
   returnToOrigin(backTab);
 }
 
-function editCartCustomer() {
+function removeCartCustomer(id) {
+  const c = custById(id);
+  if (!c) return;
+  if (!confirm(tr('এই কাস্টমার প্রোফাইল কার্ট থেকে মুছবেন? তার আইটেমগুলো "কোনো কাস্টমারে নেই" হবে।', 'Remove this customer? Their items will become unassigned.'))) return;
+  cartCustomers = cartCustomers.filter(x => x.id !== id);
+  cart.forEach(x => { if (x.custId === id) x.custId = null; });
+  if (cartEditCustId === id) cartEditCustId = null;
+  autoAssignUnassigned();
+  persistCart();
+  renderCart();
+  showToast(tr('কাস্টমার প্রোফাইল মুছে ফেলা হয়েছে।', 'Customer profile removed.'), false);
+}
+function editCartCustomer(id) {
+  const c = custById(id);
+  if (!c) return;
   captureOrigin();
-  const c = cartCustomer || {};
+  cartEditCustId = id;
   const setField = (fid, v) => { const el = document.getElementById(fid); if (el) el.value = v || ''; };
   setField('cName', c.name);
   setField('cPhone', c.phone);
@@ -3486,7 +3715,7 @@ function editCartCustomer() {
   if (on) on.checked = true;
   applyCustomerProfileMode();
   activateTab('tabCustomer');
-  showToast(tr('প্রোফাইল এডিট করে "কার্টে যোগ করুন" চাপুন।', 'Edit the profile, then press "Add To Cart".'), false);
+  refreshCustEditBar();
 }
 
 /* --- কাস্টমার প্রোফাইল পেজ: তালিকায় ক্লিক করলে বিস্তারিত ও অপশনগুলো --- */
@@ -3499,6 +3728,34 @@ let pvNoting = null;     // { id, index (null = new note), draft } — note form
 let addTilesMode = null; // order that new calculations are being added to
 let addTilesType = null; // calculator chosen for the new calculation
 
+/* কাস্টমার প্রোফাইলে মডেল কোড: প্রতি লাইনে "পার্ট - (কোড)" */
+function codeLinesHtml(c) {
+  const ks = c.codes || [];
+  if (!ks.length) return '';
+  const role = k => {
+    const en = (k.label && k.label.en) || '';
+    if (c.type === 'floor') return 'Floor';
+    if (c.type === 'wallx') return 'Wall';
+    if (c.type === 'tak') return 'Slab';
+    if (c.type === 'wall') return /Light/i.test(en) ? 'Light' : /Decor/i.test(en) ? 'Decor' : /Deep|Dark/i.test(en) ? 'Deep' : en;
+    if (c.type === 'stairs') return /Steps/i.test(en) ? 'Steps' : /Riser/i.test(en) ? 'Riser+Skirting' : /Chowki/i.test(en) ? 'Chowki' : en;
+    return en;
+  };
+  return `<div class="pv-codes-lines">${ks.map(k => `<div class="pv-code-line"><span class="pv-part">${escapeHtml(role(k))}</span> - <span class="pv-val">${escapeHtml(k.value)}</span></div>`).join('')}</div>`;
+}
+function takeBtnHtml(o, c, i) {
+  if (o.status !== 'delivery') return '';
+  const done = !!c.handedOver;
+  return `<button type="button" class="pv-btn small${done ? ' primary' : ''}" onclick="toggleHandedOver('${o.id}', ${i})"><span class="material-symbols-outlined">${done ? 'check_circle' : 'inventory_2'}</span>${done ? tr('নেওয়া হয়েছে', 'Taken') : tr('কাস্টমার নিয়েছে', 'Mark taken')}</button>`;
+}
+function takeSummaryHtml(o) {
+  if (o.status !== 'delivery') return '';
+  const real = (o.cartItems || []).filter(c => c.type !== 'note');
+  if (!real.length) return '';
+  const taken = real.filter(c => c.handedOver).length;
+  const left = real.length - taken;
+  return `<div class="pv-takestat"><span class="material-symbols-outlined">inventory_2</span>${tr('নেওয়া হয়েছে', 'Taken')}: <b>${taken}/${real.length}</b> · ${tr('বাকি', 'Remaining')}: <b>${left}</b></div>`;
+}
 function openCustomerView(id) {
   const o = orders.find(x => x.id === id);
   if (!o) return;
@@ -3572,24 +3829,24 @@ function openCustomerView(id) {
       </div>
     </div>`;
     }
-    const codes = (c.codes || []).map(k => `<span class="pv-code"><em>${escapeHtml(L10n(k.label))}</em>${escapeHtml(k.value)}</span>`).join('');
     return `<div class="pv-item">
       <div class="pv-item-ico"><span class="material-symbols-outlined">${PV_ICON[c.type] || 'calculate'}</span></div>
       <div class="pv-item-body">
         <div class="pv-item-title">${escapeHtml(CART_LABEL[c.type] ? CART_LABEL[c.type]() : c.type)} <span class="pv-no">#${i + 1}</span></div>
         <div class="pv-item-detail">${escapeHtml(L10n(c.detail) || '')}</div>
-        ${codes ? `<div class="pv-codes">${codes}</div>` : ''}
+        ${codeLinesHtml(c)}
       </div>
       <div class="pv-item-right">
         <div class="pv-item-price">৳ ${(c.price || 0).toLocaleString('en-BD')}</div>
         <div class="pv-item-pcs">${c.pcs || 0} ${tr('পিস', 'pcs')}</div>
         <div class="pv-item-actions">
+          ${takeBtnHtml(o, c, i)}
           <button type="button" class="pv-btn small" onclick="editItem('${o.id}', ${i})"><span class="material-symbols-outlined">edit</span>${tr('এডিট', 'Edit')}</button>
           <button type="button" class="pv-btn small danger" onclick="deleteOrderItem('${o.id}', ${i})"><span class="material-symbols-outlined">delete</span>${tr('মুছুন', 'Delete')}</button>
         </div>
       </div>
     </div>`;
-  }).join('');
+  }).join('') + takeSummaryHtml(o);
   const legacy = `<div class="pv-item"><div class="pv-item-ico"><span class="material-symbols-outlined">calculate</span></div>
       <div class="pv-item-body"><div class="pv-item-title">${tr('সংযুক্ত হিসাব', 'Attached calculation')}</div>
       <div class="pv-item-detail">${escapeHtml(orderItemsText(o))}</div></div>
@@ -3798,6 +4055,34 @@ document.addEventListener('keydown', function (ev) {
 });
 
 /* --- রিপোর্ট: কনফার্ম অল হিস্টোরি থেকে তারিখ অনুযায়ী প্রোফাইল --- */
+/* সাল ও মাস বেছে নিলে "থেকে" ও "পর্যন্ত" তারিখ নিজে থেকে বসে যায়। মাস খালি থাকলে পুরো বছর। */
+function applyReportMonth() {
+  const yEl = document.getElementById('rep_year');
+  const mEl = document.getElementById('rep_month');
+  const fromEl = document.getElementById('rep_from');
+  const toEl = document.getElementById('rep_to');
+  const y = parseInt(yEl.value, 10);
+  if (!yEl.value.trim()) { fromEl.value = ''; toEl.value = ''; renderReport(); return; }
+  if (!(y >= 1900 && y <= 2100)) { showToast(tr('সঠিক সাল লিখুন (১৯০০–২১০০)।', 'Enter a valid year (1900–2100).'), true); return; }
+  const yy = String(y).padStart(4, '0');
+  const m = parseInt(mEl.value, 10);
+  if (m >= 1 && m <= 12) {
+    const last = new Date(y, m, 0).getDate();
+    fromEl.value = `${yy}-${String(m).padStart(2, '0')}-01`;
+    toEl.value = `${yy}-${String(m).padStart(2, '0')}-${String(last).padStart(2, '0')}`;
+  } else {
+    fromEl.value = `${yy}-01-01`;
+    toEl.value = `${yy}-12-31`;
+  }
+  renderReport();
+}
+function clearReportFilter() {
+  document.getElementById('rep_from').value = '';
+  document.getElementById('rep_to').value = '';
+  document.getElementById('rep_year').value = '';
+  document.getElementById('rep_month').value = '';
+  renderReport();
+}
 function reportRows() {
   const from = (document.getElementById('rep_from') || {}).value || '';
   const to = (document.getElementById('rep_to') || {}).value || '';
@@ -4007,6 +4292,19 @@ function saveProfileEdit(id) {
   pvEditing = null;
   openCustomerView(id);
   showToast(tr('প্রোফাইল আপডেট হয়েছে।', 'Profile updated.'), false);
+}
+
+/* ডেলিভারি পর্যায়ে: প্রোডাক্ট কাস্টমার নিয়ে গেছেন কি না। দ্বিতীয়বার চাপলে আগের অবস্থায় ফিরে যায়। */
+function toggleHandedOver(id, index) {
+  const o = orders.find(x => x.id === id);
+  if (!o || o.status !== 'delivery' || !o.cartItems || !o.cartItems[index]) return;
+  const it = o.cartItems[index];
+  if (it.type === 'note') return;
+  if (it.handedOver) { delete it.handedOver; delete it.handedAt; }
+  else { it.handedOver = true; it.handedAt = new Date().toISOString(); }
+  persistOrders();
+  renderOrders();
+  openCustomerView(id);
 }
 
 function deleteOrderItem(id, index) {
@@ -4444,21 +4742,183 @@ document.querySelectorAll('input[name="stairMode"]').forEach((radio) => {
 });
 
 document.querySelectorAll('input[name="floorMode"]').forEach((radio) => {
-  radio.addEventListener('change', (e) => {
-    const isDim = e.target.value === 'dim';
-    document.getElementById('fDimInputs').style.display = isDim ? 'block' : 'none';
-    document.getElementById('fSqftInputs').style.display = isDim ? 'none' : 'block';
+  radio.addEventListener('change', () => {
+    applyFloorModeUI();
     calculateFloorAndSkirting();
   });
 });
 
 function ceilSafe(x) { return Math.ceil(parseFloat(Number(x).toFixed(6))); }
 
+/* ফ্লোর: কাস্টমারের মাপের ধরন অনুযায়ী ইনপুট দেখানো (inch / dim = ফুট / sqft) */
+function applyFloorModeUI() {
+  const checked = document.querySelector('input[name="floorMode"]:checked');
+  const m = checked ? checked.value : 'dim';
+  const show = (id, on) => { const el = document.getElementById(id); if (el) el.style.display = on ? 'block' : 'none'; };
+  show('fInchInputs', m === 'inch');
+  show('fDimInputs', m === 'dim');
+  show('fSqftInputs', m === 'sqft');
+}
+
+/* শোরুম রেট-লিস্ট: টাইল সাইজ অনুযায়ী শেষ দেওয়া প্রতি Sqft দাম মনে রাখে */
+function floorSizeKey() {
+  const l = getVal('fTileL'), w = getVal('fTileW');
+  if (!(l > 0 && w > 0)) return '';
+  return Math.min(l, w) + 'x' + Math.max(l, w);
+}
+function readFloorRates() { try { return JSON.parse(localStorage.getItem('tilesFloorRates') || '{}') || {}; } catch (e) { return {}; } }
+function saveFloorRate() {
+  const k = floorSizeKey(), pr = getVal('pricePerSqft');
+  if (!k || !(pr > 0)) return;
+  const r = readFloorRates(); r[k] = pr;
+  try { localStorage.setItem('tilesFloorRates', JSON.stringify(r)); } catch (e) {}
+}
+const CHIP_BOXES = {
+  fSizeChips: ['fTileL', 'fTileW'], wSizeChips: ['wTileH', 'wTileW'], xSizeChips: ['xTileH', 'xTileW'],
+  tSizeChips: ['tTileL', 'tTileW'], stSizeChips: ['stTileL', 'stTileW'], stRSizeChips: ['stRiserTileL', 'stRiserTileW'],
+  chSizeChips: ['chTileL', 'chTileW']
+};
+const CART_CHIP_BOXES = { floor: ['fSizeChips'], wall: ['wSizeChips'], wallx: ['xSizeChips'], tak: ['tSizeChips'], stairs: ['stSizeChips', 'stRSizeChips', 'chSizeChips'] };
+function syncFloorChips() {
+  Object.keys(CHIP_BOXES).forEach(boxId => {
+    const ids = CHIP_BOXES[boxId];
+    const l = getVal(ids[0]), w = getVal(ids[1]);
+    document.querySelectorAll('#' + boxId + ' .size-chip').forEach(b => {
+      const cl = +b.dataset.l, cw = +b.dataset.w;
+      b.classList.toggle('active', (l === cl && w === cw) || (l === cw && w === cl));
+    });
+  });
+}
+function pickChipTile(boxId, l, w) {
+  const ids = CHIP_BOXES[boxId];
+  const fire = (id, v) => { const el = document.getElementById(id); el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); };
+  fire(ids[0], l); fire(ids[1], w);
+  syncFloorChips();
+}
+function pickFloorTile(l, w) {
+  const fire = (id, v) => { const el = document.getElementById(id); el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); };
+  fire('fTileL', l); fire('fTileW', w);
+  const priceEl = document.getElementById('pricePerSqft');
+  const rate = readFloorRates()[floorSizeKey()];
+  if (rate && !(parseFloat(priceEl.value) > 0)) fire('pricePerSqft', rate);
+  syncFloorChips();
+}
+/* ===== টাইলস সাইজ শর্টকাট: বেশি ব্যবহৃত মাপ অটো যোগ হয়, যেকোনো শর্টকাট বাদ দেওয়া যায় ===== */
+const FLOOR_DEFAULT_CHIPS = [[8, 12], [12, 12], [12, 24], [12, 32], [16, 16], [24, 24], [24, 48], [32, 32]];
+const FLOOR_CHIP_AUTO_AFTER = 20; /* ২০ বারের বেশি (২১তম বার) হলে শর্টকাটে বসবে */
+function chipKey(l, w) { return Math.min(l, w) + 'x' + Math.max(l, w); }
+function readChipUse() {
+  try { const v = JSON.parse(localStorage.getItem('tilesSizeUse')); return (v && typeof v === 'object' && !Array.isArray(v)) ? v : {}; } catch (e) { return {}; }
+}
+function readChipHidden() {
+  try { const v = JSON.parse(localStorage.getItem('tilesChipHidden')); return Array.isArray(v) ? v : []; } catch (e) { return []; }
+}
+function writeChipStore(name, v) { try { localStorage.setItem(name, JSON.stringify(v)); } catch (e) {} }
+function floorChipList() {
+  const use = readChipUse(), hidden = readChipHidden();
+  const list = [], seen = {};
+  FLOOR_DEFAULT_CHIPS.forEach(([l, w]) => {
+    const k = chipKey(l, w);
+    if (!hidden.includes(k)) { list.push([l, w]); seen[k] = true; }
+    seen[k] = true;
+  });
+  const auto = Object.keys(use)
+    .filter(k => !seen[k] && use[k] && use[k].n > FLOOR_CHIP_AUTO_AFTER && use[k].l > 0 && use[k].w > 0)
+    .sort((a, b) => use[b].n - use[a].n)
+    .map(k => [use[k].l, use[k].w]);
+  return list.concat(auto);
+}
+function renderFloorChips() {
+  const list = floorChipList();
+  Object.keys(CHIP_BOXES).forEach(boxId => {
+    const box = document.getElementById(boxId);
+    if (!box) return;
+    box.innerHTML = '';
+    list.forEach(([l, w]) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'size-chip';
+      b.dataset.l = l; b.dataset.w = w;
+      b.appendChild(document.createTextNode(l + '×' + w));
+      const x = document.createElement('span');
+      x.className = 'chip-x material-symbols-outlined';
+      x.textContent = 'close';
+      x.setAttribute('role', 'button');
+      x.setAttribute('aria-label', tr('শর্টকাট বাদ দিন', 'Remove shortcut'));
+      x.title = tr('শর্টকাট বাদ দিন', 'Remove shortcut');
+      b.appendChild(x);
+      box.appendChild(b);
+    });
+  });
+  syncFloorChips();
+}
+/* কার্টে ফ্লোর হিসাব যোগ হলে ওই সাইজের ব্যবহার গোনা হয় */
+
+function bumpSizeUseList(pairs) {
+  const seen = {}, use = readChipUse(), toasts = [];
+  pairs.forEach(([l, w]) => {
+    if (!(l > 0 && w > 0)) return;
+    const k = chipKey(l, w);
+    if (seen[k]) return; /* একই কার্ট-যোগে একই সাইজ একবারই গোনা */
+    seen[k] = true;
+    const e = use[k] || { n: 0 };
+    e.n = (e.n || 0) + 1; e.l = l; e.w = w;
+    use[k] = e;
+    if (e.n === FLOOR_CHIP_AUTO_AFTER + 1) {
+      const isDefault = FLOOR_DEFAULT_CHIPS.some(([a, b]) => chipKey(a, b) === k);
+      const hidden = readChipHidden();
+      const wasHidden = hidden.includes(k);
+      if (wasHidden) writeChipStore('tilesChipHidden', hidden.filter(x => x !== k));
+      if (!isDefault || wasHidden) toasts.push(tr(`${l}×${w} সাইজ শর্টকাটে যোগ হয়েছে।`, `${l}×${w} added to size shortcuts.`));
+    }
+  });
+  writeChipStore('tilesSizeUse', use);
+  if (toasts.length) showToast(toasts.join(' '), false);
+  renderFloorChips();
+}
+function bumpCartSizes(type) {
+  const pairs = (CART_CHIP_BOXES[type] || []).map(boxId => [getVal(CHIP_BOXES[boxId][0]), getVal(CHIP_BOXES[boxId][1])]);
+  bumpSizeUseList(pairs);
+}
+function removeFloorChip(l, w) {
+  const k = chipKey(l, w);
+  const use = readChipUse();
+  use[k] = { n: 0, l: l, w: w }; /* কাউন্ট শূন্য — আবার ২০ বারের বেশি ব্যবহার না হলে ফিরবে না */
+  writeChipStore('tilesSizeUse', use);
+  if (FLOOR_DEFAULT_CHIPS.some(([a, b]) => chipKey(a, b) === k)) {
+    const hidden = readChipHidden();
+    if (!hidden.includes(k)) { hidden.push(k); writeChipStore('tilesChipHidden', hidden); }
+  }
+  renderFloorChips();
+}
+Object.keys(CHIP_BOXES).forEach(boxId => {
+  document.getElementById(boxId).addEventListener('click', (e) => {
+    const b = e.target.closest('.size-chip');
+    if (!b) return;
+    if (e.target.closest('.chip-x')) { e.stopPropagation(); removeFloorChip(+b.dataset.l, +b.dataset.w); return; }
+    if (boxId === 'fSizeChips') pickFloorTile(+b.dataset.l, +b.dataset.w);
+    else pickChipTile(boxId, +b.dataset.l, +b.dataset.w);
+  });
+  CHIP_BOXES[boxId].forEach(id => document.getElementById(id).addEventListener('input', syncFloorChips));
+});
+renderFloorChips();
+document.getElementById('pricePerSqft').addEventListener('change', saveFloorRate);
+
+/* ╔══════════════════════════════════════════════════════════════════════╗
+   ║  🔒 LOCKED — ফ্লোর ও স্কার্টিং ক্যালকুলেশন (calculateFloorAndSkirting + ceilSafe)  ║
+   ║  মালিকের স্পষ্ট অনুমতি ছাড়া এই কোড কোনোভাবেই বদলানো যাবে না।              ║
+   ║  সমস্যা পেলে আগে মালিককে জানাতে হবে; অনুমতি পেলেই কেবল পরিবর্তন।          ║
+   ║  নতুন অপশন যোগ বা অন্য অপশন সংশোধনের সময়ও এই লজিক অক্ষত রাখতে হবে।        ║
+   ║  অনুমতি নিয়ে বদলালে নিচের FLOOR_LOCK_HASH নতুন করে বসাতে হবে।             ║
+   ╚══════════════════════════════════════════════════════════════════════╝ */
 function calculateFloorAndSkirting() {
   const floorMode = document.querySelector('input[name="floorMode"]:checked').value;
   
   let lenFt = getVal('fLenFt') + (getVal('fLenIn') / 12);
   let widFt = getVal('fWidFt') + (getVal('fWidIn') / 12);
+  if (floorMode === 'inch') {
+    lenFt = getVal('fLenOnlyIn') / 12;
+    widFt = getVal('fWidOnlyIn') / 12;
+  }
   const fSqft = getVal('fSqft');
   const fCustomPerimeter = getVal('fCustomPerimeter');
 
@@ -4473,14 +4933,14 @@ function calculateFloorAndSkirting() {
   const sHt = getVal('sHt');
   const sWastage = getVal('sWastage');
 
-  const fArea = floorMode === 'dim' ? (lenFt * widFt) : fSqft;
+  const fArea = floorMode === 'sqft' ? fSqft : (lenFt * widFt);
   const singleTileAreaSqft = (fTileL > 0 && fTileW > 0) ? (fTileL * fTileW) / 144 : 0;
 
   const fRawTiles = singleTileAreaSqft > 0 ? (fArea / singleTileAreaSqft) : 0;
   const fFinalTiles = fRawTiles > 0 ? ceilSafe(fRawTiles * (1 + fWastagePct / 100)) : 0;
 
   let perimeter = 0;
-  if (floorMode === 'dim') {
+  if (floorMode !== 'sqft') {
     perimeter = (lenFt > 0 && widFt > 0) ? 2 * (lenFt + widFt) : 0;
   } else {
     perimeter = fCustomPerimeter > 0 ? fCustomPerimeter : 0;
@@ -4497,9 +4957,17 @@ function calculateFloorAndSkirting() {
   const tileShortSide = Math.min(fTileL, fTileW);
 
   if (sHt > 0 && tileShortSide > 0 && tileLongSide > 0 && netPerimeterInches > 0) {
+    /* টাইলসের সাইজ ও স্কার্টিংয়ের উচ্চতা অনুযায়ী ১টি টাইলস থেকে কয়টা স্কার্টিং স্ট্রিপ হবে।
+       এক দেয়ালের কাটা টুকরার বাড়তি অংশ অন্য দেয়ালে ব্যবহার ধরা হয় — তাই মোট রানিং ইঞ্চিকে
+       ১ টাইলসের মোট স্ট্রিপ-দৈর্ঘ্য দিয়ে ভাগ করে মোট টাইলস পিস ধরা হয়। */
+    let stripLen = tileLongSide;
     cutsPerTile = Math.floor(tileShortSide / sHt);
+    if (cutsPerTile <= 0) { /* ছোট বাহুতে না হলে বড় বাহু ধরে কাটা */
+      cutsPerTile = Math.floor(tileLongSide / sHt);
+      stripLen = tileShortSide;
+    }
     if (cutsPerTile > 0) {
-      const coveragePerTileInches = tileLongSide * cutsPerTile;
+      const coveragePerTileInches = stripLen * cutsPerTile;
       sRawTiles = netPerimeterInches / coveragePerTileInches;
     }
   }
@@ -4533,8 +5001,37 @@ function calculateFloorAndSkirting() {
   document.getElementById('resTotalPrice').textContent = Math.round(totalPrice).toLocaleString('en-BD');
   document.getElementById('resFTotalSqft').textContent = (totalTiles * singleTileAreaSqft).toFixed(1);
   document.getElementById('resFPriceSqft').textContent = priceSqft > 0 ? priceSqft.toLocaleString('en-BD') : '0';
+
+  /* শোরুম বিলিং: টাইল ভাগ হয় না — সবসময় পূর্ণ টাইলস, দাম = টাইলস × টাইলের Sqft × প্রতি Sqft দাম */
+  const pricePerTile = singleTileAreaSqft * priceSqft;
+  const ppEl = document.getElementById('resPricePerTile');
+  if (ppEl) ppEl.textContent = pricePerTile > 0 ? (Math.round(pricePerTile * 100) / 100).toLocaleString('en-BD') : '0';
 }
 
+/* 🔒 ফ্লোর লক-পাহারা: লজিক বদলে গেলে কনসোলে লাল সতর্কতা ও একটা সতর্কবার্তা আসবে (হিসাব বন্ধ হয় না) */
+const FLOOR_LOCK_HASH = '3bbfcfc2';
+function floorLockHash() {
+  const src = (calculateFloorAndSkirting.toString() + '|' + ceilSafe.toString()).replace(/\s+/g, ' ');
+  let h = 0x811c9dc5;
+  for (let i = 0; i < src.length; i++) { h ^= src.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16);
+}
+setTimeout(function () {
+  try {
+    if (floorLockHash() !== FLOOR_LOCK_HASH) {
+      console.error('🔒 LOCK ভাঙা: ফ্লোর ক্যালকুলেশন কোড মালিকের অনুমতি ছাড়া বদলে গেছে।');
+      if (typeof showToast === 'function') showToast(tr('সতর্কতা: ফ্লোর হিসাবের কোড বদলে গেছে। মালিককে জানান।', 'Warning: floor calculation code was changed. Tell the owner.'), true);
+    }
+  } catch (e) {}
+}, 1500);
+
+/* ╔══════════════════════════════════════════════════════════════════════╗
+   ║  🔒 LOCKED — Decorate Wall Tiles ক্যালকুলেশন (calcWall)                     ║
+   ║  মালিকের স্পষ্ট অনুমতি ছাড়া এই কোড কোনোভাবেই বদলানো যাবে না।              ║
+   ║  সমস্যা পেলে আগে মালিককে জানাতে হবে; অনুমতি পেলেই কেবল পরিবর্তন।          ║
+   ║  নতুন অপশন যোগ বা অন্য অপশন সংশোধনের সময়ও এই লজিক (এবং ফ্লোর লজিক) অক্ষত রাখতে হবে। ║
+   ║  অনুমতি নিয়ে বদলালে নিচের WALL_LOCK_HASH নতুন করে বসাতে হবে।              ║
+   ╚══════════════════════════════════════════════════════════════════════╝ */
 function calcWall() {
   const wTotalSqft = getVal('wTotalSqft');
   const htFt = getVal('wHtFt');
@@ -4672,6 +5169,30 @@ function calcWall() {
   document.getElementById('resWallTotalPrice').textContent = Math.round(totalPrice).toLocaleString('en-BD');
 }
 
+/* 🔒 Decorate Wall Tiles লক-পাহারা: লজিক বদলে গেলে কনসোলে লাল সতর্কতা ও সতর্কবার্তা আসবে (হিসাব বন্ধ হয় না) */
+const WALL_LOCK_HASH = '9189b4c';
+function wallLockHash() {
+  const src = calcWall.toString().replace(/\s+/g, ' ');
+  let h = 0x811c9dc5;
+  for (let i = 0; i < src.length; i++) { h ^= src.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16);
+}
+setTimeout(function () {
+  try {
+    if (wallLockHash() !== WALL_LOCK_HASH) {
+      console.error('🔒 LOCK ভাঙা: Decorate Wall Tiles ক্যালকুলেশন কোড মালিকের অনুমতি ছাড়া বদলে গেছে।');
+      if (typeof showToast === 'function') showToast(tr('সতর্কতা: Decorate Wall Tiles হিসাবের কোড বদলে গেছে। মালিককে জানান।', 'Warning: Decorate Wall Tiles calculation code was changed. Tell the owner.'), true);
+    }
+  } catch (e) {}
+}, 1500);
+
+/* ╔══════════════════════════════════════════════════════════════════════╗
+   ║  🔒 LOCKED — Wall Tiles ক্যালকুলেশন (calcWallX)                             ║
+   ║  মালিকের স্পষ্ট অনুমতি ছাড়া এই কোড কোনোভাবেই বদলানো যাবে না।              ║
+   ║  সমস্যা পেলে আগে মালিককে জানাতে হবে; অনুমতি পেলেই কেবল পরিবর্তন।          ║
+   ║  নতুন অপশন যোগ বা অন্য অপশন সংশোধনের সময়ও এই লজিক (এবং ফ্লোর লজিক) অক্ষত রাখতে হবে। ║
+   ║  অনুমতি নিয়ে বদলালে নিচের WALLX_LOCK_HASH নতুন করে বসাতে হবে।             ║
+   ╚══════════════════════════════════════════════════════════════════════╝ */
 function calcWallX() {
   const totalSqft = getVal('xTotalSqft');
   const htFt = getVal('xHtFt');
@@ -4741,6 +5262,30 @@ function calcWallX() {
   document.getElementById('xResTotalPrice').textContent = Math.round(totalPrice).toLocaleString('en-BD');
 }
 
+/* 🔒 Wall Tiles লক-পাহারা: লজিক বদলে গেলে কনসোলে লাল সতর্কতা ও সতর্কবার্তা আসবে (হিসাব বন্ধ হয় না) */
+const WALLX_LOCK_HASH = '22444f34';
+function wallXLockHash() {
+  const src = calcWallX.toString().replace(/\s+/g, ' ');
+  let h = 0x811c9dc5;
+  for (let i = 0; i < src.length; i++) { h ^= src.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16);
+}
+setTimeout(function () {
+  try {
+    if (wallXLockHash() !== WALLX_LOCK_HASH) {
+      console.error('🔒 LOCK ভাঙা: Wall Tiles ক্যালকুলেশন কোড মালিকের অনুমতি ছাড়া বদলে গেছে।');
+      if (typeof showToast === 'function') showToast(tr('সতর্কতা: Wall Tiles হিসাবের কোড বদলে গেছে। মালিককে জানান।', 'Warning: Wall Tiles calculation code was changed. Tell the owner.'), true);
+    }
+  } catch (e) {}
+}, 1500);
+
+/* ╔══════════════════════════════════════════════════════════════════════╗
+   ║  🔒 LOCKED — তাক / স্ল্যাব ক্যালকুলেশন (calcTak)                            ║
+   ║  মালিকের স্পষ্ট অনুমতি ছাড়া এই কোড কোনোভাবেই বদলানো যাবে না।              ║
+   ║  সমস্যা পেলে আগে মালিককে জানাতে হবে; অনুমতি পেলেই কেবল পরিবর্তন।          ║
+   ║  নতুন অপশন যোগ বা অন্য অপশন সংশোধনের সময়ও এই লজিক (এবং ফ্লোর লজিক) অক্ষত রাখতে হবে। ║
+   ║  অনুমতি নিয়ে বদলালে নিচের TAK_LOCK_HASH নতুন করে বসাতে হবে।               ║
+   ╚══════════════════════════════════════════════════════════════════════╝ */
 function calcTak() {
   const takSqftMode = (document.querySelector('input[name="takMode"]:checked') || {}).value === 'sqft';
   const takInputActive = takSqftMode ? hasVal('tSqft') : (hasVal('tLen') || hasVal('tWid'));
@@ -4810,6 +5355,23 @@ function calcTak() {
   document.getElementById('resTakBoxes').textContent = formatBoxAndPcs(totalPcs, perBox);
   document.getElementById('resTakPrice').textContent = Math.round(totalPrice).toLocaleString('en-BD');
 }
+
+/* 🔒 তাক / স্ল্যাব লক-পাহারা: লজিক বদলে গেলে কনসোলে লাল সতর্কতা ও সতর্কবার্তা আসবে (হিসাব বন্ধ হয় না) */
+const TAK_LOCK_HASH = 'e068dd9c';
+function takLockHash() {
+  const src = calcTak.toString().replace(/\s+/g, ' ');
+  let h = 0x811c9dc5;
+  for (let i = 0; i < src.length; i++) { h ^= src.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16);
+}
+setTimeout(function () {
+  try {
+    if (takLockHash() !== TAK_LOCK_HASH) {
+      console.error('🔒 LOCK ভাঙা: তাক / স্ল্যাব ক্যালকুলেশন কোড মালিকের অনুমতি ছাড়া বদলে গেছে।');
+      if (typeof showToast === 'function') showToast(tr('সতর্কতা: তাক / স্ল্যাব হিসাবের কোড বদলে গেছে। মালিককে জানান।', 'Warning: Shelf / Slab calculation code was changed. Tell the owner.'), true);
+    }
+  } catch (e) {}
+}, 1500);
 
 /* ধাপ/রাইজার/স্কার্টিংয়ের জন্য কাটিং-ভিত্তিক টাইলস হিসাব:
    প্রতিটি স্ট্রিপ (len × wid) টাইলস কেটে বানানো হয়। দুই দিকেই (ঘুরিয়ে) চেষ্টা করে কম সংখ্যাটি নেওয়া হয়। */
@@ -4999,6 +5561,31 @@ function calcStairs() {
   }
 }
 
+/* ╔══════════════════════════════════════════════════════════════════════╗
+   ║  🔒 LOCKED — সিঁড়ি ক্যালকুলেশন (calcStairs + stripTiles)                  ║
+   ║  ধাপের টাইল, রাইজার + স্কার্টিংয়ের টাইল, চৌকির টাইল — তিন জায়গার হিসাব।   ║
+   ║  মালিকের স্পষ্ট অনুমতি ছাড়া এই কোড কোনোভাবেই বদলানো যাবে না।              ║
+   ║  সমস্যা পেলে আগে মালিককে জানাতে হবে; অনুমতি পেলেই কেবল পরিবর্তন।          ║
+   ║  নতুন অপশন যোগ বা অন্য অপশন সংশোধনের সময়ও এই লজিক অক্ষত রাখতে হবে।        ║
+   ║  অনুমতি নিয়ে বদলালে নিচের STAIRS_LOCK_HASH নতুন করে বসাতে হবে।             ║
+   ╚══════════════════════════════════════════════════════════════════════╝ */
+/* 🔒 সিঁড়ি লক-পাহারা: লজিক বদলে গেলে কনসোলে লাল সতর্কতা ও সতর্কবার্তা আসবে (হিসাব বন্ধ হয় না) */
+const STAIRS_LOCK_HASH = '19faf1b0';
+function stairsLockHash() {
+  const src = (calcStairs.toString() + '|' + stripTiles.toString()).replace(/\s+/g, ' ');
+  let h = 0x811c9dc5;
+  for (let i = 0; i < src.length; i++) { h ^= src.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16);
+}
+setTimeout(function () {
+  try {
+    if (stairsLockHash() !== STAIRS_LOCK_HASH) {
+      console.error('🔒 LOCK ভাঙা: সিঁড়ি ক্যালকুলেশন কোড মালিকের অনুমতি ছাড়া বদলে গেছে।');
+      if (typeof showToast === 'function') showToast(tr('সতর্কতা: সিঁড়ি হিসাবের কোড বদলে গেছে। মালিককে জানান।', 'Warning: Stairs calculation code was changed. Tell the owner.'), true);
+    }
+  } catch (e) {}
+}, 1500);
+
 /* শুধু যে ট্যাবে ইনপুট বদলেছে সেই ট্যাবের হিসাব চলবে (কম শক্তির ডিভাইসে দ্রুত) */
 let _calcQueued = false, _calcAll = false, _calcSet = null;
 const TAB_CALC = { tabFloor: calculateFloorAndSkirting, tabWall: calcWall, tabWallX: calcWallX, tabTak: calcTak, tabStairs: calcStairs };
@@ -5031,7 +5618,7 @@ function scheduleRecalc(target) {
 document.addEventListener('input', (e) => {
   const el = e.target;
   if (!el || !el.matches || !el.matches('input, select')) return;
-  if (el.hasAttribute('data-ordfilter') || el.id === 'rep_from' || el.id === 'rep_to') return;
+  if (el.hasAttribute('data-ordfilter') || el.id === 'rep_from' || el.id === 'rep_to' || el.id === 'rep_year' || el.id === 'rep_month') return;
   scheduleRecalc(el);
 }, { passive: true });
 
@@ -5047,6 +5634,8 @@ document.querySelectorAll('[data-ordfilter]').forEach(el => {
 });
 
 applyTakMode();
+applyFloorModeUI();
+syncFloorChips();
 loadSavedSizes();
 loadOrders();
 loadCart();
@@ -5551,17 +6140,59 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
     if (!res.ok) { const er = new Error('http ' + res.status); er.status = res.status; throw er; }
     return res;
   }
+  /* ---------- ডেটা অখণ্ডতা ও জায়গা বাঁচানো ----------
+     বড় ডেটা (অর্ডার / কার্ট) gzip করে পাঠানো হয় + SHA-256 চেকসাম থাকে।
+     ক্লাউড থেকে আনার সময় চেকসাম না মিললে কিছুই প্রয়োগ হয় না (স্থানীয় ডেটা সুরক্ষিত থাকে)।
+     ছোট বা পুরোনো ফরম্যাটের ডেটা আগের মতোই থাকে — তাই পুরোনো রেকর্ড পড়তে সমস্যা হয় না। */
+  const CAN_ZIP = typeof CompressionStream === 'function' && typeof DecompressionStream === 'function' && !!(window.crypto && crypto.subtle);
+  const ZIP_MIN = 2048;
+  async function sha256Hex(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  function bytesToB64(u8) {
+    let out = '';
+    for (let i = 0; i < u8.length; i += 0x8000) out += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+    return btoa(out);
+  }
+  function b64ToBytes(b64) {
+    const bin = atob(b64);
+    const u8 = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    return u8;
+  }
+  async function packValue(val) {
+    if (!CAN_ZIP) return val;
+    const json = JSON.stringify(val);
+    if (json.length < ZIP_MIN) return val;
+    const gz = await new Response(new Blob([json]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer();
+    const z = bytesToB64(new Uint8Array(gz));
+    if (z.length >= json.length) return val;
+    return { fmt: 'gz1', sum: await sha256Hex(json), z: z };
+  }
+  async function unpackValue(v) {
+    if (!v || typeof v !== 'object' || Array.isArray(v) || v.fmt !== 'gz1') return v;
+    const json = await new Response(new Blob([b64ToBytes(v.z)]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+    if ((await sha256Hex(json)) !== v.sum) throw new Error('integrity');
+    return JSON.parse(json);
+  }
+  async function unpackRows(rows) {
+    const out = [];
+    for (const r of rows) out.push(Object.assign({}, r, { value: await unpackValue(r.value) }));
+    return out;
+  }
+
   async function pushDirty() {
     const keys = SYNC_KEYS.filter(k => meta.dirty[k]);
     if (!keys.length) return;
     const snap = {}, body = [];
-    keys.forEach(k => {
+    for (const k of keys) {
       const raw = get(k);
       const dflt = (k === TOMB) ? {} : (k === CART ? null : []);
       const val = raw == null ? dflt : jparse(raw, dflt);
-      if (val === null) { return; }
-      snap[k] = raw; body.push({ user_id: session.user.id, key: k, value: val });
-    });
+      if (val === null) { continue; }
+      snap[k] = raw; body.push({ user_id: session.user.id, key: k, value: await packValue(val) });
+    }
     if (body.length) {
       const res = await api('/rest/v1/app_data?on_conflict=user_id,key', {
         method: 'POST', headers: { Prefer: 'resolution=merge-duplicates,return=representation' }, body: JSON.stringify(body)
@@ -5609,13 +6240,17 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
       }
       const res = await api('/rest/v1/app_data?select=key,value,updated_at');
       const rows = await res.json();
-      const changed = applyRows(Array.isArray(rows) ? rows : []);
+      const checked = await unpackRows(Array.isArray(rows) ? rows : []);
+      const changed = applyRows(checked);
       saveMeta();
       if (changed) reloadApp();
       await pushDirty();
       meta.last = Date.now(); saveMeta();
       setState('ok');
-    } catch (e) { setState(session ? 'error' : 'out'); }
+    } catch (e) {
+      if (e && e.message === 'integrity') showToast(tr('ক্লাউড ডেটার চেকসাম মেলেনি — স্থানীয় ডেটা রক্ষা করা হয়েছে, কিছু আপডেট হয়নি।', 'Cloud data checksum did not match — local data is kept safe, nothing was updated.'), true);
+      setState(session ? 'error' : 'out');
+    }
     finally { busy = false; if (again) { again = false; schedulePush(); } }
   }
 
@@ -6412,6 +7047,19 @@ if ('serviceWorker' in navigator) {
   .pv-hero-info { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 }
 </style>
+<style id="showroomFloorUpdate">
+/* ফ্লোর ট্যাব: কাস্টমারের মাপের ধরন + টাইল সাইজ চিপ + শোরুম বিলিং (বিদ্যমান ডিজাইন অপরিবর্তিত) */
+.mode-btn .msi{font-size:17px;vertical-align:-4px;margin-right:4px}
+@media (max-width:420px){.mode-toggle{gap:4px}.mode-btn{padding:9px 4px;font-size:11.5px}.mode-btn .msi{display:block;margin:0 auto 2px}}
+.size-chips{display:flex;flex-wrap:wrap;gap:6px;margin:-2px 0 14px}
+.size-chip{border:1.5px solid var(--border);background:var(--surface);color:var(--ink-soft);font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;cursor:pointer;min-height:34px}
+.size-chip:hover{background:var(--surface-2);color:var(--ink)}
+.size-chip.active{background:var(--surface-2);border-color:var(--ink);color:var(--ink)}
+.size-chip .chip-x{font-size:14px;line-height:1;margin-left:6px;vertical-align:-2px;opacity:.5;border-radius:50%}
+.size-chip .chip-x:hover{opacity:1;color:#C62828}
+.bill-note{display:flex;gap:8px;align-items:flex-start;margin:0 0 10px;padding:10px 12px;border:1.5px dashed var(--border);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--ink-soft);font-size:12.5px;line-height:1.5}
+.bill-note .msi{font-size:18px;flex-shrink:0;margin-top:1px}
+</style>
 <script id="iconGuard">
 /* আইকন সুরক্ষা: ফন্টের তালিকায় না-থাকা নাম লুকানো + ফন্ট ব্যর্থ হলে দ্রুত ফলব্যাক */
 (function () {
@@ -6480,4 +7128,143 @@ if ('serviceWorker' in navigator) {
   });
 })();
 </script>
+<style id="cartMultiCust">
+.cust-drop{outline:2px dashed transparent;outline-offset:2px;transition:background .15s,outline-color .15s}
+.cust-drop.drop-over{outline-color:var(--floor);background:var(--surface-2)}
+.cart-drag{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;color:var(--ink-soft);font-size:20px}
+.cart-ghost{position:fixed;left:0;top:0;pointer-events:none;z-index:900;transform:translate(-50%,-50%);background:var(--surface);border:1.5px solid var(--floor);border-radius:10px;padding:7px 12px;font-size:12.5px;font-weight:600;color:var(--ink);box-shadow:var(--shadow);max-width:80vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+</style>
+<style id="cartRowsStyle">
+.cust-head{display:flex;gap:8px;align-items:flex-start}
+.cust-head-text{flex:1;min-width:0}
+.cust-rows{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.cust-empty{font-size:12.5px;color:var(--ink-faint);padding:8px 2px}
+.cust-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.cust-actions .btn-action{flex:1 1 180px}
+.cart-row{display:flex;align-items:center;gap:6px;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:0 4px 0 0}
+.cart-row.is-unassigned{background:#FFF7E6;border-color:#E8B55A}
+[data-theme="dark"] .cart-row.is-unassigned{background:#3A2E14;border-color:#8A6A2A}
+.cart-drag{flex:1;min-width:0;display:flex;flex-wrap:nowrap;align-items:center;column-gap:8px;min-height:46px;padding:6px 8px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;font-size:13px;color:var(--ink)}
+.cart-grip{color:var(--ink-soft);font-size:22px;flex-shrink:0}
+.cart-row-no{font-weight:700;color:var(--ink-soft);flex-shrink:0}
+.cart-row-name{font-weight:600;white-space:normal;word-break:break-word;overflow-wrap:anywhere;min-width:0;flex:1 1 auto;line-height:1.35}
+.cart-row-code{flex-basis:100%;padding-left:30px;font-size:12.5px;color:var(--ink-soft);white-space:normal;word-break:break-all;line-height:1.4}
+.cart-row-code b{color:var(--ink);font-weight:700}
+.cart-row-pend{font-size:11px;font-weight:600;color:#B45309;border:1px solid #E8B55A;border-radius:999px;padding:1px 7px;white-space:nowrap}
+.cart-row-btn{border:none;background:transparent;color:var(--ink-soft);width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.cart-row-btn:hover{background:var(--surface)}
+.cart-row-btn.danger:hover{color:#C62828}
+.cart-row-btn .msi{font-size:18px}
+.cust-drop{outline:2px dashed transparent;outline-offset:2px;transition:background .15s,outline-color .15s}
+.cust-drop.drop-over{outline-color:var(--floor);background:var(--surface-2)}
+.cust-drop.unassigned{outline:2px dashed #E8B55A}
+</style>
+<style id="custEditBarStyle">
+body.kb-open #custEditBar, body.field-focus #custEditBar { display: none !important; }
+@media print { #custEditBar { display: none !important; } }
+#custEditBar { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+</style>
+<style id="takeStyle">
+.pv-takestat{display:flex;align-items:center;gap:6px;margin-top:6px;padding:8px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--border);font-size:12.5px;color:var(--ink-soft)}
+.pv-takestat .material-symbols-outlined{font-size:18px;color:var(--floor-ink)}
+.pv-takestat b{color:var(--ink)}
+</style>
+<style id="codeLinesStyle">
+.pv-codes-lines{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.pv-code-line{font-size:13px;color:var(--ink);line-height:1.45;word-break:break-word}
+.pv-part{font-weight:400}
+.pv-val{font-weight:600}
+</style>
+<style id="filterDesign">
+/* ফিল্টার এলাকার নতুন ডিজাইন: শুধু দেখাবে — আইডি, ইভেন্ট ও লজিক অপরিবর্তিত। রঙ ও থিম আগের মতোই। */
+.ord-filter {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 8px 22px rgba(15,23,42,.05);
+  gap: 14px 12px;
+}
+.ord-filter .ig { gap: 6px; }
+.ord-filter .ig label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--ink-soft);
+  line-height: 1.3;
+}
+.ord-filter .ig input,
+.ord-filter .ig select {
+  height: 44px;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--ink);
+  font-size: 14.5px;
+  font-weight: 500;
+  padding: 0 12px;
+  box-shadow: inset 0 1px 2px rgba(15,23,42,.03);
+  transition: border-color .15s, box-shadow .15s, background-color .15s;
+}
+.ord-filter .ig input:hover,
+.ord-filter .ig select:hover { border-color: var(--ink-faint); }
+.ord-filter .ig input:focus,
+.ord-filter .ig select:focus {
+  background: var(--surface);
+  border-color: var(--floor);
+  box-shadow: 0 0 0 3px rgba(29,91,138,.14);
+}
+.ord-filter .ord-search input { padding-left: 42px; }
+.ord-filter .ord-search::before { top: 34px; }
+.ord-filter .ig:last-child label { visibility: hidden; }
+.ord-filter .ig:last-child .ord-btn,
+.ord-filter .ig .ord-btn {
+  height: 44px;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-soft);
+  box-shadow: none;
+  transform: none;
+}
+.ord-filter .ig .ord-btn:hover { background: var(--surface-2); color: var(--ink); transform: none; }
+.ord-filter .ig .ord-btn.primary {
+  background: var(--floor);
+  border-color: var(--floor);
+  color: #fff;
+}
+.ord-filter .ig .ord-btn.primary:hover { background: var(--floor-ink); border-color: var(--floor-ink); color: #fff; }
+.ord-filter .ig .ord-btn .msi { font-size: 18px; }
+.ord-filter .ig .ord-btn.danger { color: #DC2626; border-color: #FCA5A5; background: var(--surface); }
+.ord-filter .ig .ord-btn.danger:hover { background: #FEF2F2; color: #B91C1C; }
+#tabReport .ord-filter .ig:nth-last-child(2) .ord-btn { border-radius: 12px; }
+</style>
+<style id="universalTouchStandard">
+/* ইউনিভার্সাল স্ট্যান্ডার্ড (PDF গাইড): টাচ ডিভাইসে ন্যূনতম টাচ টার্গেট ৪৪px ও ইনপুটে ১৬px ফন্ট।
+   মাউস/ডেস্কটপে কোনো পরিবর্তন নেই। লেআউট ও লজিক অপরিবর্তিত। */
+@media (pointer: coarse) {
+  html body button, html body .ord-btn, html body .ord-btn.sm, html body .ord-btn.primary, html body .pv-btn, html body .btn-action, html body .action-bar > .btn-action, html body .panel > .action-bar .ord-btn, html body .clear-sec-btn, html body .calc-nav-item, html body .size-chip, html body .of-toggle, html body .mode-btn, html body .cart-row-btn {
+    min-height: 44px !important;
+    height: auto !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+  html body input:not([type="checkbox"]):not([type="radio"]), html body select, html body textarea {
+    min-height: 44px !important;
+    font-size: 16px !important;
+  }
+  html body .lang-switch input { min-height: 0 !important; }
+  html body .header-controls .theme-btn-group .theme-btn, html body .header-controls .theme-btn-group { min-height: 44px !important; height: auto !important; }
+}
+</style>
 </body></html>
