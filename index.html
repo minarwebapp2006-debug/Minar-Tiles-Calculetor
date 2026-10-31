@@ -1623,6 +1623,16 @@ input, select, textarea { scroll-margin-top: 90px; scroll-margin-bottom: calc(va
   html.print-pdf #printSection .print-footer { font-size: 10pt; margin-top: 14px; padding-top: 6px; color: #475569; }
 }
 
+
+/* ===== Customer Profile Save PDF: মোবাইলে পুরো পেজ-প্রস্থ জুড়ে ডেটা (মার্জিন/প্যাডিং কমানো, ফন্ট একই) ===== */
+@media print {
+  html.print-mobilefit #printSection .print-invoice-box { padding: 2px 1px; border-radius: 0; border-width: 1px; }
+  html.print-mobilefit #printSection .print-customer { padding: 6px 6px; gap: 6px 10px; }
+  html.print-mobilefit #printSection .pt, html.print-mobilefit #printSection .pt-detail, html.print-mobilefit #printSection .pt-wrap { width: 100%; }
+  html.print-mobilefit #printSection .pt th, html.print-mobilefit #printSection .pt td,
+  html.print-mobilefit #printSection .pt-detail th, html.print-mobilefit #printSection .pt-detail td { padding: 3px 2px; }
+}
+
 /* ===== নোট (Add Note) ফিচার ===== */
 .pv-fi textarea { min-height: 110px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); padding: 10px 12px; font-size: 14.5px; line-height: 1.5; color: var(--ink); font-family: inherit; resize: vertical; width: 100%; box-sizing: border-box; }
 .pv-fi textarea:focus { outline: none; border-color: var(--accent-ink); }
@@ -4124,12 +4134,25 @@ function renderReport() {
     <div class="pv-total" style="margin-top:10px;"><span>${tr('গ্র্যান্ড টোটাল (মোট পরিশোধ)', 'Grand total (amount paid)')}</span><strong>৳ ${Math.round(t.paid).toLocaleString('en-BD')}</strong></div>`;
 }
 
-function runPrint(mode) {
+function runPrint(mode, fit) {
   const root = document.documentElement;
-  root.classList.remove('print-pdf');
+  root.classList.remove('print-pdf', 'print-mobilefit');
+  const oldPg = document.getElementById('pdfPageSize'); if (oldPg) oldPg.remove();
   if (mode === 'pdf') {
     root.classList.add('print-pdf');
-    const off = () => { root.classList.remove('print-pdf'); window.removeEventListener('afterprint', off); };
+    // Customer Profile "Save PDF": মোবাইলে জুম ছাড়াই পুরো ডিজাইন ও ডেটা পড়া যাবে — পেজ ন্যারো (160mm) ও মার্জিন ছোট; ফন্ট সাইজ অপরিবর্তিত
+    if (fit === 'mobile') {
+      root.classList.add('print-mobilefit');
+      const st = document.createElement('style');
+      st.id = 'pdfPageSize';
+      st.textContent = '@media print { @page { size: 156mm 285mm; margin: 0.8mm; } }';
+      document.head.appendChild(st);
+    }
+    const off = () => {
+      root.classList.remove('print-pdf', 'print-mobilefit');
+      const pg = document.getElementById('pdfPageSize'); if (pg) pg.remove();
+      window.removeEventListener('afterprint', off);
+    };
     window.addEventListener('afterprint', off);
   }
   window.print();
@@ -4500,7 +4523,7 @@ function printOrderView(id, lang, mode) {
       ${notesHtml}
       <div class="print-footer"><div>${T.footer}</div><div>${T.thanks}</div></div>
     </div>`;
-  runPrint(mode);
+  runPrint(mode, 'mobile');
 }
 
 function statusFromView(id, status) {
@@ -6250,6 +6273,14 @@ const OFFLINE_GRACE_HOURS = 72;    // ইন্টারনেট না থা�
     } catch (e) {
       if (e && e.message === 'integrity') showToast(tr('ক্লাউড ডেটার চেকসাম মেলেনি — স্থানীয় ডেটা রক্ষা করা হয়েছে, কিছু আপডেট হয়নি।', 'Cloud data checksum did not match — local data is kept safe, nothing was updated.'), true);
       setState(session ? 'error' : 'out');
+      // ক্লাউডে সেভ ব্যর্থ হলে কারণ দেখানো (৬০ সেকেন্ডে একবার) — যেমন http 404 = app_data টেবিল নেই, http 400/401/403 = সেটআপ/পলিসি সমস্যা
+      try {
+        if (session && e && e.message !== 'integrity' && e.message !== 'auth' && (!window._cloudErrT || Date.now() - window._cloudErrT > 60000)) {
+          window._cloudErrT = Date.now();
+          const why = e.status ? ('http ' + e.status) : (navigator.onLine === false ? 'offline' : String(e.message || 'error'));
+          showToast(tr('ক্লাউডে সেভ হয়নি (' + why + ') — ডেটা এই ডিভাইসে নিরাপদ আছে, আবার চেষ্টা হবে।', 'Not saved to the cloud (' + why + ') — data is safe on this device and will retry.'), true);
+        }
+      } catch (e2) {}
     }
     finally { busy = false; if (again) { again = false; schedulePush(); } }
   }
